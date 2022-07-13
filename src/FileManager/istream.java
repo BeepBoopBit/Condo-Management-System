@@ -3,11 +3,10 @@ package FileManager;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class istream {
+public class Istream {
     ArrayList<String> _names;
     ArrayList<String> _ages;
     ArrayList<String> _locations;
@@ -15,7 +14,7 @@ public class istream {
     ArrayList<ArrayList<String>> _details;
     ArrayList<ArrayList<String>> _amenities;
 
-    public istream(){
+    public Istream(){
         _names = new ArrayList<>();
         _ages = new ArrayList<>();
         _locations = new ArrayList<>();
@@ -44,7 +43,31 @@ public class istream {
             System.out.println("The file was not found");
         }
     }
+    public ArrayList<String> getNames() {
+        return _names;
+    }
+
+    public ArrayList<String> getAges() {
+        return _ages;
+    }
+
+    public ArrayList<String> getLocations() {
+        return _locations;
+    }
+
+    public ArrayList<String> getPaymentOptions() {
+        return _paymentOptions;
+    }
+
+    public ArrayList<ArrayList<String>> getDetails() {
+        return _details;
+    }
+
+    public ArrayList<ArrayList<String>> getAmenities() {
+        return _amenities;
+    }
     
+    // debug
     public void print(){
         for(int i = 0; i < _names.size(); ++i){
             System.out.println(_names.get(i));
@@ -58,15 +81,21 @@ public class istream {
         for(int i = 0; i < _paymentOptions.size(); ++i){
             System.out.println(_paymentOptions.get(i));
         }
+        System.out.println("");
         for(int i = 0; i < _details.size(); ++i){
-            for(int j = 0; j < _details.get(i).size(); ++i){
-                System.out.println(_details.get(i).get(j));
+            for(int j = 0; j < _details.get(i).size(); ++j){
+                System.out.print(_details.get(i).get(j));
             }
+            System.out.println("");
         }
         for(int i = 0; i < _amenities.size(); ++i){
-            for(int j = 0; j < _amenities.get(i).size(); ++i){
-                System.out.println(_amenities.get(i).get(j));
+            for(int j = 0; j < _amenities.get(i).size(); ++j){
+                System.out.print(_amenities.get(i).get(j));
             }
+            System.out.println("");
         }
     }
 }
+
+
+    

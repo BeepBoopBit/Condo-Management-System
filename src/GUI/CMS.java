@@ -1,9 +1,13 @@
 package GUI;
+import FileManager.*;
 
 public class CMS extends javax.swing.JFrame {
 
+    private Istream _istream = new Istream();
+    
     public CMS() {
         initComponents();
+        _istream.read("src/FileManager/Datas.dat");
     }
 
     @SuppressWarnings("unchecked")
