@@ -23,12 +23,11 @@ public class CMS extends javax.swing.JFrame {
         CMFloor5Table = new javax.swing.JTable();
         CMSearchBar = new javax.swing.JTextField();
         CMSearchButton = new javax.swing.JButton();
-        CMAddCondoButton = new javax.swing.JButton();
         CMSellCondoButton = new javax.swing.JButton();
-        CMStatusButton = new javax.swing.JButton();
         CMDescriptionButton = new javax.swing.JButton();
         CMReportButton = new javax.swing.JButton();
         CMExitButton = new javax.swing.JButton();
+        CMSellCondoButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,23 +39,23 @@ public class CMS extends javax.swing.JFrame {
         CMFloor1Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor1Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(101), null, null, null},
-                { new Integer(102), null, null, null},
-                { new Integer(103), null, null, null},
-                { new Integer(104), null, null, null},
-                { new Integer(105), null, null, null},
-                { new Integer(106), null, null, null},
-                { new Integer(107), null, null, null},
-                { new Integer(108), null, null, null},
-                { new Integer(109), null, null, null},
-                {null, null, null, null}
+                { new Integer(101), null, null, null, null},
+                { new Integer(102), null, null, null, null},
+                { new Integer(103), null, null, null, null},
+                { new Integer(104), null, null, null, null},
+                { new Integer(105), null, null, null, null},
+                { new Integer(106), null, null, null, null},
+                { new Integer(107), null, null, null, null},
+                { new Integer(108), null, null, null, null},
+                { new Integer(109), null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Floor No.", "Title 2", "Title 3", "Title 4"
+                "Unit No.", "Short Description", "Location", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -70,23 +69,23 @@ public class CMS extends javax.swing.JFrame {
         CMFloor2Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor2Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(201), null, null, null},
-                { new Integer(202), null, null, null},
-                { new Integer(203), null, null, null},
-                { new Integer(204), null, null, null},
-                { new Integer(205), null, null, null},
-                { new Integer(206), null, null, null},
-                { new Integer(207), null, null, null},
-                { new Integer(208), null, null, null},
-                { new Integer(209), null, null, null},
-                {null, "", null, null}
+                { new Integer(201), null, null, null, null},
+                { new Integer(202), null, null, null, null},
+                { new Integer(203), null, null, null, null},
+                { new Integer(204), null, null, null, null},
+                { new Integer(205), null, null, null, null},
+                { new Integer(206), null, null, null, null},
+                { new Integer(207), null, null, null, null},
+                { new Integer(208), null, null, null, null},
+                { new Integer(209), null, null, null, null},
+                {null, "", null, null, null}
             },
             new String [] {
-                "Floor No.", "Title 2", "Title 3", "Title 4"
+                "Unit No.", "Short Description", "Location", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -100,23 +99,23 @@ public class CMS extends javax.swing.JFrame {
         CMFloor3Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor3Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(301), null, null, null},
-                { new Integer(302), null, null, null},
-                { new Integer(303), null, null, null},
-                { new Integer(304), null, null, null},
-                { new Integer(305), null, null, null},
-                { new Integer(306), null, null, null},
-                { new Integer(307), null, null, null},
-                { new Integer(308), null, null, null},
-                { new Integer(309), null, null, null},
-                { new Integer(40), null, null, null}
+                { new Integer(301), null, null, null, null},
+                { new Integer(302), null, null, null, null},
+                { new Integer(303), null, null, null, null},
+                { new Integer(304), null, null, null, null},
+                { new Integer(305), null, null, null, null},
+                { new Integer(306), null, null, null, null},
+                { new Integer(307), null, null, null, null},
+                { new Integer(308), null, null, null, null},
+                { new Integer(309), null, null, null, null},
+                { new Integer(40), null, null, null, null}
             },
             new String [] {
-                "Floor No.", "Title 2", "Title 3", "Title 4"
+                "Unit No.", "Short Description", "Location", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -130,31 +129,29 @@ public class CMS extends javax.swing.JFrame {
         CMFloor4Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor4Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(401), null, null, null},
-                { new Integer(402), null, null, null},
-                { new Integer(403), null, null, null},
-                { new Integer(404), null, null, null},
-                { new Integer(405), null, null, null},
-                { new Integer(406), null, null, null},
-                { new Integer(407), null, null, null},
-                { new Integer(408), null, null, null},
-                { new Integer(409), null, null, null},
-                {null, null, null, null}
+                { new Integer(401), null, null, null, null},
+                { new Integer(402), null, null, null, null},
+                { new Integer(403), null, null, null, null},
+                { new Integer(404), null, null, null, null},
+                { new Integer(405), null, null, null, null},
+                { new Integer(406), null, null, null, null},
+                { new Integer(407), null, null, null, null},
+                { new Integer(408), null, null, null, null},
+                { new Integer(409), null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Floor No.", "Title 2", "Title 3", "Title 4"
+                "Unit No.", "Short Description", "Location", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        CMFloor4Table.setShowHorizontalLines(true);
-        CMFloor4Table.setShowVerticalLines(true);
         jScrollPane4.setViewportView(CMFloor4Table);
 
         jTabbedPane1.addTab("Floor 4", jScrollPane4);
@@ -162,23 +159,23 @@ public class CMS extends javax.swing.JFrame {
         CMFloor5Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor5Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(501), null, null, null},
-                { new Integer(502), null, null, null},
-                { new Integer(503), null, null, null},
-                { new Integer(504), null, null, null},
-                { new Integer(505), null, null, null},
-                { new Integer(506), null, null, null},
-                { new Integer(507), null, null, null},
-                { new Integer(508), null, null, null},
-                { new Integer(509), null, null, null},
-                {null, null, null, null}
+                { new Integer(501), null, null, null, null},
+                { new Integer(502), null, null, null, null},
+                { new Integer(503), null, null, null, null},
+                { new Integer(504), null, null, null, null},
+                { new Integer(505), null, null, null, null},
+                { new Integer(506), null, null, null, null},
+                { new Integer(507), null, null, null, null},
+                { new Integer(508), null, null, null, null},
+                { new Integer(509), null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Floor No.", "Title 2", "Title 3", "Title 4"
+                "Unit No.", "Short Description", "Location", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -186,26 +183,23 @@ public class CMS extends javax.swing.JFrame {
             }
         });
         CMFloor5Table.setColumnSelectionAllowed(true);
-        CMFloor5Table.setShowHorizontalLines(true);
-        CMFloor5Table.setShowVerticalLines(true);
         jScrollPane5.setViewportView(CMFloor5Table);
         CMFloor5Table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jTabbedPane1.addTab("Floor 5", jScrollPane5);
 
         CMSearchBar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CMSearchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMSearchBarActionPerformed(evt);
+            }
+        });
 
         CMSearchButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMSearchButton.setText("Search");
 
-        CMAddCondoButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CMAddCondoButton.setText("Add Condo Unit");
-
         CMSellCondoButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMSellCondoButton.setText("Sell Condo Unit");
-
-        CMStatusButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CMStatusButton.setText("Status");
 
         CMDescriptionButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMDescriptionButton.setText("Description");
@@ -216,6 +210,9 @@ public class CMS extends javax.swing.JFrame {
         CMExitButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMExitButton.setText("Exit");
 
+        CMSellCondoButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CMSellCondoButton1.setText("Edit Condo Unit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,9 +220,7 @@ public class CMS extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(CMStatusButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(CMDescriptionButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMReportButton)
@@ -236,7 +231,7 @@ public class CMS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMSearchButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CMAddCondoButton)
+                        .addComponent(CMSellCondoButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMSellCondoButton))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,13 +244,12 @@ public class CMS extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CMSearchButton)
-                    .addComponent(CMAddCondoButton)
-                    .addComponent(CMSellCondoButton))
+                    .addComponent(CMSellCondoButton)
+                    .addComponent(CMSellCondoButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CMStatusButton)
                     .addComponent(CMDescriptionButton)
                     .addComponent(CMReportButton)
                     .addComponent(CMExitButton))
@@ -264,6 +258,10 @@ public class CMS extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
+
+    }//GEN-LAST:event_CMSearchBarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -298,7 +296,6 @@ public class CMS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CMAddCondoButton;
     private javax.swing.JButton CMDescriptionButton;
     private javax.swing.JButton CMExitButton;
     private javax.swing.JTable CMFloor1Table;
@@ -310,7 +307,7 @@ public class CMS extends javax.swing.JFrame {
     private javax.swing.JTextField CMSearchBar;
     private javax.swing.JButton CMSearchButton;
     private javax.swing.JButton CMSellCondoButton;
-    private javax.swing.JButton CMStatusButton;
+    private javax.swing.JButton CMSellCondoButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

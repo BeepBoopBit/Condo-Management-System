@@ -26,9 +26,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="CMStatusButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="CMDescriptionButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="CMReportButton" min="-2" max="-2" attributes="0"/>
@@ -40,7 +38,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="CMSearchButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="CMAddCondoButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="CMSellCondoButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="CMSellCondoButton" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -57,14 +55,13 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CMSearchBar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CMSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CMAddCondoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CMSellCondoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CMSellCondoButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jTabbedPane1" min="-2" pref="200" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CMStatusButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CMDescriptionButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CMReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CMExitButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -113,8 +110,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="10">
-                    <Column editable="true" title="Floor No." type="java.lang.Integer">
+                  <Table columnCount="5" rowCount="10">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer">
                       <Data value="101"/>
                       <Data value="102"/>
                       <Data value="103"/>
@@ -126,13 +123,19 @@
                       <Data value="109"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Short Description" type="java.lang.Object"/>
+                    <Column editable="true" title="Location" type="java.lang.Object"/>
+                    <Column editable="true" title="Price" type="java.lang.Object"/>
+                    <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -182,8 +185,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="10">
-                    <Column editable="true" title="Floor No." type="java.lang.Integer">
+                  <Table columnCount="5" rowCount="10">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer">
                       <Data value="201"/>
                       <Data value="202"/>
                       <Data value="203"/>
@@ -195,7 +198,7 @@
                       <Data value="209"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="Title 2" type="java.lang.Object">
+                    <Column editable="true" title="Short Description" type="java.lang.Object">
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
@@ -207,12 +210,18 @@
                       <Data value="null"/>
                       <Data value=""/>
                     </Column>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Location" type="java.lang.Object"/>
+                    <Column editable="true" title="Price" type="java.lang.Object"/>
+                    <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -262,8 +271,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="10">
-                    <Column editable="true" title="Floor No." type="java.lang.Integer">
+                  <Table columnCount="5" rowCount="10">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer">
                       <Data value="301"/>
                       <Data value="302"/>
                       <Data value="303"/>
@@ -275,13 +284,19 @@
                       <Data value="309"/>
                       <Data value="40"/>
                     </Column>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Short Description" type="java.lang.Object"/>
+                    <Column editable="true" title="Location" type="java.lang.Object"/>
+                    <Column editable="true" title="Price" type="java.lang.Object"/>
+                    <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -331,8 +346,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="10">
-                    <Column editable="true" title="Floor No." type="java.lang.Integer">
+                  <Table columnCount="5" rowCount="10">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer">
                       <Data value="401"/>
                       <Data value="402"/>
                       <Data value="403"/>
@@ -344,13 +359,19 @@
                       <Data value="409"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Short Description" type="java.lang.Object"/>
+                    <Column editable="true" title="Location" type="java.lang.Object"/>
+                    <Column editable="true" title="Price" type="java.lang.Object"/>
+                    <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -400,8 +421,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="10">
-                    <Column editable="true" title="Floor No." type="java.lang.Integer">
+                  <Table columnCount="5" rowCount="10">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer">
                       <Data value="501"/>
                       <Data value="502"/>
                       <Data value="503"/>
@@ -413,13 +434,19 @@
                       <Data value="509"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Short Description" type="java.lang.Object"/>
+                    <Column editable="true" title="Location" type="java.lang.Object"/>
+                    <Column editable="true" title="Price" type="java.lang.Object"/>
+                    <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="1">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -458,6 +485,9 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CMSearchBarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CMSearchButton">
       <Properties>
@@ -467,28 +497,12 @@
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="CMAddCondoButton">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Add Condo Unit"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="CMSellCondoButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sell Condo Unit"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="CMStatusButton">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Status"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="CMDescriptionButton">
@@ -513,6 +527,14 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="CMSellCondoButton1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Edit Condo Unit"/>
       </Properties>
     </Component>
   </SubComponents>
