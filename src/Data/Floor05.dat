@@ -7,7 +7,7 @@ Fire Alarm,2 Bedroom,Fire exits,Function Room,
 501,Livable,Floor,P12000,Free,
 Corinthian Executive Regency
 3
-Top Right
+Top Left
 Installment
 Open kitchen,1 Bathroom,
 Fire Alarm,Studio,Fire exits,Function Room,
@@ -28,21 +28,21 @@ Fire Alarm,2 Bedroom,Fire exits,Function Room,
 504,Livable,Floor,P15000,Sold,
 ThirdEye Corinthian Executive Regency
 2
-Top Right
+Left
 Full Payment
 No balconies,Open kitchen,4 bathrooms,
 3 bathrooms,2 kitchen,2 beds,
 505,Livable,Floor,P10000,Free,
 Voice Corinthian Executive Regency
 2
-Top Right
+Top Left
 Full Payment
 1 Bathroom,No balconies,Fully Furnished,Studio,
 Fire Alarm,2 Bedroom,Fire exits,Function Room,
 506,Livable,Floor,P20000,Free,
 Corinthian Executive Regency
 5
-Top Right
+Top Left
 Full Payment
 1 Bathroom,No balconies,Fully Furnished,Studio,
 3 bathrooms,2 kitchen,
@@ -63,7 +63,7 @@ Installment
 509,Livable,Floor,P5000,Free,
 FocalPoint Corinthian Executive Regency
 1
-Top Right
+Right
 Full Payment
 No balconies,Open kitchen,4 bathrooms,
 Fire Alarm,Fire exits,Kitchen,
