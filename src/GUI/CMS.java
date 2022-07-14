@@ -1,13 +1,33 @@
 package GUI;
 import FileManager.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class CMS extends javax.swing.JFrame {
 
-    private Istream _istream = new Istream();
+    private final Istream _istream;
     
+    ArrayList<Data> _data;
+    ArrayList<DefaultTableModel> _fModel;
     public CMS() {
         initComponents();
-        _istream.read("src/FileManager/Datas.dat");
+        _istream = Istream.getInstance();
+        _istream.read();
+        _data = _istream.getFloors();
+        
+        _fModel = new ArrayList<>();
+        _fModel.add((DefaultTableModel) CMFloor1Table.getModel());
+        _fModel.add((DefaultTableModel) CMFloor2Table.getModel());
+        _fModel.add((DefaultTableModel) CMFloor3Table.getModel());
+        _fModel.add((DefaultTableModel) CMFloor4Table.getModel());
+        _fModel.add((DefaultTableModel) CMFloor5Table.getModel());
+        
+        for(int i = 0; i < _fModel.size(); ++i){
+            ArrayList<String[]> tempData = _data.get(i).getTableData();
+            for(int j = 0; j < tempData.size(); ++j){
+                _fModel.get(i).addRow(tempData.get(j));
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -264,7 +284,7 @@ public class CMS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
-
+        
     }//GEN-LAST:event_CMSearchBarActionPerformed
 
     public static void main(String args[]) {

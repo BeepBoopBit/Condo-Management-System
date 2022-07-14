@@ -7,92 +7,88 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Istream {
-    ArrayList<String> _names;
-    ArrayList<String> _ages;
-    ArrayList<String> _locations;
-    ArrayList<String> _paymentOptions;
-    ArrayList<ArrayList<String>> _details;
-    ArrayList<ArrayList<String>> _amenities;
-
-    public Istream(){
-        _names = new ArrayList<>();
-        _ages = new ArrayList<>();
-        _locations = new ArrayList<>();
-        _paymentOptions = new ArrayList<>();
-        _details = new ArrayList<>();
-        _amenities = new ArrayList<>();
-    }
-    
-    public void read(String path){
-        try{
-            File myFile = new File(path);
-            Scanner myReader = new Scanner(myFile);
-            while(myReader.hasNextLine()){
-                _names.add(myReader.nextLine());
-                _ages.add(myReader.nextLine());
-                _locations.add(myReader.nextLine());
-                _paymentOptions.add(myReader.nextLine());
-                ArrayList<String> tempDetails = new ArrayList<>();
-                Collections.addAll(tempDetails, myReader.nextLine().split(" "));
-                _details.add(tempDetails);
-                ArrayList<String> tempAmenities = new ArrayList<>();        
-                Collections.addAll(tempAmenities, myReader.nextLine().split(" "));
-                _amenities.add(tempAmenities);
-            }
-        }catch(FileNotFoundException err){
-            System.out.println("The file was not found");
+    ArrayList<Data> _floors;
+    String[] _paths = {"src/FileManager/Floor01.dat","src/FileManager/Floor02.dat",
+                       "src/FileManager/Floor03.dat", "src/FileManager/Floor04.dat",
+                       "src/FileManager/Floor05.dat"};
+    private static Istream _myIstream = null;
+    private Istream(){
+        _floors = new ArrayList<>();
+        for(int i = 0; i < 5; ++i){
+            _floors.add(new Data());
         }
     }
-    public ArrayList<String> getNames() {
-        return _names;
+    
+    public static Istream getInstance(){
+        if(_myIstream == null){
+            _myIstream = new Istream();
+        }
+        return _myIstream;
+    }
+    
+    public void read(){
+        for(int i = 0; i < 5; ++i){
+            try{
+                File myFile = new File(_paths[i]);
+                Scanner myReader = new Scanner(myFile);
+                while(myReader.hasNextLine()){
+                    _floors.get(i).putName(myReader.nextLine());
+                    _floors.get(i).putAge(myReader.nextLine());
+                    _floors.get(i).putLocation(myReader.nextLine());
+                    _floors.get(i).putPaymentOption(myReader.nextLine());
+                    ArrayList<String> tempDetails = new ArrayList<>();
+                    Collections.addAll(tempDetails, myReader.nextLine().split(" "));
+                    _floors.get(i).putDetails(tempDetails);
+                    ArrayList<String> tempAmenities = new ArrayList<>();        
+                    Collections.addAll(tempAmenities, myReader.nextLine().split(" "));
+                    _floors.get(i).putAmenities(tempAmenities);
+                    _floors.get(i).putTableData(myReader.nextLine().split(" "));
+                }
+            }catch(FileNotFoundException err){
+                System.out.println("The file was not found");
+            }
+        }
+
     }
 
-    public ArrayList<String> getAges() {
-        return _ages;
+    public ArrayList<Data> getFloors() {
+        return _floors;
     }
-
-    public ArrayList<String> getLocations() {
-        return _locations;
-    }
-
-    public ArrayList<String> getPaymentOptions() {
-        return _paymentOptions;
-    }
-
-    public ArrayList<ArrayList<String>> getDetails() {
-        return _details;
-    }
-
-    public ArrayList<ArrayList<String>> getAmenities() {
-        return _amenities;
-    }
+    
     
     // debug
     public void print(){
-        for(int i = 0; i < _names.size(); ++i){
-            System.out.println(_names.get(i));
-        }
-        for(int i = 0; i < _ages.size(); ++i){
-            System.out.println(_ages.get(i));
-        }
-        for(int i = 0; i < _locations.size(); ++i){
-            System.out.println(_locations.get(i));
-        }
-        for(int i = 0; i < _paymentOptions.size(); ++i){
-            System.out.println(_paymentOptions.get(i));
-        }
-        System.out.println("");
-        for(int i = 0; i < _details.size(); ++i){
-            for(int j = 0; j < _details.get(i).size(); ++j){
-                System.out.print(_details.get(i).get(j));
+        for(int i = 0; i < 6; ++i){
+            ArrayList<String> tempData = _floors.get(i).getNames();
+            for(int j = 0; j < tempData.size(); ++j){
+                System.out.println(tempData.get(j));
             }
-            System.out.println("");
-        }
-        for(int i = 0; i < _amenities.size(); ++i){
-            for(int j = 0; j < _amenities.get(i).size(); ++j){
-                System.out.print(_amenities.get(i).get(j));
+            tempData = _floors.get(i).getAges();
+            for(int j = 0; j < tempData.size(); ++j){
+                System.out.println(tempData.get(j));
             }
-            System.out.println("");
+            tempData = _floors.get(i).getLocations();
+            for(int j = 0; j < tempData.size(); ++j){
+                System.out.println(tempData.get(j));
+            }
+            tempData = _floors.get(i).getPaymentOptions();
+            for(int j = 0; j < tempData.size(); ++j){
+                System.out.println(tempData.get(j));
+            }
+            ArrayList<ArrayList<String>> tempDataData = _floors.get(i).getDetails();
+            for(int j = 0; j < tempDataData.size(); ++j){
+                for(int k = 0; k < tempDataData.get(j).size(); ++k){
+                    System.out.print(tempDataData.get(j).get(k));
+                }
+                System.out.println("");
+            }
+            tempDataData = _floors.get(i).getAmenities();
+            for(int j = 0; j < tempDataData.size(); ++j){
+                for(int k = 0; k < tempDataData.get(j).size(); ++k){
+                    System.out.print(tempDataData.get(j).get(k));
+                }
+                System.out.println("");
+            }
         }
     }
 }
