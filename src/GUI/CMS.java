@@ -12,6 +12,8 @@ public class CMS extends javax.swing.JFrame {
     ArrayList<DefaultTableModel> _fModel;
     DescriptionWindow _descriptionWindow = new DescriptionWindow();
     EditDescription _editWindow = new EditDescription();
+    SellCondo _sellCondoWindow = new SellCondo();
+    ArrayList<javax.swing.JTable> _tables;
     
     public CMS() {
         initComponents();
@@ -24,6 +26,16 @@ public class CMS extends javax.swing.JFrame {
         _fModel.add((DefaultTableModel) CMFloor3Table.getModel());
         _fModel.add((DefaultTableModel) CMFloor4Table.getModel());
         _fModel.add((DefaultTableModel) CMFloor5Table.getModel());
+        setUpData();
+        _tables = new ArrayList<>();
+        _tables.add(CMFloor1Table);
+        _tables.add(CMFloor2Table);
+        _tables.add(CMFloor3Table);
+        _tables.add(CMFloor4Table);
+        _tables.add(CMFloor5Table);
+    }
+    
+    public void setUpData(){
         for(int i = 0; i < _fModel.size(); ++i){
             ArrayList<String[]> tempData = _data.get(i).getTableData();
             for(int j = 0; j < tempData.size(); ++j){
@@ -31,6 +43,7 @@ public class CMS extends javax.swing.JFrame {
             }
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -185,6 +198,11 @@ public class CMS extends javax.swing.JFrame {
 
         CMSellCondoButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMSellCondoButton.setText("Sell Condo Unit");
+        CMSellCondoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMSellCondoButtonActionPerformed(evt);
+            }
+        });
 
         CMDescriptionButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMDescriptionButton.setText("Description");
@@ -293,6 +311,9 @@ public class CMS extends javax.swing.JFrame {
         _editWindow.setVisible(true);
         this.setVisible(false);
         _editWindow.setMyCMS(this);
+        int tabIndex = jTabbedPane1.getSelectedIndex();
+        int selectedRow = _tables.get(tabIndex).getSelectedRow();
+        _editWindow.setTableAndRow(tabIndex, selectedRow);
     }//GEN-LAST:event_CMEditCondoButton1ActionPerformed
 
     private void CMDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMDescriptionButtonActionPerformed
@@ -300,6 +321,12 @@ public class CMS extends javax.swing.JFrame {
         this.setVisible(false);
         _descriptionWindow.setMyCMS(this);
     }//GEN-LAST:event_CMDescriptionButtonActionPerformed
+
+    private void CMSellCondoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSellCondoButtonActionPerformed
+        _sellCondoWindow.setVisible(true);
+        _sellCondoWindow.setCMS(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_CMSellCondoButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

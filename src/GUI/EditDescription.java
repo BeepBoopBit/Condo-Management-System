@@ -4,19 +4,63 @@
  */
 package GUI;
 
+import FileManager.Istream;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author CM Jinghiro
  */
 public class EditDescription extends javax.swing.JFrame {
     
-    CMS myCMS;
+    CMS _myCMS;
+    AddDetails _myDetails = new AddDetails();
+    AddAmenities _myAmeneties = new AddAmenities();
+    Istream _istream = Istream.getInstance();
+    private int _tableIndex;
+    private int _rowPos;
     public EditDescription() {
         initComponents();
     }
 
-    public void setMyCMS(CMS myCMS) {
-        this.myCMS = myCMS;
+    public void setTableAndRow(int table, int row){
+        _tableIndex= table;
+        _rowPos = row;
+        setUpValues();
+    }
+    
+    private void setUpValues(){
+        EDNameText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
+        EDAgeText.setText(_istream.getFloors().get(_tableIndex).getAges().get(_rowPos));
+        EDPaymentText.setText(_istream.getFloors().get(_tableIndex).getPaymentOptions().get(_rowPos));
+        ArrayList<String> details = _istream.getFloors().get(_tableIndex).getDetails().get(_rowPos);
+        DefaultTableModel model = (DefaultTableModel) DetailsTable.getModel();
+        for(int i = 0; i < details.size(); ++i){
+            String tempStr[] = {details.get(i)};
+            model.addRow(tempStr);
+        }
+        model = (DefaultTableModel) AmentiesTable.getModel();
+        ArrayList<String> amenities = _istream.getFloors().get(_tableIndex).getAmenities().get(_rowPos);
+        for(int i = 0; i < details.size(); ++i){
+            String tempStr[] = {amenities.get(i)};
+            model.addRow(tempStr);
+        }
+    }
+    
+    public void setMyCMS(CMS myCMS) { 
+        this._myCMS = myCMS;
+    }
+    
+    public void addDetail(String str){
+        DefaultTableModel tempModel = (DefaultTableModel) DetailsTable.getModel();
+        String[] myStr = {str};
+        tempModel.addRow(myStr);
+    }    
+    public void addAmeties(String str){
+        DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
+        String[] myStr = {str};
+        tempModel.addRow(myStr);
     }
     
     @SuppressWarnings("unchecked")
@@ -24,33 +68,23 @@ public class EditDescription extends javax.swing.JFrame {
     private void initComponents() {
 
         DWNameText1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         EDNameText = new javax.swing.JTextField();
-        EDLocationText = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        EDSaveButton = new javax.swing.JButton();
         EDExitButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        EDTable = new javax.swing.JTable();
+        AmentiesTable = new javax.swing.JTable();
         EDAgeText = new javax.swing.JTextField();
         EDPaymentText = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         EDDetailButton = new javax.swing.JButton();
         EDAmenityButton = new javax.swing.JButton();
         EDConfirmButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DetailsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Location:");
-
-        EDLocationText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EDLocationTextActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Payment Options:");
@@ -61,8 +95,6 @@ public class EditDescription extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Age:");
 
-        EDSaveButton.setText("Save Table");
-
         EDExitButton.setText("Exit");
         EDExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,30 +102,49 @@ public class EditDescription extends javax.swing.JFrame {
             }
         });
 
-        EDTable.setModel(new javax.swing.table.DefaultTableModel(
+        AmentiesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Details", "Amenities"
+                "Amenities"
             }
         ));
-        jScrollPane1.setViewportView(EDTable);
+        jScrollPane1.setViewportView(AmentiesTable);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Additional Information:");
 
         EDDetailButton.setText("Add Detail");
+        EDDetailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDDetailButtonActionPerformed(evt);
+            }
+        });
 
         EDAmenityButton.setText("Add Amenity");
+        EDAmenityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDAmenityButtonActionPerformed(evt);
+            }
+        });
 
         EDConfirmButton.setText("Confirm");
+        EDConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDConfirmButtonActionPerformed(evt);
+            }
+        });
+
+        DetailsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Details"
+            }
+        ));
+        jScrollPane2.setViewportView(DetailsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,9 +153,7 @@ public class EditDescription extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(EDSaveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(EDConfirmButton)
                         .addGap(18, 18, 18)
                         .addComponent(EDExitButton))
@@ -115,27 +164,28 @@ public class EditDescription extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(EDAmenityButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(23, 23, 23)
-                                .addComponent(EDNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EDLocationText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                                .addComponent(EDNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EDAgeText, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(EDAgeText, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(EDPaymentText, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EDPaymentText, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(40, Short.MAX_VALUE))
+                                .addGap(55, 55, 55)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,19 +199,18 @@ public class EditDescription extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EDPaymentText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(EDLocationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(EDDetailButton)
                     .addComponent(EDAmenityButton))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EDSaveButton)
                     .addComponent(EDExitButton)
                     .addComponent(EDConfirmButton))
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -169,14 +218,60 @@ public class EditDescription extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void EDLocationTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDLocationTextActionPerformed
-        
-    }//GEN-LAST:event_EDLocationTextActionPerformed
 
     private void EDExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDExitButtonActionPerformed
         this.setVisible(false);
-        myCMS.setVisible(true);
+        _myCMS.setVisible(true);
     }//GEN-LAST:event_EDExitButtonActionPerformed
+
+    private void EDDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDDetailButtonActionPerformed
+        _myDetails.setVisible(true);
+        _myDetails.setDescription(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_EDDetailButtonActionPerformed
+
+    private void EDAmenityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDAmenityButtonActionPerformed
+        _myAmeneties.setVisible(true);
+        _myAmeneties.setDescription(this);
+        this.setVisible(false);
+        DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
+        String[] myStr = {_myAmeneties.getData()};
+        tempModel.addRow(myStr);
+    }//GEN-LAST:event_EDAmenityButtonActionPerformed
+
+    private void EDConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDConfirmButtonActionPerformed
+        
+        String name = EDNameText.getText();
+        String age = EDAgeText.getText();
+        String payment = EDPaymentText.getText();
+       
+        // get data
+        ArrayList<String> details = new ArrayList<>();
+        DefaultTableModel model = (DefaultTableModel) DetailsTable.getModel();
+        while(DetailsTable.getRowCount() != 0){
+            System.out.println(DetailsTable.getValueAt(0, 0).toString());
+            details.add(DetailsTable.getValueAt(0, 0).toString());
+            model.removeRow(0);
+        }
+        // get data
+        ArrayList<String> amenities = new ArrayList<>();
+        DefaultTableModel model0 = (DefaultTableModel) AmentiesTable.getModel();
+        while(AmentiesTable.getRowCount() != 0){
+            System.out.println(AmentiesTable.getValueAt(0, 0).toString());
+            amenities.add(AmentiesTable.getValueAt(0, 0).toString());
+            model0.removeRow(0);
+        }
+        
+        _istream.getFloors().get(_tableIndex).getNames().set(_rowPos, name);
+        _istream.getFloors().get(_tableIndex).getAges().set(_rowPos, age);
+        _istream.getFloors().get(_tableIndex).getPaymentOptions().set(_rowPos, payment);
+        _istream.getFloors().get(_tableIndex).getDetails().set(_rowPos, details);
+        _istream.getFloors().get(_tableIndex).getAmenities().set(_rowPos, amenities);
+        
+        this.setVisible(false);
+        _myCMS.setVisible(true);
+        _myCMS.setUpData();
+    }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,22 +310,21 @@ public class EditDescription extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable AmentiesTable;
     private javax.swing.JTextField DWNameText1;
+    private javax.swing.JTable DetailsTable;
     private javax.swing.JTextField EDAgeText;
     private javax.swing.JButton EDAmenityButton;
     private javax.swing.JButton EDConfirmButton;
     private javax.swing.JButton EDDetailButton;
     private javax.swing.JButton EDExitButton;
-    private javax.swing.JTextField EDLocationText;
     private javax.swing.JTextField EDNameText;
     private javax.swing.JTextField EDPaymentText;
-    private javax.swing.JButton EDSaveButton;
-    private javax.swing.JTable EDTable;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

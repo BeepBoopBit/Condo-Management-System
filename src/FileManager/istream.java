@@ -13,9 +13,9 @@ public class Istream {
     
     
     ArrayList<CondoData> _floors;
-    String[] _floorPaths = {"src/FileManager/Floor01.dat","src/FileManager/Floor02.dat",
-                       "src/FileManager/Floor03.dat", "src/FileManager/Floor04.dat",
-                       "src/FileManager/Floor05.dat"};
+    String[] _floorPaths = {"src/Data/Floor01.dat","src/Data/Floor02.dat",
+                       "src/Data/Floor03.dat", "src/Data/Floor04.dat",
+                       "src/Data/Floor05.dat"};
     private static Istream _myIstream = null;
     private Istream(){
         _floors = new ArrayList<>();
@@ -58,12 +58,12 @@ public class Istream {
                     _floors.get(i).putLocation(myReader.nextLine());
                     _floors.get(i).putPaymentOption(myReader.nextLine());
                     ArrayList<String> tempDetails = new ArrayList<>();
-                    Collections.addAll(tempDetails, myReader.nextLine().split(" "));
+                    Collections.addAll(tempDetails, myReader.nextLine().split(","));
                     _floors.get(i).putDetails(tempDetails);
                     ArrayList<String> tempAmenities = new ArrayList<>();        
-                    Collections.addAll(tempAmenities, myReader.nextLine().split(" "));
+                    Collections.addAll(tempAmenities, myReader.nextLine().split(","));
                     _floors.get(i).putAmenities(tempAmenities);
-                    _floors.get(i).putTableData(myReader.nextLine().split(" "));
+                    _floors.get(i).putTableData(myReader.nextLine().split(","));
                 }
             }catch(FileNotFoundException err){
                 System.out.println("The file was not found");

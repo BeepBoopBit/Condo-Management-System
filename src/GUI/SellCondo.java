@@ -10,13 +10,15 @@ package GUI;
  */
 public class SellCondo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SellCondo
-     */
+    CMS _myCMS;
     public SellCondo() {
         initComponents();
     }
 
+    public void setCMS(CMS cms){
+        _myCMS = cms;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +43,11 @@ public class SellCondo extends javax.swing.JFrame {
         SCConfirmButton.setText("Confirm");
 
         SCExitButton.setText("Exit");
+        SCExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SCExitButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Specify the floor and enter the condo unit to sell:");
 
@@ -100,17 +107,23 @@ public class SellCondo extends javax.swing.JFrame {
                     .addComponent(SCSelectFloorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SCEnterUnitText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SCConfirmButton)
-                    .addComponent(SCExitButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(SCPriceLabel)
-                        .addComponent(SCPriceDisplay)))
+                        .addComponent(SCPriceDisplay))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SCConfirmButton)
+                        .addComponent(SCExitButton)))
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SCExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCExitButtonActionPerformed
+        this.setVisible(false);
+        _myCMS.setVisible(true);
+    }//GEN-LAST:event_SCExitButtonActionPerformed
 
     /**
      * @param args the command line arguments
