@@ -1,5 +1,6 @@
 package FileManager;
 
+import CMSClass.CondoData;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,15 +8,19 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Istream {
-    ArrayList<Data> _floors;
-    String[] _paths = {"src/FileManager/Floor01.dat","src/FileManager/Floor02.dat",
+    String[] _credential = {"USERNAME_E", "PASSWORD_E"};
+    String _credentialPath = "src/Data/credentials.dat";
+    
+    
+    ArrayList<CondoData> _floors;
+    String[] _floorPaths = {"src/FileManager/Floor01.dat","src/FileManager/Floor02.dat",
                        "src/FileManager/Floor03.dat", "src/FileManager/Floor04.dat",
                        "src/FileManager/Floor05.dat"};
     private static Istream _myIstream = null;
     private Istream(){
         _floors = new ArrayList<>();
         for(int i = 0; i < 5; ++i){
-            _floors.add(new Data());
+            _floors.add(new CondoData());
         }
     }
     
@@ -26,10 +31,26 @@ public class Istream {
         return _myIstream;
     }
     
-    public void read(){
+    public void readCredentials(){
+        try{
+            File myFile = new File(_credentialPath);
+            Scanner myReader = new Scanner(myFile);
+            String[] creds = myReader.nextLine().split(" ");
+            _credential[0] = creds[0];
+            _credential[1] = creds[1];
+        }catch(FileNotFoundException err){
+            System.out.println("The file was not found");
+        }
+    }
+    
+    public String[] getCredentials(){
+        return _credential;
+    }
+    
+    public void readFloors(){
         for(int i = 0; i < 5; ++i){
             try{
-                File myFile = new File(_paths[i]);
+                File myFile = new File(_floorPaths[i]);
                 Scanner myReader = new Scanner(myFile);
                 while(myReader.hasNextLine()){
                     _floors.get(i).putName(myReader.nextLine());
@@ -51,7 +72,7 @@ public class Istream {
 
     }
 
-    public ArrayList<Data> getFloors() {
+    public ArrayList<CondoData> getFloors() {
         return _floors;
     }
     

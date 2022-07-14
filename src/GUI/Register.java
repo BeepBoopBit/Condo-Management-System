@@ -1,11 +1,20 @@
 package GUI;
 
+import EntrySystem.EntryClass;
+
 public class Register extends javax.swing.JFrame {
 
+    Login _myLogin;
+    final EntryClass _entry = EntryClass.getInstance();
+    
     public Register() {
         initComponents();
     }
-
+    
+    void setLogin(Login login){
+        _myLogin = login;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -112,7 +121,15 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
-        // TODO add your handling code here:
+        String pass00 = password.getText();
+        String pass01 = cpassword.getText();
+        String username = user.getText();
+        
+        if(pass00 == null ? pass01 == null : pass00.equals(pass01)){
+            _entry.register(username, pass00);
+            this.setVisible(false);
+            _myLogin.setVisible(true);
+        }
     }//GEN-LAST:event_submitbuttonActionPerformed
 
     public static void main(String args[]) {

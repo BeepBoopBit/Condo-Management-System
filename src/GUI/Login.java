@@ -1,7 +1,12 @@
 package GUI;
 
+import EntrySystem.EntryClass;
+
 public class Login extends javax.swing.JFrame {
 
+    CMS _myCMS = new CMS();
+    final EntryClass _entry = EntryClass.getInstance();
+    Register _myRegister = new Register();
     public Login() {
         initComponents();
     }
@@ -117,11 +122,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbuttonActionPerformed
-        // TODO add your handling code here:
+        _myRegister.setVisible(true);
+        _myRegister.setLogin(this);
+        this.setVisible(false);
     }//GEN-LAST:event_registerbuttonActionPerformed
 
     private void signinbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinbuttonActionPerformed
-        // TODO add your handling code here:
+        String username = user.getText();
+        String pass = password.getText();
+        if(_entry.login(username, pass)){
+            this.setVisible(false);
+            _myCMS.setVisible(true);
+        }
     }//GEN-LAST:event_signinbuttonActionPerformed
 
     public static void main(String args[]) {

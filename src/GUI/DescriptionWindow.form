@@ -239,11 +239,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Description"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DWEditButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="DWBackButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DWBackButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

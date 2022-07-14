@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package FileManager;
+package CMSClass;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author wcbre
- */
-public class Data {
+public class CondoData {
     ArrayList<String> _names;
     ArrayList<String> _ages;
     ArrayList<String> _locations;
@@ -19,7 +11,7 @@ public class Data {
     ArrayList<ArrayList<String>> _amenities;
     ArrayList<String[]> _tableData;
 
-    public Data() {
+    public CondoData() {
         this._names = new ArrayList<>();
         this._ages = new ArrayList<>();
         this._locations = new ArrayList<>();
@@ -72,4 +64,5 @@ public class Data {
     public ArrayList<ArrayList<String>> getAmenities() {
         return _amenities;
     }
+    
 }

@@ -2,10 +2,16 @@ package GUI;
 
 public class DescriptionWindow extends javax.swing.JFrame {
 
+    CMS myCMS;
+    
     public DescriptionWindow() {
         initComponents();
     }
-
+    
+    public void setMyCMS(CMS myCMS) {
+        this.myCMS = myCMS;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,8 +80,18 @@ public class DescriptionWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(DWTable);
 
         DWEditButton.setText("Edit Description");
+        DWEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DWEditButtonActionPerformed(evt);
+            }
+        });
 
         DWBackButton.setText("Back");
+        DWBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DWBackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,6 +172,15 @@ public class DescriptionWindow extends javax.swing.JFrame {
     private void DWAgeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DWAgeTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DWAgeTextActionPerformed
+
+    private void DWBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DWBackButtonActionPerformed
+        this.setVisible(false);
+        myCMS.setVisible(true);
+    }//GEN-LAST:event_DWBackButtonActionPerformed
+
+    private void DWEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DWEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DWEditButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
