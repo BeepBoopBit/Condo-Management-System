@@ -110,19 +110,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="10">
-                    <Column editable="true" title="Unit No." type="java.lang.Integer">
-                      <Data value="101"/>
-                      <Data value="102"/>
-                      <Data value="103"/>
-                      <Data value="104"/>
-                      <Data value="105"/>
-                      <Data value="106"/>
-                      <Data value="107"/>
-                      <Data value="108"/>
-                      <Data value="109"/>
-                      <Data value="null"/>
-                    </Column>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer"/>
                     <Column editable="true" title="Short Description" type="java.lang.Object"/>
                     <Column editable="true" title="Location" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
@@ -185,31 +174,9 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="10">
-                    <Column editable="true" title="Unit No." type="java.lang.Integer">
-                      <Data value="201"/>
-                      <Data value="202"/>
-                      <Data value="203"/>
-                      <Data value="204"/>
-                      <Data value="205"/>
-                      <Data value="206"/>
-                      <Data value="207"/>
-                      <Data value="208"/>
-                      <Data value="209"/>
-                      <Data value="null"/>
-                    </Column>
-                    <Column editable="true" title="Short Description" type="java.lang.Object">
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value=""/>
-                    </Column>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer"/>
+                    <Column editable="true" title="Short Description" type="java.lang.Object"/>
                     <Column editable="true" title="Location" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
                     <Column editable="true" title="Status" type="java.lang.Object"/>
@@ -271,19 +238,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="10">
-                    <Column editable="true" title="Unit No." type="java.lang.Integer">
-                      <Data value="301"/>
-                      <Data value="302"/>
-                      <Data value="303"/>
-                      <Data value="304"/>
-                      <Data value="305"/>
-                      <Data value="306"/>
-                      <Data value="307"/>
-                      <Data value="308"/>
-                      <Data value="309"/>
-                      <Data value="40"/>
-                    </Column>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer"/>
                     <Column editable="true" title="Short Description" type="java.lang.Object"/>
                     <Column editable="true" title="Location" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
@@ -346,19 +302,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="10">
-                    <Column editable="true" title="Unit No." type="java.lang.Integer">
-                      <Data value="401"/>
-                      <Data value="402"/>
-                      <Data value="403"/>
-                      <Data value="404"/>
-                      <Data value="405"/>
-                      <Data value="406"/>
-                      <Data value="407"/>
-                      <Data value="408"/>
-                      <Data value="409"/>
-                      <Data value="null"/>
-                    </Column>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer"/>
                     <Column editable="true" title="Short Description" type="java.lang.Object"/>
                     <Column editable="true" title="Location" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
@@ -421,19 +366,8 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="10">
-                    <Column editable="true" title="Unit No." type="java.lang.Integer">
-                      <Data value="501"/>
-                      <Data value="502"/>
-                      <Data value="503"/>
-                      <Data value="504"/>
-                      <Data value="505"/>
-                      <Data value="506"/>
-                      <Data value="507"/>
-                      <Data value="508"/>
-                      <Data value="509"/>
-                      <Data value="null"/>
-                    </Column>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="Unit No." type="java.lang.Integer"/>
                     <Column editable="true" title="Short Description" type="java.lang.Object"/>
                     <Column editable="true" title="Location" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
@@ -496,6 +430,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CMSearchButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CMSellCondoButton">
       <Properties>

@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 public class CMS extends javax.swing.JFrame {
 
     private final Istream _istream;
+    private final int _tableSize = 5;
     
     ArrayList<Data> _data;
     ArrayList<DefaultTableModel> _fModel;
@@ -63,16 +64,7 @@ public class CMS extends javax.swing.JFrame {
         CMFloor1Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor1Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(101), null, null, null, null},
-                { new Integer(102), null, null, null, null},
-                { new Integer(103), null, null, null, null},
-                { new Integer(104), null, null, null, null},
-                { new Integer(105), null, null, null, null},
-                { new Integer(106), null, null, null, null},
-                { new Integer(107), null, null, null, null},
-                { new Integer(108), null, null, null, null},
-                { new Integer(109), null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Unit No.", "Short Description", "Location", "Price", "Status"
@@ -93,16 +85,7 @@ public class CMS extends javax.swing.JFrame {
         CMFloor2Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor2Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(201), null, null, null, null},
-                { new Integer(202), null, null, null, null},
-                { new Integer(203), null, null, null, null},
-                { new Integer(204), null, null, null, null},
-                { new Integer(205), null, null, null, null},
-                { new Integer(206), null, null, null, null},
-                { new Integer(207), null, null, null, null},
-                { new Integer(208), null, null, null, null},
-                { new Integer(209), null, null, null, null},
-                {null, "", null, null, null}
+
             },
             new String [] {
                 "Unit No.", "Short Description", "Location", "Price", "Status"
@@ -123,16 +106,7 @@ public class CMS extends javax.swing.JFrame {
         CMFloor3Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor3Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(301), null, null, null, null},
-                { new Integer(302), null, null, null, null},
-                { new Integer(303), null, null, null, null},
-                { new Integer(304), null, null, null, null},
-                { new Integer(305), null, null, null, null},
-                { new Integer(306), null, null, null, null},
-                { new Integer(307), null, null, null, null},
-                { new Integer(308), null, null, null, null},
-                { new Integer(309), null, null, null, null},
-                { new Integer(40), null, null, null, null}
+
             },
             new String [] {
                 "Unit No.", "Short Description", "Location", "Price", "Status"
@@ -153,16 +127,7 @@ public class CMS extends javax.swing.JFrame {
         CMFloor4Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor4Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(401), null, null, null, null},
-                { new Integer(402), null, null, null, null},
-                { new Integer(403), null, null, null, null},
-                { new Integer(404), null, null, null, null},
-                { new Integer(405), null, null, null, null},
-                { new Integer(406), null, null, null, null},
-                { new Integer(407), null, null, null, null},
-                { new Integer(408), null, null, null, null},
-                { new Integer(409), null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Unit No.", "Short Description", "Location", "Price", "Status"
@@ -183,16 +148,7 @@ public class CMS extends javax.swing.JFrame {
         CMFloor5Table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMFloor5Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(501), null, null, null, null},
-                { new Integer(502), null, null, null, null},
-                { new Integer(503), null, null, null, null},
-                { new Integer(504), null, null, null, null},
-                { new Integer(505), null, null, null, null},
-                { new Integer(506), null, null, null, null},
-                { new Integer(507), null, null, null, null},
-                { new Integer(508), null, null, null, null},
-                { new Integer(509), null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Unit No.", "Short Description", "Location", "Price", "Status"
@@ -221,6 +177,11 @@ public class CMS extends javax.swing.JFrame {
 
         CMSearchButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMSearchButton.setText("Search");
+        CMSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMSearchButtonActionPerformed(evt);
+            }
+        });
 
         CMSellCondoButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMSellCondoButton.setText("Sell Condo Unit");
@@ -286,6 +247,37 @@ public class CMS extends javax.swing.JFrame {
     private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
         
     }//GEN-LAST:event_CMSearchBarActionPerformed
+
+    private void CMSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchButtonActionPerformed
+        String searchValue = CMSearchBar.getText();
+        int currentTableIndex = jTabbedPane1.getSelectedIndex();
+        // remove all of the values
+        while(_fModel.get(currentTableIndex).getRowCount() != 0){   
+            _fModel.get(currentTableIndex).removeRow(0);
+        }
+        ArrayList<String[]> tempData = _data.get(currentTableIndex).getTableData();
+        for(int j = 0; j < tempData.size(); ++j){    
+            _fModel.get(currentTableIndex).addRow(tempData.get(j));
+        }
+        if(searchValue.length() != 0){
+            ArrayList<String[]> tableData = _data.get(currentTableIndex).getTableData();
+            int tempTableSize = tableData.size();
+            int removeValue = 0;
+            for(int i = 0; i < tempTableSize; ++i){
+                boolean wasFound = false;
+                for(int j = 0; j < _tableSize; ++j){
+                    if(tableData.get(i)[j] == null ? searchValue == null : tableData.get(i)[j].equals(searchValue)){
+                        wasFound = true;
+                        break;
+                    }
+                }
+                if(!wasFound){
+                    _fModel.get(currentTableIndex).removeRow(i-removeValue++);
+                }
+            }
+        }
+
+    }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
