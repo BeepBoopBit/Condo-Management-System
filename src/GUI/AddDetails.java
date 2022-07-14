@@ -10,13 +10,18 @@ package GUI;
  */
 public class AddDetails extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddDetails
-     */
+    String _data;
+    EditDescription _myDesc;
     public AddDetails() {
         initComponents();
     }
-
+    public String getData() {
+        return _data;
+    }
+    public void setDescription(EditDescription desc){
+        _myDesc = desc;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +44,11 @@ public class AddDetails extends javax.swing.JFrame {
         ADCancelButton.setText("Cancel");
 
         ADAddButton.setText("Add");
+        ADAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ADAddButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,6 +82,13 @@ public class AddDetails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ADAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADAddButtonActionPerformed
+        _data = ADDetailText.getText();
+        this.setVisible(false);
+        _myDesc.setVisible(true);
+        _myDesc.addDetail(_data);
+    }//GEN-LAST:event_ADAddButtonActionPerformed
 
     /**
      * @param args the command line arguments
