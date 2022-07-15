@@ -7,12 +7,10 @@ import javax.swing.table.DefaultTableModel;
 public class CMS extends javax.swing.JFrame {
 
     private final Istream _istream;
+    private final Ostream _ostream = Ostream.getInstance();
     private final int _tableSize = 5;
     ArrayList<CondoData> _data;
     ArrayList<DefaultTableModel> _fModel;
-    DescriptionWindow _descriptionWindow = new DescriptionWindow();
-    EditDescription _editWindow = new EditDescription();
-    SellCondo _sellCondoWindow = new SellCondo();
     ArrayList<javax.swing.JTable> _tables;
     
     public CMS() {
@@ -43,7 +41,19 @@ public class CMS extends javax.swing.JFrame {
             }
         }
     }
-
+    
+    public void readDataInTable(){
+        int currentTableIndex = jTabbedPane1.getSelectedIndex();
+        // remove all of the values
+        while(_fModel.get(currentTableIndex).getRowCount() != 0){   
+            _fModel.get(currentTableIndex).removeRow(0);
+        }
+        ArrayList<String[]> tempData = _data.get(currentTableIndex).getTableData();
+        for(int j = 0; j < tempData.size(); ++j){    
+            _fModel.get(currentTableIndex).addRow(tempData.get(j));
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -214,6 +224,11 @@ public class CMS extends javax.swing.JFrame {
 
         CMReportButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMReportButton.setText("Generate Report");
+        CMReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMReportButtonActionPerformed(evt);
+            }
+        });
 
         CMExitButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMExitButton.setText("Exit");
@@ -273,6 +288,8 @@ public class CMS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
+        
+        DescriptionWindow _descriptionWindow = new DescriptionWindow();
         _descriptionWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CMSearchBarActionPerformed
@@ -308,6 +325,7 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     private void CMEditCondoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMEditCondoButton1ActionPerformed
+        EditDescription _editWindow = new EditDescription();
         _editWindow.setVisible(true);
         this.setVisible(false);
         _editWindow.setMyCMS(this);
@@ -317,16 +335,28 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMEditCondoButton1ActionPerformed
 
     private void CMDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMDescriptionButtonActionPerformed
+        
+        DescriptionWindow _descriptionWindow = new DescriptionWindow();
+        int tabIndex = jTabbedPane1.getSelectedIndex();
+        int selectedRow = _tables.get(tabIndex).getSelectedRow();
+        _descriptionWindow.setTableAndRow(tabIndex, selectedRow);
         _descriptionWindow.setVisible(true);
         this.setVisible(false);
         _descriptionWindow.setMyCMS(this);
     }//GEN-LAST:event_CMDescriptionButtonActionPerformed
 
     private void CMSellCondoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSellCondoButtonActionPerformed
+        SellCondo _sellCondoWindow = new SellCondo();
         _sellCondoWindow.setVisible(true);
         _sellCondoWindow.setCMS(this);
         this.setVisible(false);
     }//GEN-LAST:event_CMSellCondoButtonActionPerformed
+
+    private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
+        for(int i = 0; i < _data.size(); ++i){
+            _ostream.exportData(_data.get(i).getTableData());
+        }
+    }//GEN-LAST:event_CMReportButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
