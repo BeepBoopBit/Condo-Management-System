@@ -90,11 +90,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Location", "Price", "Status"
+                "Unit No.", "Short Description", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -111,11 +111,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Location", "Price", "Status"
+                "Unit No.", "Short Description", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -132,11 +132,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Location", "Price", "Status"
+                "Unit No.", "Short Description", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -153,11 +153,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Location", "Price", "Status"
+                "Unit No.", "Short Description", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -174,11 +174,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Location", "Price", "Status"
+                "Unit No.", "Short Description", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
