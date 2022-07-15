@@ -1,11 +1,41 @@
 package GUI;
 
+import FileManager.Istream;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 public class DescriptionWindow extends javax.swing.JFrame {
 
     CMS myCMS;
-    
+    Istream _istream = Istream.getInstance();
+    int _tableIndex;
+    int _rowPos;
     public DescriptionWindow() {
         initComponents();
+        setUpValues();
+    }
+    
+    void setTableAndRow(int table, int row){
+        _tableIndex = table;
+        _rowPos = row;
+    }
+    
+    private void setUpValues(){
+        DWNameText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
+        DWAgeText.setText(_istream.getFloors().get(_tableIndex).getAges().get(_rowPos));
+        DWPaymentText.setText(_istream.getFloors().get(_tableIndex).getPaymentOptions().get(_rowPos));
+        ArrayList<String> details = _istream.getFloors().get(_tableIndex).getDetails().get(_rowPos);
+        DefaultTableModel model = (DefaultTableModel) DetailsTable.getModel();
+        for(int i = 0; i < details.size(); ++i){
+            String tempStr[] = {details.get(i)};
+            model.addRow(tempStr);
+        }
+        model = (DefaultTableModel) AmenitiesTable.getModel();
+        ArrayList<String> amenities = _istream.getFloors().get(_tableIndex).getAmenities().get(_rowPos);
+        for(int i = 0; i < details.size(); ++i){
+            String tempStr[] = {amenities.get(i)};
+            model.addRow(tempStr);
+        }
     }
     
     public void setMyCMS(CMS myCMS) {
@@ -27,9 +57,11 @@ public class DescriptionWindow extends javax.swing.JFrame {
         DWPaymentText = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        DWTable = new javax.swing.JTable();
+        AmenitiesTable = new javax.swing.JTable();
         DWEditButton = new javax.swing.JButton();
         DWBackButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DetailsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,8 +76,6 @@ public class DescriptionWindow extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Location:");
 
-        DWNameText.setText("Ortigas Regency");
-
         DWAgeText.setText("3 Years");
         DWAgeText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,31 +83,21 @@ public class DescriptionWindow extends javax.swing.JFrame {
             }
         });
 
-        DWLocationText.setText("San Antonio, Pasig City");
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Payment Options:");
-
-        DWPaymentText.setText("Installment");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("About Condo:");
 
-        DWTable.setModel(new javax.swing.table.DefaultTableModel(
+        AmenitiesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Pets Allowed", "Fire Exits"},
-                {"Open Kitchen", "Gym"},
-                {"Cityland", "24-hour Security"},
-                {"Semi Furnishing", "Air Conditioning"},
-                {"No Balconies", null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Details", "Amenities"
+                "Amenities"
             }
         ));
-        jScrollPane1.setViewportView(DWTable);
+        jScrollPane1.setViewportView(AmenitiesTable);
 
         DWEditButton.setText("Edit Description");
         DWEditButton.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +112,16 @@ public class DescriptionWindow extends javax.swing.JFrame {
                 DWBackButtonActionPerformed(evt);
             }
         });
+
+        DetailsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Details"
+            }
+        ));
+        jScrollPane2.setViewportView(DetailsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,29 +140,30 @@ public class DescriptionWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(DWBackButton))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(DWImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(DWPaymentText))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(8, 8, 8)
-                                                .addComponent(DWLocationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(DWNameText)))
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jLabel3)
+                                .addComponent(DWImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(DWAgeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(DWPaymentText))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(DWNameText))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(8, 8, 8)
+                                        .addComponent(DWLocationText)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(DWAgeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(40, 40, 40))))
         );
         layout.setVerticalGroup(
@@ -158,7 +189,9 @@ public class DescriptionWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(4, 4, 4)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DWBackButton)
@@ -215,6 +248,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable AmenitiesTable;
     private javax.swing.JTextField DWAgeText;
     private javax.swing.JButton DWBackButton;
     private javax.swing.JButton DWEditButton;
@@ -222,12 +256,13 @@ public class DescriptionWindow extends javax.swing.JFrame {
     private javax.swing.JTextField DWLocationText;
     private javax.swing.JTextField DWNameText;
     private javax.swing.JTextField DWPaymentText;
-    private javax.swing.JTable DWTable;
+    private javax.swing.JTable DetailsTable;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
