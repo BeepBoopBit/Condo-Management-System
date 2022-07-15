@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 public class CMS extends javax.swing.JFrame {
 
     private final Istream _istream;
+    private final Ostream _ostream = Ostream.getInstance();
     private final int _tableSize = 5;
     ArrayList<CondoData> _data;
     ArrayList<DefaultTableModel> _fModel;
@@ -223,6 +224,11 @@ public class CMS extends javax.swing.JFrame {
 
         CMReportButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMReportButton.setText("Generate Report");
+        CMReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMReportButtonActionPerformed(evt);
+            }
+        });
 
         CMExitButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMExitButton.setText("Exit");
@@ -345,6 +351,12 @@ public class CMS extends javax.swing.JFrame {
         _sellCondoWindow.setCMS(this);
         this.setVisible(false);
     }//GEN-LAST:event_CMSellCondoButtonActionPerformed
+
+    private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
+        for(int i = 0; i < _data.size(); ++i){
+            _ostream.exportData(_data.get(i).getTableData());
+        }
+    }//GEN-LAST:event_CMReportButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
