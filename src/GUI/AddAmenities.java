@@ -79,6 +79,9 @@ public class AddAmenities extends javax.swing.JFrame {
                     .addComponent(AAAddButton))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        setSize(new java.awt.Dimension(410, 172));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AAAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AAAddButtonActionPerformed
