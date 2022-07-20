@@ -1,8 +1,11 @@
 package GUI;
+
 import CMSClass.CondoData;
 import FileManager.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class CMS extends javax.swing.JFrame {
 
@@ -78,6 +81,7 @@ public class CMS extends javax.swing.JFrame {
         CMEditCondoButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setToolTipText("");
@@ -232,6 +236,11 @@ public class CMS extends javax.swing.JFrame {
 
         CMExitButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMExitButton.setText("Exit");
+        CMExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMExitButtonActionPerformed(evt);
+            }
+        });
 
         CMEditCondoButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMEditCondoButton1.setText("Edit Condo Unit");
@@ -284,7 +293,8 @@ public class CMS extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(676, 394));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
@@ -353,11 +363,19 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSellCondoButtonActionPerformed
 
     private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
+        JFrame PopUp = new JFrame();
         _ostream.deleteReport();
         for(int i = 0; i < _data.size(); ++i){
             _ostream.exportData(_data.get(i).getTableData());
         }
+        JOptionPane.showMessageDialog(PopUp, "Report Generated Successfully!");
     }//GEN-LAST:event_CMReportButtonActionPerformed
+
+    private void CMExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMExitButtonActionPerformed
+        Login _loginWindow = new Login();
+        _loginWindow.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CMExitButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

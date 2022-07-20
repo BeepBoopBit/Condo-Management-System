@@ -62,6 +62,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
         DetailsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         DWImageLabel.setText("Image");
 
@@ -189,7 +190,8 @@ public class DescriptionWindow extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(628, 458));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void DWAgeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DWAgeTextActionPerformed

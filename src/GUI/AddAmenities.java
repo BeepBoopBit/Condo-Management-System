@@ -31,6 +31,7 @@ public class AddAmenities extends javax.swing.JFrame {
         AAAddButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Add Amenity:");
@@ -78,8 +79,6 @@ public class AddAmenities extends javax.swing.JFrame {
                     .addComponent(AAAddButton))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AAAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AAAddButtonActionPerformed
