@@ -55,7 +55,6 @@ public class Istream {
                 while(myReader.hasNextLine()){
                     _floors.get(i).putName(myReader.nextLine());
                     _floors.get(i).putAge(myReader.nextLine());
-                    _floors.get(i).putLocation(myReader.nextLine());
                     _floors.get(i).putPaymentOption(myReader.nextLine());
                     ArrayList<String> tempDetails = new ArrayList<>();
                     Collections.addAll(tempDetails, myReader.nextLine().split(","));

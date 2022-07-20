@@ -353,6 +353,7 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSellCondoButtonActionPerformed
 
     private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
+        _ostream.deleteReport();
         for(int i = 0; i < _data.size(); ++i){
             _ostream.exportData(_data.get(i).getTableData());
         }

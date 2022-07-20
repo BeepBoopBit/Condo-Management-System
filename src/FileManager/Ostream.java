@@ -22,7 +22,14 @@ public class Ostream {
         }catch(IOException err){
             System.out.println("File didn't get created.");
         }
-
+    }
+    public void deleteReport(){
+        try{
+            FileWriter myWriter = new FileWriter(_reportPath);
+            myWriter.close();
+        }catch(IOException err){
+            System.out.println("File didn't get created.");
+        }
     }
     public void exportData(ArrayList<String[]> data){
         try{
@@ -38,7 +45,7 @@ public class Ostream {
         try{
             FileWriter myWriter = new FileWriter(_reportPath, true);
             for(int i = 0; i < data.size(); ++i){
-                for(int j = 0; j < 5; ++j){
+                for(int j = 0; j < 4; ++j){
                     myWriter.append(data.get(i)[j] +",");
                 }
                 myWriter.append("\n");
