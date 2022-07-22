@@ -4,13 +4,11 @@
  */
 package GUI;
 
+import CMSClass.Condo;
 import FileManager.Istream;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author CM Jinghiro
- */
 public class EditDescription extends javax.swing.JFrame {
     
     CMS _myCMS = null;
@@ -20,6 +18,11 @@ public class EditDescription extends javax.swing.JFrame {
     Istream _istream = Istream.getInstance();
     private int _tableIndex;
     private int _rowPos;
+    Condo _MyCondo = Condo.get_instance();
+    
+    ArrayList<String> newDetails;
+    ArrayList<String> newAmenities;
+    
     public EditDescription() {
         initComponents();
     }
@@ -33,7 +36,24 @@ public class EditDescription extends javax.swing.JFrame {
 
     
     private void setUpValues(){
-        // To be Implemented
+        EDCostText.setText(_MyCondo.getFloor(_tableIndex).getCost().get(_rowPos));
+        EDUnitNoText.setText(_MyCondo.getFloor(_tableIndex).getUnitNo().get(_rowPos));
+        
+        DefaultTableModel detailModel = (DefaultTableModel) DetailsTable.getModel();
+        ArrayList<ArrayList<String>> tempData = _MyCondo.getFloor(_tableIndex).getDetails();
+        for(int j = 0; j < tempData.get(_rowPos).size(); ++j){
+            String TempDataValue = tempData.get(_rowPos).get(j);
+            detailModel.addRow(new String[]{TempDataValue});
+            newDetails.add(TempDataValue);
+        }
+        
+        DefaultTableModel amenitiesModel = (DefaultTableModel) AmentiesTable.getModel();
+        tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
+        for(int j = 0; j < tempData.get(_tableIndex).size(); ++j){
+            String TempDataValue = tempData.get(_rowPos).get(j);
+            amenitiesModel.addRow(new String[]{TempDataValue});
+            newDetails.add(TempDataValue);
+        }
     }
     
     public void setMyCMS(CMS myCMS) { 
@@ -135,6 +155,11 @@ public class EditDescription extends javax.swing.JFrame {
         EDMODCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Payment", "Installment" }));
 
         EDBackButton.setText("Back");
+        EDBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDBackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,10 +228,10 @@ public class EditDescription extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EDConfirmButton)
                     .addComponent(EDBackButton))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(568, 379));
+        setSize(new java.awt.Dimension(568, 410));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -226,9 +251,20 @@ public class EditDescription extends javax.swing.JFrame {
     }//GEN-LAST:event_EDAmenityButtonActionPerformed
 
     private void EDConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDConfirmButtonActionPerformed
-        // File Edited Submit Button
-        // TO-Be Imlemented
+        String unitText = EDUnitNoText.getText();
+        String costText = EDCostText.getText();
+        String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "Full Payment" : "Installment";
+        
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
+
+    private void EDBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDBackButtonActionPerformed
+        if(_myCMS == null){
+            _MyDescription.setVisible(true);
+        }else{
+            _myCMS.setVisible(true);
+        }
+        this.setVisible(false);
+    }//GEN-LAST:event_EDBackButtonActionPerformed
 
     /**
      * @param args the command line arguments
