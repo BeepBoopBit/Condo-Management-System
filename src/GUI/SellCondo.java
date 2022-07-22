@@ -161,7 +161,7 @@ public class SellCondo extends javax.swing.JFrame {
         int tableIndex = SCSelectFloorCombo.getSelectedIndex();
         int rowPos = (Integer.parseInt(SCEnterUnitText.getText()) % 100)-1;
         String[] water = _istream.getFloors().get(tableIndex).getTableData().get(rowPos);
-        String[] newData = new String[]{water[0], water[1], water[2], water[3], "SOLD"};
+        String[] newData = new String[]{water[0], water[1], "P"+SCPriceText.getText(), "Sold"};
         _istream.getFloors().get(tableIndex).getTableData().set(rowPos, newData);
         _myCMS.setVisible(true);
         this.setVisible(false);
