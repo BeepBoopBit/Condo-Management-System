@@ -158,14 +158,7 @@ public class SellCondo extends javax.swing.JFrame {
     }//GEN-LAST:event_SCExitButtonActionPerformed
 
     private void SCConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCConfirmButtonActionPerformed
-        int tableIndex = SCSelectFloorCombo.getSelectedIndex();
-        int rowPos = (Integer.parseInt(SCEnterUnitText.getText()) % 100)-1;
-        String[] water = _istream.getFloors().get(tableIndex).getTableData().get(rowPos);
-        String[] newData = new String[]{water[0], water[1], water[2], water[3], "SOLD"};
-        _istream.getFloors().get(tableIndex).getTableData().set(rowPos, newData);
-        _myCMS.setVisible(true);
-        this.setVisible(false);
-        _myCMS.readDataInTable();
+        // TO-be Implemented
     }//GEN-LAST:event_SCConfirmButtonActionPerformed
 
     private void SCSelectFloorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCSelectFloorComboActionPerformed
