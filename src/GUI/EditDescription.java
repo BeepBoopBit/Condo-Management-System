@@ -101,14 +101,14 @@ public class EditDescription extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Additional Information:");
 
-        EDDetailButton.setText("Add Detail");
+        EDDetailButton.setText("Edit Detail");
         EDDetailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EDDetailButtonActionPerformed(evt);
             }
         });
 
-        EDAmenityButton.setText("Add Amenity");
+        EDAmenityButton.setText("Edit Amenity");
         EDAmenityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EDAmenityButtonActionPerformed(evt);

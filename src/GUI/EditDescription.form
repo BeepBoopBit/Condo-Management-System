@@ -187,7 +187,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="EDDetailButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Detail"/>
+        <Property name="text" type="java.lang.String" value="Edit Detail"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EDDetailButtonActionPerformed"/>
@@ -195,7 +195,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="EDAmenityButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Amenity"/>
+        <Property name="text" type="java.lang.String" value="Edit Amenity"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EDAmenityButtonActionPerformed"/>
