@@ -6,6 +6,7 @@ package GUI;
 
 import CMSClass.Condo;
 import FileManager.Istream;
+import FileManager.Ostream;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,15 +14,14 @@ public class EditDescription extends javax.swing.JFrame {
     
     CMS _myCMS = null;
     DescriptionWindow _MyDescription = null;
-    AddDetails _myDetails = new AddDetails();
-    AddAmenities _myAmeneties = new AddAmenities();
     Istream _istream = Istream.getInstance();
+    Ostream _ostream = Ostream.getInstance();
     private int _tableIndex;
     private int _rowPos;
     Condo _MyCondo = Condo.get_instance();
     
-    ArrayList<String> newDetails;
-    ArrayList<String> newAmenities;
+    ArrayList<String> newDetails = new ArrayList<>();
+    ArrayList<String> newAmenities  = new ArrayList<>();
     
     public EditDescription() {
         initComponents();
@@ -34,6 +34,35 @@ public class EditDescription extends javax.swing.JFrame {
         setUpValues();
     }
 
+    public void pushNewDetails(String data){
+        newDetails.add(data);
+        addDetail(data);
+    }
+    public void addDetail(String str){
+        DefaultTableModel tempModel = (DefaultTableModel) DetailsTable.getModel();
+        String[] myStr = {str};
+        tempModel.addRow(myStr);
+    }   
+    public void removeDetails(int row){
+        DefaultTableModel tempModel = (DefaultTableModel) DetailsTable.getModel();
+        tempModel.removeRow(row);
+        newDetails.remove(row);
+    }
+    
+    public void pushNewAmenities(String data){
+        newDetails.add(data);
+        addAmeties(data);
+    }
+    public void addAmeties(String str){
+        DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
+        String[] myStr = {str};
+        tempModel.addRow(myStr);
+    }
+    public void removeAmenities(int row){
+        DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
+        tempModel.removeRow(row);
+        newAmenities.remove(row);
+    }
     
     private void setUpValues(){
         EDCostText.setText(_MyCondo.getFloor(_tableIndex).getCost().get(_rowPos));
@@ -52,7 +81,7 @@ public class EditDescription extends javax.swing.JFrame {
         for(int j = 0; j < tempData.get(_tableIndex).size(); ++j){
             String TempDataValue = tempData.get(_rowPos).get(j);
             amenitiesModel.addRow(new String[]{TempDataValue});
-            newDetails.add(TempDataValue);
+            newAmenities.add(TempDataValue);
         }
     }
     
@@ -64,16 +93,7 @@ public class EditDescription extends javax.swing.JFrame {
         _MyDescription = window;
     }
     
-    public void addDetail(String str){
-        DefaultTableModel tempModel = (DefaultTableModel) DetailsTable.getModel();
-        String[] myStr = {str};
-        tempModel.addRow(myStr);
-    }    
-    public void addAmeties(String str){
-        DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
-        String[] myStr = {str};
-        tempModel.addRow(myStr);
-    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -152,7 +172,7 @@ public class EditDescription extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(DetailsTable);
 
-        EDMODCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Payment", "Installment" }));
+        EDMODCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Full Payment", "Installment" }));
 
         EDBackButton.setText("Back");
         EDBackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -236,25 +256,34 @@ public class EditDescription extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EDDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDDetailButtonActionPerformed
-        _myDetails.setVisible(true);
-        _myDetails.setDescription(this);
+        EditDetails newEditDetail = new EditDetails();
+        newEditDetail.setDescriptionWindow(this); 
+        newEditDetail.setUpValues(newDetails);
+        newEditDetail.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EDDetailButtonActionPerformed
 
     private void EDAmenityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDAmenityButtonActionPerformed
-        _myAmeneties.setVisible(true);
-        _myAmeneties.setDescription(this);
+        EditAmenities newEditAmenities = new EditAmenities(); 
+        newEditAmenities.setDescriptionWindow(this);
+        newEditAmenities.setUpValues(newAmenities);
+        newEditAmenities.setVisible(true);
         this.setVisible(false);
-        DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
-        String[] myStr = {_myAmeneties.getData()};
-        tempModel.addRow(myStr);
     }//GEN-LAST:event_EDAmenityButtonActionPerformed
 
     private void EDConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDConfirmButtonActionPerformed
         String unitText = EDUnitNoText.getText();
         String costText = EDCostText.getText();
-        String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "Full Payment" : "Installment";
-        
+        String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "N/A" : EDMODCombo.getSelectedIndex() == 1 ? "Full Payment" : "Installment";
+        _MyCondo.replaceUnitNo(_tableIndex, _rowPos, unitText);
+        _MyCondo.replaceCost(_tableIndex, _rowPos, costText);
+        _MyCondo.replaceModeOfPayment(_tableIndex, _rowPos, modeOfPayment);
+        _MyCondo.replaceDetails(_tableIndex, _rowPos, newDetails);
+        _MyCondo.replaceAmenities(_tableIndex, _rowPos, newAmenities);
+        _myCMS.updateEditedValue(_tableIndex, _rowPos);
+        this.setVisible(false);
+        _myCMS.setVisible(true);
+        _ostream.updateFiles();
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     private void EDBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDBackButtonActionPerformed

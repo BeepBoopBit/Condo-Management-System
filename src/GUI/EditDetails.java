@@ -4,19 +4,37 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author paulm
  */
 public class EditDetails extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditDetails
-     */
+    EditDescription _MyEditDescription = null;
     public EditDetails() {
         initComponents();
     }
 
+    public void setDescriptionWindow(EditDescription win){
+        _MyEditDescription = win;
+    }
+    
+    public void setUpValues(ArrayList<String> data){
+        DefaultTableModel detailModel = (DefaultTableModel) EDDetailTable.getModel();
+        for(int j = 0; j < data.size(); ++j){
+            detailModel.addRow(new String[]{data.get(j)});
+        }
+    }
+    
+    public void addAmeties(String data){
+        DefaultTableModel amenitiesModel = (DefaultTableModel) EDDetailTable.getModel();
+        amenitiesModel.addRow(new String[]{data});
+        _MyEditDescription.pushNewDetails(data);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,10 +58,7 @@ public class EditDetails extends javax.swing.JFrame {
 
         EDDetailTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Details"
@@ -52,10 +67,25 @@ public class EditDetails extends javax.swing.JFrame {
         jScrollPane1.setViewportView(EDDetailTable);
 
         EDAddButton.setText("Add");
+        EDAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDAddButtonActionPerformed(evt);
+            }
+        });
 
         EDRemoveButton.setText("Remove");
+        EDRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDRemoveButtonActionPerformed(evt);
+            }
+        });
 
         EDOkButton.setText("OK");
+        EDOkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EDOkButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +128,25 @@ public class EditDetails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void EDRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDRemoveButtonActionPerformed
+        int currentRow = EDDetailTable.getSelectedRow();
+        DefaultTableModel tempModel = (DefaultTableModel) EDDetailTable.getModel();
+        tempModel.removeRow(currentRow);
+        _MyEditDescription.removeDetails(currentRow);
+    }//GEN-LAST:event_EDRemoveButtonActionPerformed
+
+    private void EDAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDAddButtonActionPerformed
+        AddDetails newAdd = new AddDetails();
+        newAdd.setEditDetails(this);
+        newAdd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_EDAddButtonActionPerformed
+
+    private void EDOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDOkButtonActionPerformed
+        this.setVisible(false);
+        _MyEditDescription.setVisible(true);
+    }//GEN-LAST:event_EDOkButtonActionPerformed
 
     /**
      * @param args the command line arguments

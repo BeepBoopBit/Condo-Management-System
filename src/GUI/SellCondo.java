@@ -4,7 +4,10 @@
  */
 package GUI;
 
+import CMSClass.Condo;
 import FileManager.Istream;
+import FileManager.Ostream;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +17,10 @@ public class SellCondo extends javax.swing.JFrame {
 
     CMS _myCMS;
     Istream _istream = Istream.getInstance();
+    Ostream _ostream = Ostream.getInstance();
+    Condo _MyCondo = Condo.get_instance();
     public SellCondo() {
+        this._ostream = Ostream.getInstance();
         initComponents();
     }
 
@@ -158,7 +164,19 @@ public class SellCondo extends javax.swing.JFrame {
     }//GEN-LAST:event_SCExitButtonActionPerformed
 
     private void SCConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCConfirmButtonActionPerformed
-        // TO-be Implemented
+        String UnitNo = SCEnterUnitText.getText();
+        String Price = SCPriceText.getText();
+        String modeOfPayment = SCPaymentOptionCombo.getSelectedIndex() == 1 ? "Full Payment" : "Installment";
+        int floorIndex = SCSelectFloorCombo.getSelectedIndex();
+        ArrayList<String> units = _MyCondo.getFloor(floorIndex).getUnitNo();
+        for(int i = 0; i < units.size(); ++i){
+            if(units.get(i) == null ? UnitNo == null : units.get(i).equals(UnitNo)){
+                _MyCondo.getFloor(floorIndex).getModeOfPayment().set(i, modeOfPayment);
+                _MyCondo.getFloor(floorIndex).getCost().set(i, Price);
+                _MyCondo.getFloor(floorIndex).getStatus().set(i, "Sold");
+            }
+        }
+        _ostream.updateFiles();
     }//GEN-LAST:event_SCConfirmButtonActionPerformed
 
     private void SCSelectFloorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCSelectFloorComboActionPerformed

@@ -51,6 +51,11 @@ public class CMS extends javax.swing.JFrame {
         }
     }
     
+    public void updateEditedValue(int tableIndex, int rowIndex){
+        _FModel.get(tableIndex).removeRow(rowIndex);
+        _FModel.get(tableIndex).insertRow(rowIndex, _MyCondo.getUnitDataInFloor(tableIndex, rowIndex));
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -363,6 +368,7 @@ public class CMS extends javax.swing.JFrame {
 
     private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
         GenerateReport newReport = new GenerateReport();
+        newReport.setMyCMS(this);
         newReport.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CMReportButtonActionPerformed

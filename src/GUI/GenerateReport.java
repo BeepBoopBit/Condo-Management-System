@@ -19,12 +19,17 @@ public class GenerateReport extends javax.swing.JFrame {
     Condo _MyCondo = Condo.get_instance();
     ArrayList<String[]> _ReportData;
     Ostream _MyOstream = Ostream.getInstance();
+    CMS _MyCMS;
     
     public GenerateReport() {
         initComponents();
         _MyModel = (DefaultTableModel) GRReportTable.getModel();
     }
-
+    
+    void setMyCMS(CMS data){
+        _MyCMS = data;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,6 +71,11 @@ public class GenerateReport extends javax.swing.JFrame {
         jScrollPane1.setViewportView(GRReportTable);
 
         GRExitButton.setText("Exit");
+        GRExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GRExitButtonActionPerformed(evt);
+            }
+        });
 
         SaveToFileButton.setText("Save To File");
         SaveToFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +172,11 @@ public class GenerateReport extends javax.swing.JFrame {
         _MyOstream.deleteReport();
         _MyOstream.exportReport(_ReportData);
     }//GEN-LAST:event_SaveToFileButtonActionPerformed
+
+    private void GRExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GRExitButtonActionPerformed
+        this.setVisible(false);
+        _MyCMS.setVisible(true);
+    }//GEN-LAST:event_GRExitButtonActionPerformed
 
     /**
      * @param args the command line arguments
