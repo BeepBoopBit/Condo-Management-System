@@ -40,6 +40,9 @@ public class Istream {
             _credential[1] = creds[1];
         }catch(FileNotFoundException err){
             System.out.println("The file was not found");
+        }catch(Exception err){
+            _credential[0] = "SUPERSECRETSHIT";
+            _credential[1] = "SUPERSECRETSHIT";
         }
     }
     
