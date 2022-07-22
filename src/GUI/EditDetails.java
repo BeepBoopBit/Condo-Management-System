@@ -40,10 +40,7 @@ public class EditDetails extends javax.swing.JFrame {
 
         EDDetailTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Details"

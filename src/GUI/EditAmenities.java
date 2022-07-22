@@ -4,19 +4,37 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author paulm
  */
 public class EditAmenities extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditAmenities
-     */
+    EditDescription _MyEditDescription = null;
     public EditAmenities() {
         initComponents();
     }
 
+    public void setDescriptionWindow(EditDescription win){
+        _MyEditDescription = win;
+    }
+    
+    public void setUpValues(ArrayList<String> data){
+        DefaultTableModel amenitiesModel = (DefaultTableModel) EAAmenityTable.getModel();
+        for(int j = 0; j < data.size(); ++j){
+            amenitiesModel.addRow(new String[]{data.get(j)});
+        }
+    }
+    
+    public void addAmeties(String data){
+        DefaultTableModel amenitiesModel = (DefaultTableModel) EAAmenityTable.getModel();
+        amenitiesModel.addRow(new String[]{data});
+        _MyEditDescription.pushNewAmenities(data);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,15 +54,22 @@ public class EditAmenities extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         EAAmenityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Amenities"
@@ -53,6 +78,11 @@ public class EditAmenities extends javax.swing.JFrame {
         jScrollPane1.setViewportView(EAAmenityTable);
 
         EAOKButton.setText("OK");
+        EAOKButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EAOKButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("Editing Amenities");
@@ -94,6 +124,25 @@ public class EditAmenities extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AddAmenities newAdd = new AddAmenities();
+        newAdd.setEditAmenities(this);
+        newAdd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void EAOKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EAOKButtonActionPerformed
+        _MyEditDescription.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_EAOKButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int currentRow = EAAmenityTable.getSelectedRow();
+        DefaultTableModel tempModel = (DefaultTableModel) EAAmenityTable.getModel();
+        tempModel.removeRow(currentRow);
+        _MyEditDescription.removeAmenities(currentRow);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

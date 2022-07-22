@@ -11,15 +11,15 @@ package GUI;
 public class AddAmenities extends javax.swing.JFrame {
 
     String _data;
-    EditDescription _myDesc;
+    EditAmenities _myEditAmenities;
     public AddAmenities() {
         initComponents();
     }
     public String getData() {
         return _data;
     }
-    public void setDescription(EditDescription desc){
-        _myDesc = desc;
+    public void setEditAmenities(EditAmenities data){
+        _myEditAmenities = data;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -86,14 +86,14 @@ public class AddAmenities extends javax.swing.JFrame {
 
     private void AAAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AAAddButtonActionPerformed
         this.setVisible(false);
-        _myDesc.setVisible(true);
+        _myEditAmenities.setVisible(true);
         _data = AAAmenityText.getText();
-        _myDesc.addAmeties(_data);
+        _myEditAmenities.addAmeties(_data);
     }//GEN-LAST:event_AAAddButtonActionPerformed
 
     private void AACancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AACancelButtonActionPerformed
         this.setVisible(false);
-        _myDesc.setVisible(true);
+        _myEditAmenities.setVisible(true);
     }//GEN-LAST:event_AACancelButtonActionPerformed
 
     /**
