@@ -74,6 +74,7 @@ public class EditDescription extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         DetailsTable = new javax.swing.JTable();
         EDMODCombo = new javax.swing.JComboBox<>();
+        EDBackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -133,6 +134,8 @@ public class EditDescription extends javax.swing.JFrame {
 
         EDMODCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Payment", "Installment" }));
 
+        EDBackButton.setText("Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,8 +153,9 @@ public class EditDescription extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(EDConfirmButton))
+                                .addComponent(EDConfirmButton)
+                                .addGap(24, 24, 24)
+                                .addComponent(EDBackButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -196,7 +200,9 @@ public class EditDescription extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(EDConfirmButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EDConfirmButton)
+                    .addComponent(EDBackButton))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -265,6 +271,7 @@ public class EditDescription extends javax.swing.JFrame {
     private javax.swing.JTextField DWNameText1;
     private javax.swing.JTable DetailsTable;
     private javax.swing.JButton EDAmenityButton;
+    private javax.swing.JButton EDBackButton;
     private javax.swing.JButton EDConfirmButton;
     private javax.swing.JTextField EDCostText;
     private javax.swing.JButton EDDetailButton;
