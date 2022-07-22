@@ -66,21 +66,21 @@ public class Istream {
                     ArrayList<String> tempDetails = new ArrayList<>();
                     Collections.addAll(tempDetails, myReader.nextLine().split(","));
                     for(int j = 0; j < tempDetails.size(); ++j){
-                        _myFloor.putUnitNo(tempDetails.get(i));
+                        _myFloor.putUnitNo(tempDetails.get(j));
                     }
                     
                     // Cost
                     tempDetails = new ArrayList<>();
                     Collections.addAll(tempDetails, myReader.nextLine().split(","));
                     for(int j = 0; j < tempDetails.size(); ++j){
-                        _myFloor.putCost(tempDetails.get(i));
+                        _myFloor.putCost(tempDetails.get(j));
                     }
                     
                     // Mode Of Payment
                     tempDetails = new ArrayList<>();
                     Collections.addAll(tempDetails, myReader.nextLine().split(","));
                     for(int j = 0; j < tempDetails.size(); ++j){
-                        _myFloor.putModeOfPayment(tempDetails.get(i));
+                        _myFloor.putModeOfPayment(tempDetails.get(j));
                     }
                     
                     // Details
@@ -108,7 +108,7 @@ public class Istream {
                     tempDetails = new ArrayList<>();
                     Collections.addAll(tempDetails, myReader.nextLine().split(","));
                     for(int j = 0; j < tempDetails.size(); ++j){
-                        _myFloor.putStatus(tempDetails.get(i));
+                        _myFloor.putStatus(tempDetails.get(j));
                     }
                 }
                 // Add the floor data to the Condo Class

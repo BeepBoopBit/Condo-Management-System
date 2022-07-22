@@ -10,7 +10,7 @@ public class CMS extends javax.swing.JFrame {
     private final Istream               _Istream;
     private final Ostream               _Ostream        = Ostream.getInstance();
     private final Condo                 _MyCondo        = Condo.get_instance();
-    private final int                   _TableSize      = 4;
+    private final int                   _TableColSize   = 3;
     private final int                   _TableDataSize  = 10;
     ArrayList<DefaultTableModel>        _FModel;
     ArrayList<javax.swing.JTable>       _Tables;
@@ -40,14 +40,16 @@ public class CMS extends javax.swing.JFrame {
 
         // Set up Table Values
         // Get the data
+        setUpTableData();
+    }
+    
+    private void setUpTableData(){
         for(int i = 0; i < _FModel.size(); ++i){
             for(int j = 0; j < _TableDataSize; ++j){
                 _FModel.get(i).addRow(_MyCondo.getUnitDataInFloor(i, j));
             }
         }
-        
     }
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -296,8 +298,31 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSearchBarActionPerformed
 
     private void CMSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchButtonActionPerformed
-        // Search
-        // To-Be Implemented
+        
+        int currentTableIndex = jTabbedPane1.getSelectedIndex();
+        // remove all of the values
+        while(_FModel.get(currentTableIndex).getRowCount() != 0){   
+             _FModel.get(currentTableIndex).removeRow(0);
+        }
+            
+        String searchValue = CMSearchBar.getText();
+        // If there is a value in search
+        if(searchValue.length() != 0){
+            // iterate through all the data in the current floor
+            for(int j = 0; j < _TableDataSize; ++j){
+                // get the row in the specific data
+                String[] dataRow = _MyCondo.getUnitDataInFloor(currentTableIndex, j);
+                // iterate through that row values if the soughted value is there
+                for(int k = 0; k < _TableColSize; ++k){
+                    // if it is, add it to the data
+                    if(dataRow[k] == null ? searchValue == null : dataRow[k].equals(searchValue)){
+                        _FModel.get(currentTableIndex).addRow(dataRow);
+                    }
+                }
+            }
+        }else{
+            setUpTableData();
+        }
     }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     private void CMEditCondoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMEditCondoButton1ActionPerformed
