@@ -8,7 +8,7 @@ public class CMS extends javax.swing.JFrame {
 
     private final Istream _istream;
     private final Ostream _ostream = Ostream.getInstance();
-    private final int _tableSize = 5;
+    private final int _tableSize = 4;
     ArrayList<CondoData> _data;
     ArrayList<DefaultTableModel> _fModel;
     ArrayList<javax.swing.JTable> _tables;
