@@ -21,21 +21,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
     }
     
     private void setUpValues(){
-        DWUnitNoText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
-        DWAgeText.setText(_istream.getFloors().get(_tableIndex).getAges().get(_rowPos));
-        DWAgeText.setText(_istream.getFloors().get(_tableIndex).getPaymentOptions().get(_rowPos));
-        ArrayList<String> details = _istream.getFloors().get(_tableIndex).getDetails().get(_rowPos);
-        DefaultTableModel model = (DefaultTableModel) DetailsTable.getModel();
-        for(int i = 0; i < details.size(); ++i){
-            String tempStr[] = {details.get(i)};
-            model.addRow(tempStr);
-        }
-        model = (DefaultTableModel) AmenitiesTable.getModel();
-        ArrayList<String> amenities = _istream.getFloors().get(_tableIndex).getAmenities().get(_rowPos);
-        for(int i = 0; i < details.size(); ++i){
-            String tempStr[] = {amenities.get(i)};
-            model.addRow(tempStr);
-        }
+        // To be Implemented
     }
     
     public void setMyCMS(CMS myCMS) {

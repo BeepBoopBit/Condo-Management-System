@@ -1,27 +1,41 @@
 package FileManager;
 
+import CMSClass.Condo;
 import CMSClass.CondoData;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+
+/**
+ * @author Ambraie
+ * - Class for all input-related operation (mainly on files)
+ * - Implements getting data from the floors
+ */
 public class Istream {
-    String[] _credential = {"USERNAME_E", "PASSWORD_E"};
-    String _credentialPath = "src/Data/credentials.dat";
+    // Use for Entry System
+    String[]                _credential     = {"USERNAME_E", "PASSWORD_E"};
+    String                  _credentialPath = "src/Data/credentials.dat";
     
+    // Use to read individual Floors
+    String[]                _floorPaths     = {"src/Data/Floor01.dat","src/Data/Floor02.dat",
+                                               "src/Data/Floor03.dat", "src/Data/Floor04.dat",
+                                               "src/Data/Floor05.dat"};
     
-    ArrayList<CondoData> _floors;
-    String[] _floorPaths = {"src/Data/Floor01.dat","src/Data/Floor02.dat",
-                       "src/Data/Floor03.dat", "src/Data/Floor04.dat",
-                       "src/Data/Floor05.dat"};
-    private static Istream _myIstream = null;
+    // Get the Condo Class
+    private final Condo     _MyCondo        = Condo.get_instance();
+    
+    // Variable for singleton
+    private static Istream  _myIstream      = null;
+   
     private Istream(){
-        _floors = new ArrayList<>();
-        for(int i = 0; i < 5; ++i){
-            _floors.add(new CondoData());
-        }
+        // SINGLETON
     }
     
     public static Istream getInstance(){
@@ -32,17 +46,34 @@ public class Istream {
     }
     
     public void readCredentials(){
+        // Try to Read and Store The File
         try{
             File myFile = new File(_credentialPath);
             Scanner myReader = new Scanner(myFile);
-            String[] creds = myReader.nextLine().split(" ");
-            _credential[0] = creds[0];
-            _credential[1] = creds[1];
-        }catch(FileNotFoundException err){
-            System.out.println("The file was not found");
-        }catch(Exception err){
-            _credential[0] = "SUPERSECRETSHIT";
-            _credential[1] = "SUPERSECRETSHIT";
+            // Try to get data or store it
+            try{
+                String[] creds = myReader.nextLine().split(" ");
+                _credential[0] = creds[0];
+                _credential[1] = creds[1];
+            }
+            // If there are no data to store
+            catch(Exception err){
+                _credential[0] = null;
+                _credential[1] = null;
+            }
+        }
+        // If the File was not found, create the file
+        catch(FileNotFoundException err){
+            FileWriter myWriter;
+            try {
+                myWriter = new FileWriter(_credentialPath);
+                myWriter.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Istream.class.getName()).log(Level.WARNING, null, ex);
+            }
+            // No Data
+            _credential[0] = null;
+            _credential[1] = null;
         }
     }
     
@@ -53,67 +84,70 @@ public class Istream {
     public void readFloors(){
         for(int i = 0; i < 5; ++i){
             try{
+                // Scanner and File stream
                 File myFile = new File(_floorPaths[i]);
                 Scanner myReader = new Scanner(myFile);
+                // Condo Data
+                CondoData _myFloor = new CondoData();
                 while(myReader.hasNextLine()){
-                    _floors.get(i).putName(myReader.nextLine());
-                    _floors.get(i).putAge(myReader.nextLine());
-                    _floors.get(i).putPaymentOption(myReader.nextLine());
+                    // Unit
                     ArrayList<String> tempDetails = new ArrayList<>();
                     Collections.addAll(tempDetails, myReader.nextLine().split(","));
-                    _floors.get(i).putDetails(tempDetails);
-                    ArrayList<String> tempAmenities = new ArrayList<>();        
-                    Collections.addAll(tempAmenities, myReader.nextLine().split(","));
-                    _floors.get(i).putAmenities(tempAmenities);
-                    _floors.get(i).putTableData(myReader.nextLine().split(","));
+                    for(int j = 0; j < tempDetails.size(); ++j){
+                        _myFloor.putUnitNo(tempDetails.get(j));
+                    }
+                    
+                    // Cost
+                    tempDetails = new ArrayList<>();
+                    Collections.addAll(tempDetails, myReader.nextLine().split(","));
+                    for(int j = 0; j < tempDetails.size(); ++j){
+                        _myFloor.putCost(tempDetails.get(j));
+                    }
+                    
+                    // Mode Of Payment
+                    tempDetails = new ArrayList<>();
+                    Collections.addAll(tempDetails, myReader.nextLine().split(","));
+                    for(int j = 0; j < tempDetails.size(); ++j){
+                        _myFloor.putModeOfPayment(tempDetails.get(j));
+                    }
+                    
+                    // Details
+                    tempDetails = new ArrayList<>();
+                    Collections.addAll(tempDetails, myReader.nextLine().split(";"));
+                    for(int j = 0; j < tempDetails.size(); ++j){
+                        ArrayList<String> tempDataValue = new ArrayList<>();
+                        String[] tempArr = tempDetails.get(j).split(",");
+                        Collections.addAll(tempDataValue, tempArr);
+                        _myFloor.putDetails(tempDetails);
+                    }
+                    
+                    
+                    // Amenities
+                    tempDetails = new ArrayList<>();
+                    Collections.addAll(tempDetails, myReader.nextLine().split(";"));
+                    for(int j = 0; j < tempDetails.size(); ++j){
+                        ArrayList<String> tempDataValue = new ArrayList<>();
+                        String[] tempArr = tempDetails.get(j).split(",");
+                        Collections.addAll(tempDataValue, tempArr);
+                        _myFloor.putAmenities(tempDetails);
+                    }
+                    
+                    // Status
+                    tempDetails = new ArrayList<>();
+                    Collections.addAll(tempDetails, myReader.nextLine().split(","));
+                    for(int j = 0; j < tempDetails.size(); ++j){
+                        _myFloor.putStatus(tempDetails.get(j));
+                    }
                 }
+                // Add the floor data to the Condo Class
+                _MyCondo.addFloor(_myFloor);
             }catch(FileNotFoundException err){
                 System.out.println("The file was not found");
             }
         }
 
     }
-
-    public ArrayList<CondoData> getFloors() {
-        return _floors;
-    }
     
-    
-    // debug
-    public void print(){
-        for(int i = 0; i < 6; ++i){
-            ArrayList<String> tempData = _floors.get(i).getNames();
-            for(int j = 0; j < tempData.size(); ++j){
-                System.out.println(tempData.get(j));
-            }
-            tempData = _floors.get(i).getAges();
-            for(int j = 0; j < tempData.size(); ++j){
-                System.out.println(tempData.get(j));
-            }
-            tempData = _floors.get(i).getLocations();
-            for(int j = 0; j < tempData.size(); ++j){
-                System.out.println(tempData.get(j));
-            }
-            tempData = _floors.get(i).getPaymentOptions();
-            for(int j = 0; j < tempData.size(); ++j){
-                System.out.println(tempData.get(j));
-            }
-            ArrayList<ArrayList<String>> tempDataData = _floors.get(i).getDetails();
-            for(int j = 0; j < tempDataData.size(); ++j){
-                for(int k = 0; k < tempDataData.get(j).size(); ++k){
-                    System.out.print(tempDataData.get(j).get(k));
-                }
-                System.out.println("");
-            }
-            tempDataData = _floors.get(i).getAmenities();
-            for(int j = 0; j < tempDataData.size(); ++j){
-                for(int k = 0; k < tempDataData.get(j).size(); ++k){
-                    System.out.print(tempDataData.get(j).get(k));
-                }
-                System.out.println("");
-            }
-        }
-    }
 }
 
 

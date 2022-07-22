@@ -1,59 +1,53 @@
 package GUI;
 
-import CMSClass.CondoData;
+import CMSClass.Condo;
 import FileManager.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class CMS extends javax.swing.JFrame {
 
-    private final Istream _istream;
-    private final Ostream _ostream = Ostream.getInstance();
-    private final int _tableSize = 4;
-    ArrayList<CondoData> _data;
-    ArrayList<DefaultTableModel> _fModel;
-    ArrayList<javax.swing.JTable> _tables;
+    private final Istream               _Istream;
+    private final Ostream               _Ostream        = Ostream.getInstance();
+    private final Condo                 _MyCondo        = Condo.get_instance();
+    private final int                   _TableColSize   = 3;
+    private final int                   _TableDataSize  = 10;
+    ArrayList<DefaultTableModel>        _FModel;
+    ArrayList<javax.swing.JTable>       _Tables;
     
     public CMS() {
         initComponents();
-        _istream = Istream.getInstance();
-        _istream.readFloors();
-        _data = _istream.getFloors();
-        _fModel = new ArrayList<>();
-        _fModel.add((DefaultTableModel) CMFloor1Table.getModel());
-        _fModel.add((DefaultTableModel) CMFloor2Table.getModel());
-        _fModel.add((DefaultTableModel) CMFloor3Table.getModel());
-        _fModel.add((DefaultTableModel) CMFloor4Table.getModel());
-        _fModel.add((DefaultTableModel) CMFloor5Table.getModel());
-        setUpData();
-        _tables = new ArrayList<>();
-        _tables.add(CMFloor1Table);
-        _tables.add(CMFloor2Table);
-        _tables.add(CMFloor3Table);
-        _tables.add(CMFloor4Table);
-        _tables.add(CMFloor5Table);
+        
+        // Initilize Istream
+        _Istream = Istream.getInstance();
+        _Istream.readFloors();
+        
+        // Initialize Model
+        _FModel = new ArrayList<>();
+        _FModel.add((DefaultTableModel) CMFloor1Table.getModel());
+        _FModel.add((DefaultTableModel) CMFloor2Table.getModel());
+        _FModel.add((DefaultTableModel) CMFloor3Table.getModel());
+        _FModel.add((DefaultTableModel) CMFloor4Table.getModel());
+        _FModel.add((DefaultTableModel) CMFloor5Table.getModel());
+        
+        // Initialize Tables
+        _Tables = new ArrayList<>();
+        _Tables.add(CMFloor1Table);
+        _Tables.add(CMFloor2Table);
+        _Tables.add(CMFloor3Table);
+        _Tables.add(CMFloor4Table);
+        _Tables.add(CMFloor5Table);
+
+        // Set up Table Values
+        setUpTableData();
     }
     
-    public void setUpData(){
-        for(int i = 0; i < _fModel.size(); ++i){
-            ArrayList<String[]> tempData = _data.get(i).getTableData();
-            for(int j = 0; j < tempData.size(); ++j){
-                _fModel.get(i).addRow(tempData.get(j));
+    // Used when a value is edited inside of any condo (Yes, very inefficient)
+    private void setUpTableData(){
+        for(int i = 0; i < _FModel.size(); ++i){
+            for(int j = 0; j < _TableDataSize; ++j){
+                _FModel.get(i).addRow(_MyCondo.getUnitDataInFloor(i, j));
             }
-        }
-    }
-    
-    public void readDataInTable(){
-        int currentTableIndex = jTabbedPane1.getSelectedIndex();
-        // remove all of the values
-        while(_fModel.get(currentTableIndex).getRowCount() != 0){   
-            _fModel.get(currentTableIndex).removeRow(0);
-        }
-        ArrayList<String[]> tempData = _data.get(currentTableIndex).getTableData();
-        for(int j = 0; j < tempData.size(); ++j){    
-            _fModel.get(currentTableIndex).addRow(tempData.get(j));
         }
     }
     
@@ -94,11 +88,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Price", "Status"
+                "Unit No.", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -115,11 +109,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Price", "Status"
+                "Unit No.", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -136,11 +130,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Price", "Status"
+                "Unit No.", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -157,11 +151,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Price", "Status"
+                "Unit No.", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -178,11 +172,11 @@ public class CMS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit No.", "Short Description", "Price", "Status"
+                "Unit No.", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -298,60 +292,68 @@ public class CMS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
-        
+        // Create a new Description Window
         DescriptionWindow _descriptionWindow = new DescriptionWindow();
+        // Make it visible
         _descriptionWindow.setVisible(true);
+        // Set the current window invisible
         this.setVisible(false);
     }//GEN-LAST:event_CMSearchBarActionPerformed
 
     private void CMSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchButtonActionPerformed
-        String searchValue = CMSearchBar.getText();
         int currentTableIndex = jTabbedPane1.getSelectedIndex();
-        // remove all of the values
-        while(_fModel.get(currentTableIndex).getRowCount() != 0){   
-            _fModel.get(currentTableIndex).removeRow(0);
+        // Remove all of the values
+        while(_FModel.get(currentTableIndex).getRowCount() != 0){   
+             _FModel.get(currentTableIndex).removeRow(0);
         }
-        ArrayList<String[]> tempData = _data.get(currentTableIndex).getTableData();
-        for(int j = 0; j < tempData.size(); ++j){    
-            _fModel.get(currentTableIndex).addRow(tempData.get(j));
-        }
+        String searchValue = CMSearchBar.getText();
+        // If there is a value in search
         if(searchValue.length() != 0){
-            ArrayList<String[]> tableData = _data.get(currentTableIndex).getTableData();
-            int tempTableSize = tableData.size();
-            int removeValue = 0;
-            for(int i = 0; i < tempTableSize; ++i){
-                boolean wasFound = false;
-                for(int j = 0; j < _tableSize; ++j){
-                    if(tableData.get(i)[j] == null ? searchValue == null : tableData.get(i)[j].equals(searchValue)){
-                        wasFound = true;
-                        break;
+            // Iterate through all the data in the current floor
+            for(int j = 0; j < _TableDataSize; ++j){
+                // Get the row in the specific data
+                String[] dataRow = _MyCondo.getUnitDataInFloor(currentTableIndex, j);
+                // Iterate through that row values if the soughted value is there
+                for(int k = 0; k < _TableColSize; ++k){
+                    // If it is, add it to the data
+                    if(dataRow[k] == null ? searchValue == null : dataRow[k].equals(searchValue)){
+                        _FModel.get(currentTableIndex).addRow(dataRow);
                     }
                 }
-                if(!wasFound){
-                    _fModel.get(currentTableIndex).removeRow(i-removeValue++);
-                }
             }
+        }else{
+            setUpTableData();
         }
     }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     private void CMEditCondoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMEditCondoButton1ActionPerformed
+        // Create a new edit window
         EditDescription _editWindow = new EditDescription();
-        _editWindow.setVisible(true);
-        this.setVisible(false);
-        _editWindow.setMyCMS(this);
+        // Set the tab and selected row to the edit window (for the class to know where to get the data)
         int tabIndex = jTabbedPane1.getSelectedIndex();
-        int selectedRow = _tables.get(tabIndex).getSelectedRow();
+        int selectedRow = _Tables.get(tabIndex).getSelectedRow();
         _editWindow.setTableAndRow(tabIndex, selectedRow);
+        
+        // Make it visible
+        _editWindow.setVisible(true);
+        // Set the current window invisible
+        this.setVisible(false);
+        // Set 'this' to the edit window (for editing data, we need access to this class)
+        _editWindow.setMyCMS(this);
     }//GEN-LAST:event_CMEditCondoButton1ActionPerformed
 
     private void CMDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMDescriptionButtonActionPerformed
-        
+        // Create a new Description Window
         DescriptionWindow _descriptionWindow = new DescriptionWindow();
+        // Set the tab and selected row to the edit window (for the class to know where to get the data)
         int tabIndex = jTabbedPane1.getSelectedIndex();
-        int selectedRow = _tables.get(tabIndex).getSelectedRow();
+        int selectedRow = _Tables.get(tabIndex).getSelectedRow();
         _descriptionWindow.setTableAndRow(tabIndex, selectedRow);
+        // Make it visible
         _descriptionWindow.setVisible(true);
+        // Set the current window invisible
         this.setVisible(false);
+        // Set 'this' to the edit window (for editing data, we need access to this class)
         _descriptionWindow.setMyCMS(this);
     }//GEN-LAST:event_CMDescriptionButtonActionPerformed
 
@@ -363,12 +365,8 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSellCondoButtonActionPerformed
 
     private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
-        JFrame PopUp = new JFrame();
-        _ostream.deleteReport();
-        for(int i = 0; i < _data.size(); ++i){
-            _ostream.exportData(_data.get(i).getTableData());
-        }
-        JOptionPane.showMessageDialog(PopUp, "Report Generated Successfully!");
+        // Report
+        // To-Be Implemented
     }//GEN-LAST:event_CMReportButtonActionPerformed
 
     private void CMExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMExitButtonActionPerformed

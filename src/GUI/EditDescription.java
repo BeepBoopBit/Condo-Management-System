@@ -31,6 +31,7 @@ public class EditDescription extends javax.swing.JFrame {
     }
     
     private void setUpValues(){
+<<<<<<< HEAD
         EDUnitNoText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
         EDCostText.setText(_istream.getFloors().get(_tableIndex).getAges().get(_rowPos));
         EDPaymentText.setText(_istream.getFloors().get(_tableIndex).getPaymentOptions().get(_rowPos));
@@ -46,6 +47,9 @@ public class EditDescription extends javax.swing.JFrame {
             String tempStr[] = {amenities.get(i)};
             model.addRow(tempStr);
         }
+=======
+        // To be Implemented
+>>>>>>> 38682909964abc81c7af2fcce94894b3632309bd
     }
     
     public void setMyCMS(CMS myCMS) { 
@@ -246,6 +250,7 @@ public class EditDescription extends javax.swing.JFrame {
     }//GEN-LAST:event_EDAmenityButtonActionPerformed
 
     private void EDConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDConfirmButtonActionPerformed
+<<<<<<< HEAD
         
         String name = EDUnitNoText.getText();
         String age = EDCostText.getText();
@@ -277,6 +282,10 @@ public class EditDescription extends javax.swing.JFrame {
         this.setVisible(false);
         _myCMS.setVisible(true);
         _myCMS.setUpData();
+=======
+        // File Edited Submit Button
+        // TO-Be Imlemented
+>>>>>>> 38682909964abc81c7af2fcce94894b3632309bd
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     /**
