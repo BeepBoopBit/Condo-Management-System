@@ -21,7 +21,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
     }
     
     private void setUpValues(){
-        DWNameText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
+        DWUnitNoText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
         DWAgeText.setText(_istream.getFloors().get(_tableIndex).getAges().get(_rowPos));
         DWAgeText.setText(_istream.getFloors().get(_tableIndex).getPaymentOptions().get(_rowPos));
         ArrayList<String> details = _istream.getFloors().get(_tableIndex).getDetails().get(_rowPos);
@@ -48,7 +48,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        DWNameText = new javax.swing.JTextField();
+        DWUnitNoText = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -58,7 +58,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         DetailsTable = new javax.swing.JTable();
         DWPaymentCombo = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        DWCostLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -111,8 +111,8 @@ public class DescriptionWindow extends javax.swing.JFrame {
 
         DWPaymentCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Payment", "Installment" }));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("0.00");
+        DWCostLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        DWCostLabel.setText("0.00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,8 +130,8 @@ public class DescriptionWindow extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DWNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(DWUnitNoText, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DWCostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
@@ -153,13 +153,13 @@ public class DescriptionWindow extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(DWNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DWUnitNoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(DWPaymentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(DWCostLabel))
                 .addGap(25, 25, 25)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,11 +221,11 @@ public class DescriptionWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AmenitiesTable;
     private javax.swing.JButton DWBackButton;
+    private javax.swing.JLabel DWCostLabel;
     private javax.swing.JButton DWEditButton;
-    private javax.swing.JTextField DWNameText;
     private javax.swing.JComboBox<String> DWPaymentCombo;
+    private javax.swing.JTextField DWUnitNoText;
     private javax.swing.JTable DetailsTable;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
