@@ -368,6 +368,7 @@ public class CMS extends javax.swing.JFrame {
 
     private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
         GenerateReport newReport = new GenerateReport();
+        newReport.setMyCMS(this);
         newReport.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CMReportButtonActionPerformed
