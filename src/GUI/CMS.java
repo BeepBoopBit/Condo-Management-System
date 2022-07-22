@@ -284,10 +284,10 @@ public class CMS extends javax.swing.JFrame {
                     .addComponent(CMDescriptionButton)
                     .addComponent(CMReportButton)
                     .addComponent(CMExitButton))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(676, 347));
+        setSize(new java.awt.Dimension(676, 367));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -365,8 +365,9 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSellCondoButtonActionPerformed
 
     private void CMReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMReportButtonActionPerformed
-        // Report
-        // To-Be Implemented
+        GenerateReport newReport = new GenerateReport();
+        newReport.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_CMReportButtonActionPerformed
 
     private void CMExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMExitButtonActionPerformed

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 /**
- * @author wcbre
+ * @author Renz Aguirre
  * - Provide More Abstraction for CondoData
  * - Mainly the one that is used for all operation with regards to CondoData
  */
@@ -32,6 +32,10 @@ public class Condo{
     
     public CondoData getFloor(int index){
         return _Floors.get(index);
+    }
+    
+    public ArrayList<CondoData> getAllFloors(){
+        return _Floors;
     }
     
     // Return in the form of String[] the relevant information for table view
