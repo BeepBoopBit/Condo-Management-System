@@ -5,7 +5,6 @@
 package GUI;
 
 import FileManager.Istream;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,7 +13,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EditDescription extends javax.swing.JFrame {
     
-    CMS _myCMS;
+    CMS _myCMS = null;
+    DescriptionWindow _MyDescription = null;
     AddDetails _myDetails = new AddDetails();
     AddAmenities _myAmeneties = new AddAmenities();
     Istream _istream = Istream.getInstance();
@@ -23,37 +23,25 @@ public class EditDescription extends javax.swing.JFrame {
     public EditDescription() {
         initComponents();
     }
-
-    public void setTableAndRow(int table, int row){
-        _tableIndex= table;
-        _rowPos = row;
+    
+    public EditDescription(int tableIndex, int rowPos) {
+        initComponents();
+        _tableIndex = tableIndex;
+        _rowPos = rowPos;
         setUpValues();
     }
+
     
     private void setUpValues(){
-<<<<<<< HEAD
-        EDUnitNoText.setText(_istream.getFloors().get(_tableIndex).getNames().get(_rowPos));
-        EDCostText.setText(_istream.getFloors().get(_tableIndex).getAges().get(_rowPos));
-        EDPaymentText.setText(_istream.getFloors().get(_tableIndex).getPaymentOptions().get(_rowPos));
-        ArrayList<String> details = _istream.getFloors().get(_tableIndex).getDetails().get(_rowPos);
-        DefaultTableModel model = (DefaultTableModel) DetailsTable.getModel();
-        for(int i = 0; i < details.size(); ++i){
-            String tempStr[] = {details.get(i)};
-            model.addRow(tempStr);
-        }
-        model = (DefaultTableModel) AmentiesTable.getModel();
-        ArrayList<String> amenities = _istream.getFloors().get(_tableIndex).getAmenities().get(_rowPos);
-        for(int i = 0; i < details.size(); ++i){
-            String tempStr[] = {amenities.get(i)};
-            model.addRow(tempStr);
-        }
-=======
         // To be Implemented
->>>>>>> 38682909964abc81c7af2fcce94894b3632309bd
     }
     
     public void setMyCMS(CMS myCMS) { 
         this._myCMS = myCMS;
+    }
+    
+    public void setDescriptionWindow(DescriptionWindow window){
+        _MyDescription = window;
     }
     
     public void addDetail(String str){
@@ -232,42 +220,8 @@ public class EditDescription extends javax.swing.JFrame {
     }//GEN-LAST:event_EDAmenityButtonActionPerformed
 
     private void EDConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDConfirmButtonActionPerformed
-<<<<<<< HEAD
-        
-        String name = EDUnitNoText.getText();
-        String age = EDCostText.getText();
-        String payment = EDPaymentText.getText();
-       
-        // get data
-        ArrayList<String> details = new ArrayList<>();
-        DefaultTableModel model = (DefaultTableModel) DetailsTable.getModel();
-        while(DetailsTable.getRowCount() != 0){
-            System.out.println(DetailsTable.getValueAt(0, 0).toString());
-            details.add(DetailsTable.getValueAt(0, 0).toString());
-            model.removeRow(0);
-        }
-        // get data
-        ArrayList<String> amenities = new ArrayList<>();
-        DefaultTableModel model0 = (DefaultTableModel) AmentiesTable.getModel();
-        while(AmentiesTable.getRowCount() != 0){
-            System.out.println(AmentiesTable.getValueAt(0, 0).toString());
-            amenities.add(AmentiesTable.getValueAt(0, 0).toString());
-            model0.removeRow(0);
-        }
-        
-        _istream.getFloors().get(_tableIndex).getNames().set(_rowPos, name);
-        _istream.getFloors().get(_tableIndex).getAges().set(_rowPos, age);
-        _istream.getFloors().get(_tableIndex).getPaymentOptions().set(_rowPos, payment);
-        _istream.getFloors().get(_tableIndex).getDetails().set(_rowPos, details);
-        _istream.getFloors().get(_tableIndex).getAmenities().set(_rowPos, amenities);
-        
-        this.setVisible(false);
-        _myCMS.setVisible(true);
-        _myCMS.setUpData();
-=======
         // File Edited Submit Button
         // TO-Be Imlemented
->>>>>>> 38682909964abc81c7af2fcce94894b3632309bd
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     /**

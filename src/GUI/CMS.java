@@ -327,13 +327,11 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     private void CMEditCondoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMEditCondoButton1ActionPerformed
-        // Create a new edit window
-        EditDescription _editWindow = new EditDescription();
-        // Set the tab and selected row to the edit window (for the class to know where to get the data)
+        // get tab index and selected item row
         int tabIndex = jTabbedPane1.getSelectedIndex();
         int selectedRow = _Tables.get(tabIndex).getSelectedRow();
-        _editWindow.setTableAndRow(tabIndex, selectedRow);
-        
+        // Create a new edit window
+        EditDescription _editWindow = new EditDescription(tabIndex, selectedRow);
         // Make it visible
         _editWindow.setVisible(true);
         // Set the current window invisible
@@ -343,12 +341,11 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMEditCondoButton1ActionPerformed
 
     private void CMDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMDescriptionButtonActionPerformed
-        // Create a new Description Window
-        DescriptionWindow _descriptionWindow = new DescriptionWindow();
-        // Set the tab and selected row to the edit window (for the class to know where to get the data)
+        // get tab index and selected item row
         int tabIndex = jTabbedPane1.getSelectedIndex();
-        int selectedRow = _Tables.get(tabIndex).getSelectedRow();
-        _descriptionWindow.setTableAndRow(tabIndex, selectedRow);
+        int selectedRow = _Tables.get(tabIndex).getSelectedRow();        
+        // Create a new Description Windo/w
+        DescriptionWindow _descriptionWindow = new DescriptionWindow(tabIndex,selectedRow);
         // Make it visible
         _descriptionWindow.setVisible(true);
         // Set the current window invisible
