@@ -1,60 +1,6 @@
-BigBlue Corinthian Executive Regency
-1
-Installment
-2 Bathroom,No balconies,Studio,
-Fire Alarm,2 Bedroom,Fire exits,Function Room,
-301,Livable,P4000,Free,
-InnerCity Corinthian Executive Regency
-3
-Installment
-2 Bathroom,No balconies,Fully Furnished,Studio,
-Fire Alarm,Studio,Fire exits,Function Room,
-302,Livable,P4500,Free,
-Ensemble Corinthian Executive Regency
-2
-Full Payment
-3 Bathroom,No balconies,Fully Furnished,Studio,
-Fire Alarm,2 Bedroom,Fire exits,Function Room,
-303,Livable,P12000,Free,
-Corinthian Executive Regency
-4
-Installment
-3 Bathroom,2 Kitchen,Fully Furnished,Studio,
-Fire Alarm,2 Bedroom,Fire exits,Function Room,
-304,Livable,P15000,Sold,
-Voice Corinthian Executive Regency
-2
-Full Payment
-1 Bathroom,No balconies,Fully Furnished,Studio,
-2 Bathroom,2 Bedroom,Fire exits,Function Room,
-305,Livable,P20000,Free,
-Corinthian Executive Regency
-5
-Full Payment
-1 Bathroom,No balconies,Fully Furnished,Studio,
-3 bathrooms,2 kitchen,
-306,Livable,P8000,Sold,
-ThirdEye Corinthian Executive Regency
-2
-Full Payment
-No balconies,Open kitchen,4 bathrooms,
-3 bathrooms,2 kitchen,2 beds,
-307,Livable,P10000,Free,
-BigBlue Corinthian Executive Regency
-3
-Installment
-1 Bathroom,No balconies,Fully Furnished,Studio,
-3 bathrooms,2 kitchen,2 beds,
-308,Livable,P5000,Free,
-Corinthian Executive Regency
-3
-Installment
-1 Kitchen,2 Bathroom,
-Fire Alarm,Studio,Fire exits,Function Room,
-309,Livable,P8000,Sold,
-FocalPoint Corinthian Executive Regency
-1
-Full Payment
-No balconies,Open kitchen,3 bathrooms,
-Fire Alarm,Fire exits,Kitchen,
-310,Livable,P10000,Sold,
+201,202,203,204,205,206,207,208,209,210,
+1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,
+water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon,
+water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon,
+Available,Available,Available,Available,Available,Available,Available,Available,Available,Available,
