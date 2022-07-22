@@ -40,8 +40,6 @@ public class DescriptionWindow extends javax.swing.JFrame {
             detailModel.addRow(new String[]{tempData.get(_rowPos).get(j)});
         }
         
-        
-        
         DefaultTableModel amenitiesModel = (DefaultTableModel) AmenitiesTable.getModel();
         tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
         for(int j = 0; j < tempData.get(_tableIndex).size(); ++j){
@@ -203,7 +201,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
 
         // Create a new edit window
         EditDescription _editWindow = new EditDescription(_tableIndex, _rowPos);
-        // Set the tab and selected row to the edit window (for the class to know where to get the data)
+        _editWindow.setDescriptionWindow(this);
         
         // Make it visible
         _editWindow.setVisible(true);
