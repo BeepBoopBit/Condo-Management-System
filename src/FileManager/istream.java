@@ -4,24 +4,35 @@ import CMSClass.Condo;
 import CMSClass.CondoData;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+
+/**
+ * @author Ambraie
+ * - Class for all input-related operation (mainly on files)
+ * - Implements getting data from the floors
+ */
 public class Istream {
     // Use for Entry System
-    String[] _credential = {"USERNAME_E", "PASSWORD_E"};
-    String _credentialPath = "src/Data/credentials.dat";
+    String[]                _credential     = {"USERNAME_E", "PASSWORD_E"};
+    String                  _credentialPath = "src/Data/credentials.dat";
     
     // Use to read individual Floors
-    String[] _floorPaths = {"src/Data/Floor01.dat","src/Data/Floor02.dat",
-                       "src/Data/Floor03.dat", "src/Data/Floor04.dat",
-                       "src/Data/Floor05.dat"};
+    String[]                _floorPaths     = {"src/Data/Floor01.dat","src/Data/Floor02.dat",
+                                               "src/Data/Floor03.dat", "src/Data/Floor04.dat",
+                                               "src/Data/Floor05.dat"};
     
-    private final Condo _MyCondo = Condo.get_instance();
+    // Get the Condo Class
+    private final Condo     _MyCondo        = Condo.get_instance();
     
     // Variable for singleton
-    private static Istream _myIstream = null;
+    private static Istream  _myIstream      = null;
    
     private Istream(){
         // SINGLETON
@@ -35,15 +46,32 @@ public class Istream {
     }
     
     public void readCredentials(){
+        // Try to Read and Store The File
         try{
             File myFile = new File(_credentialPath);
             Scanner myReader = new Scanner(myFile);
-            String[] creds = myReader.nextLine().split(" ");
-            _credential[0] = creds[0];
-            _credential[1] = creds[1];
-        }catch(FileNotFoundException err){
-            System.out.println("The file was not found");
-        }catch(Exception err){
+            // Try to get data or store it
+            try{
+                String[] creds = myReader.nextLine().split(" ");
+                _credential[0] = creds[0];
+                _credential[1] = creds[1];
+            }
+            // If there are no data to store
+            catch(Exception err){
+                _credential[0] = null;
+                _credential[1] = null;
+            }
+        }
+        // If the File was not found, create the file
+        catch(FileNotFoundException err){
+            FileWriter myWriter;
+            try {
+                myWriter = new FileWriter(_credentialPath);
+                myWriter.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Istream.class.getName()).log(Level.WARNING, null, ex);
+            }
+            // No Data
             _credential[0] = null;
             _credential[1] = null;
         }

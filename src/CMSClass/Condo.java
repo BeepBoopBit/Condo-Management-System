@@ -2,7 +2,12 @@ package CMSClass;
 
 import java.util.ArrayList;
 
-// Provide More Abstraction for CondoData
+
+/**
+ * @author wcbre
+ * - Provide More Abstraction for CondoData
+ * - Mainly the one that is used for all operation with regards to CondoData
+ */
 public class Condo{
     // List of Floors All With their corresponding data
     ArrayList<CondoData> _Floors;
@@ -29,6 +34,7 @@ public class Condo{
         return _Floors.get(index);
     }
     
+    // Return in the form of String[] the relevant information for table view
     public String[] getUnitDataInFloor(int floorIndex, int unitIndex){
         return new String[]{_Floors.get(floorIndex).getUnitNo().get(unitIndex),
                             _Floors.get(floorIndex).getCost().get(unitIndex),

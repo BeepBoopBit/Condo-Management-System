@@ -2,21 +2,27 @@ package CMSClass;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author wcbre
+ * - Used for STORING the data of individual units in floors
+ * - ONE CondoData is equivalent to a SINGLE FLOOR
+ */
 public class CondoData {
-    ArrayList<String> _UnitNo;
-    ArrayList<String> _Cost;
-    ArrayList<String> _ModeOfPayment;
-    ArrayList<ArrayList<String>> _Details;
-    ArrayList<ArrayList<String>> _Amenities;
-    ArrayList<String> _Status;
+    ArrayList<String>                   _UnitNo;
+    ArrayList<String>                   _Cost;
+    ArrayList<String>                   _ModeOfPayment;
+    ArrayList<ArrayList<String>>        _Details;
+    ArrayList<ArrayList<String>>        _Amenities;
+    ArrayList<String>                   _Status;
     
     public CondoData(){
-        _UnitNo = new ArrayList<>();
-        _Cost = new ArrayList<>();
-        _ModeOfPayment = new ArrayList<>();
-        _Details = new ArrayList<>();
-        _Amenities = new ArrayList<>();
-        _Status = new ArrayList<>();
+        _UnitNo             = new ArrayList<>();
+        _Cost               = new ArrayList<>();
+        _ModeOfPayment      = new ArrayList<>();
+        _Details            = new ArrayList<>();
+        _Amenities          = new ArrayList<>();
+        _Status             = new ArrayList<>();
     }
     
     // Putters (Put individual Data not as a whole)

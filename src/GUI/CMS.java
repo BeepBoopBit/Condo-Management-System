@@ -39,10 +39,10 @@ public class CMS extends javax.swing.JFrame {
         _Tables.add(CMFloor5Table);
 
         // Set up Table Values
-        // Get the data
         setUpTableData();
     }
     
+    // Used when a value is edited inside of any condo (Yes, very inefficient)
     private void setUpTableData(){
         for(int i = 0; i < _FModel.size(); ++i){
             for(int j = 0; j < _TableDataSize; ++j){
@@ -292,29 +292,30 @@ public class CMS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CMSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchBarActionPerformed
+        // Create a new Description Window
         DescriptionWindow _descriptionWindow = new DescriptionWindow();
+        // Make it visible
         _descriptionWindow.setVisible(true);
+        // Set the current window invisible
         this.setVisible(false);
     }//GEN-LAST:event_CMSearchBarActionPerformed
 
     private void CMSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMSearchButtonActionPerformed
-        
         int currentTableIndex = jTabbedPane1.getSelectedIndex();
-        // remove all of the values
+        // Remove all of the values
         while(_FModel.get(currentTableIndex).getRowCount() != 0){   
              _FModel.get(currentTableIndex).removeRow(0);
         }
-            
         String searchValue = CMSearchBar.getText();
         // If there is a value in search
         if(searchValue.length() != 0){
-            // iterate through all the data in the current floor
+            // Iterate through all the data in the current floor
             for(int j = 0; j < _TableDataSize; ++j){
-                // get the row in the specific data
+                // Get the row in the specific data
                 String[] dataRow = _MyCondo.getUnitDataInFloor(currentTableIndex, j);
-                // iterate through that row values if the soughted value is there
+                // Iterate through that row values if the soughted value is there
                 for(int k = 0; k < _TableColSize; ++k){
-                    // if it is, add it to the data
+                    // If it is, add it to the data
                     if(dataRow[k] == null ? searchValue == null : dataRow[k].equals(searchValue)){
                         _FModel.get(currentTableIndex).addRow(dataRow);
                     }
@@ -326,23 +327,33 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     private void CMEditCondoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMEditCondoButton1ActionPerformed
+        // Create a new edit window
         EditDescription _editWindow = new EditDescription();
-        _editWindow.setVisible(true);
-        this.setVisible(false);
-        _editWindow.setMyCMS(this);
+        // Set the tab and selected row to the edit window (for the class to know where to get the data)
         int tabIndex = jTabbedPane1.getSelectedIndex();
         int selectedRow = _Tables.get(tabIndex).getSelectedRow();
         _editWindow.setTableAndRow(tabIndex, selectedRow);
+        
+        // Make it visible
+        _editWindow.setVisible(true);
+        // Set the current window invisible
+        this.setVisible(false);
+        // Set 'this' to the edit window (for editing data, we need access to this class)
+        _editWindow.setMyCMS(this);
     }//GEN-LAST:event_CMEditCondoButton1ActionPerformed
 
     private void CMDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMDescriptionButtonActionPerformed
-        
+        // Create a new Description Window
         DescriptionWindow _descriptionWindow = new DescriptionWindow();
+        // Set the tab and selected row to the edit window (for the class to know where to get the data)
         int tabIndex = jTabbedPane1.getSelectedIndex();
         int selectedRow = _Tables.get(tabIndex).getSelectedRow();
         _descriptionWindow.setTableAndRow(tabIndex, selectedRow);
+        // Make it visible
         _descriptionWindow.setVisible(true);
+        // Set the current window invisible
         this.setVisible(false);
+        // Set 'this' to the edit window (for editing data, we need access to this class)
         _descriptionWindow.setMyCMS(this);
     }//GEN-LAST:event_CMDescriptionButtonActionPerformed
 
