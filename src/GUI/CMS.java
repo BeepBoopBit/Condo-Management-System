@@ -51,6 +51,11 @@ public class CMS extends javax.swing.JFrame {
         }
     }
     
+    public void updateEditedValue(int tableIndex, int rowIndex){
+        _FModel.get(tableIndex).removeRow(rowIndex);
+        _FModel.get(tableIndex).insertRow(rowIndex, _MyCondo.getUnitDataInFloor(tableIndex, rowIndex));
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

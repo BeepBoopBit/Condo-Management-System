@@ -273,7 +273,14 @@ public class EditDescription extends javax.swing.JFrame {
         String unitText = EDUnitNoText.getText();
         String costText = EDCostText.getText();
         String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "Full Payment" : "Installment";
-        
+        _MyCondo.replaceUnitNo(_tableIndex, _rowPos, unitText);
+        _MyCondo.replaceCost(_tableIndex, _rowPos, costText);
+        _MyCondo.replaceModeOfPayment(_tableIndex, _rowPos, modeOfPayment);
+        _MyCondo.replaceDetails(_tableIndex, _rowPos, newDetails);
+        _MyCondo.replaceAmenities(_tableIndex, _rowPos, newAmenities);
+        _myCMS.updateEditedValue(_tableIndex, _rowPos);
+        this.setVisible(false);
+        _myCMS.setVisible(true);
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     private void EDBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDBackButtonActionPerformed

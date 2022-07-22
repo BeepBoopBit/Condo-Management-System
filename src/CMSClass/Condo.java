@@ -44,6 +44,24 @@ public class Condo{
                             _Floors.get(floorIndex).getCost().get(unitIndex),
                             _Floors.get(floorIndex).getStatus().get(unitIndex)};
     }
+    public void replaceUnitNo(int floorIndex, int rowIndex, String data){
+        _Floors.get(floorIndex).getUnitNo().set(rowIndex, data);
+    }  
+    public void replaceCost(int floorIndex, int rowIndex, String data){
+        _Floors.get(floorIndex).getCost().set(rowIndex, data);
+    }  
+    public void replaceModeOfPayment(int floorIndex, int rowIndex, String data){
+        _Floors.get(floorIndex).getModeOfPayment().set(rowIndex, data);
+    }
+    public void replaceDetails(int floorIndex, int rowIndex, ArrayList<String> data){
+        _Floors.get(floorIndex).getDetails().set(rowIndex, data);
+    }    
+    public void replaceAmenities(int floorIndex, int rowIndex, ArrayList<String> data){
+        _Floors.get(floorIndex).getAmenities().set(rowIndex, data);
+    } 
+    public void replaceStatus(int floorIndex, int rowIndex, String data){
+        _Floors.get(floorIndex).getStatus().set(rowIndex, data);
+    }
     
     // Auxillary 
     public void printData(){
