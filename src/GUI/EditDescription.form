@@ -242,9 +242,10 @@
     <Component class="javax.swing.JComboBox" name="EDMODCombo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Full Payment"/>
-            <StringItem index="1" value="Installment"/>
+          <StringArray count="3">
+            <StringItem index="0" value="N/A"/>
+            <StringItem index="1" value="Full Payment"/>
+            <StringItem index="2" value="Installment"/>
           </StringArray>
         </Property>
       </Properties>

@@ -26,6 +26,10 @@ public class Condo{
         return _MyCondo;
     }
     
+    public int getFloorSize(){
+        return _Floors.size();
+    }
+    
     public void addFloor(CondoData data){
         _Floors.add(data);
     }

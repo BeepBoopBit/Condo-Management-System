@@ -6,6 +6,7 @@ package GUI;
 
 import CMSClass.Condo;
 import FileManager.Istream;
+import FileManager.Ostream;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +15,7 @@ public class EditDescription extends javax.swing.JFrame {
     CMS _myCMS = null;
     DescriptionWindow _MyDescription = null;
     Istream _istream = Istream.getInstance();
+    Ostream _ostream = Ostream.getInstance();
     private int _tableIndex;
     private int _rowPos;
     Condo _MyCondo = Condo.get_instance();
@@ -170,7 +172,7 @@ public class EditDescription extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(DetailsTable);
 
-        EDMODCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Payment", "Installment" }));
+        EDMODCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Full Payment", "Installment" }));
 
         EDBackButton.setText("Back");
         EDBackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +274,7 @@ public class EditDescription extends javax.swing.JFrame {
     private void EDConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDConfirmButtonActionPerformed
         String unitText = EDUnitNoText.getText();
         String costText = EDCostText.getText();
-        String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "Full Payment" : "Installment";
+        String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "N/A" : EDMODCombo.getSelectedIndex() == 1 ? "Full Payment" : "Installment";
         _MyCondo.replaceUnitNo(_tableIndex, _rowPos, unitText);
         _MyCondo.replaceCost(_tableIndex, _rowPos, costText);
         _MyCondo.replaceModeOfPayment(_tableIndex, _rowPos, modeOfPayment);
@@ -281,6 +283,7 @@ public class EditDescription extends javax.swing.JFrame {
         _myCMS.updateEditedValue(_tableIndex, _rowPos);
         this.setVisible(false);
         _myCMS.setVisible(true);
+        _ostream.updateFiles();
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     private void EDBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDBackButtonActionPerformed
