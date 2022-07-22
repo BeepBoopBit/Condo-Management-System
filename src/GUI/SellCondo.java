@@ -37,10 +37,8 @@ public class SellCondo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         SCSelectFloorLabel = new javax.swing.JLabel();
         SCEnterUnitLabel = new javax.swing.JLabel();
-        SCPriceLabel = new javax.swing.JLabel();
         SCSelectFloorCombo = new javax.swing.JComboBox<>();
         SCEnterUnitText = new javax.swing.JTextField();
-        SCPriceText = new javax.swing.JTextField();
         SCSelectFloorLabel1 = new javax.swing.JLabel();
         SCPaymentOptionCombo = new javax.swing.JComboBox<>();
 
@@ -68,9 +66,6 @@ public class SellCondo extends javax.swing.JFrame {
 
         SCEnterUnitLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         SCEnterUnitLabel.setText("Enter Condo Unit:");
-
-        SCPriceLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        SCPriceLabel.setText("Price:");
 
         SCSelectFloorCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5" }));
         SCSelectFloorCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -119,16 +114,13 @@ public class SellCondo extends javax.swing.JFrame {
                                     .addComponent(SCSelectFloorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(SCPaymentOptionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SCPriceLabel)
-                                    .addComponent(SCEnterUnitLabel))
-                                .addGap(0, 25, Short.MAX_VALUE)))
+                                .addComponent(SCEnterUnitLabel)
+                                .addGap(0, 33, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(SCEnterUnitText)
-                            .addComponent(SCPriceText)
                             .addComponent(SCExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
-                        .addGap(40, 40, 40))))
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,8 +135,6 @@ public class SellCondo extends javax.swing.JFrame {
                     .addComponent(SCEnterUnitText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SCPriceLabel)
-                    .addComponent(SCPriceText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SCSelectFloorLabel1)
                     .addComponent(SCPaymentOptionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -165,18 +155,22 @@ public class SellCondo extends javax.swing.JFrame {
 
     private void SCConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCConfirmButtonActionPerformed
         String UnitNo = SCEnterUnitText.getText();
-        String Price = SCPriceText.getText();
         String modeOfPayment = SCPaymentOptionCombo.getSelectedIndex() == 1 ? "Full Payment" : "Installment";
         int floorIndex = SCSelectFloorCombo.getSelectedIndex();
         ArrayList<String> units = _MyCondo.getFloor(floorIndex).getUnitNo();
+        int rowIndex = 0;
         for(int i = 0; i < units.size(); ++i){
             if(units.get(i) == null ? UnitNo == null : units.get(i).equals(UnitNo)){
                 _MyCondo.getFloor(floorIndex).getModeOfPayment().set(i, modeOfPayment);
-                _MyCondo.getFloor(floorIndex).getCost().set(i, Price);
                 _MyCondo.getFloor(floorIndex).getStatus().set(i, "Sold");
+                rowIndex = i;
+                break;
             }
         }
         _ostream.updateFiles();
+        _myCMS.updateEditedValue(floorIndex, rowIndex);
+        this.setVisible(false);
+        _myCMS.setVisible(true);
     }//GEN-LAST:event_SCConfirmButtonActionPerformed
 
     private void SCSelectFloorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCSelectFloorComboActionPerformed
@@ -232,8 +226,6 @@ public class SellCondo extends javax.swing.JFrame {
     private javax.swing.JTextField SCEnterUnitText;
     private javax.swing.JButton SCExitButton;
     private javax.swing.JComboBox<String> SCPaymentOptionCombo;
-    private javax.swing.JLabel SCPriceLabel;
-    private javax.swing.JTextField SCPriceText;
     private javax.swing.JComboBox<String> SCSelectFloorCombo;
     private javax.swing.JLabel SCSelectFloorLabel;
     private javax.swing.JLabel SCSelectFloorLabel1;

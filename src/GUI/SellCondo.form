@@ -50,20 +50,16 @@
                                   <Component id="SCPaymentOptionCombo" min="-2" pref="107" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SCPriceLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="SCEnterUnitLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
+                              <Component id="SCEnterUnitLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="SCEnterUnitText" max="32767" attributes="0"/>
-                          <Component id="SCPriceText" alignment="1" max="32767" attributes="0"/>
                           <Component id="SCExitButton" alignment="1" pref="78" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -83,8 +79,6 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="SCPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="SCPriceText" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SCSelectFloorLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SCPaymentOptionCombo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -136,14 +130,6 @@
         <Property name="text" type="java.lang.String" value="Enter Condo Unit:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="SCPriceLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Price:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JComboBox" name="SCSelectFloorCombo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -167,8 +153,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SCEnterUnitTextActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="SCPriceText">
     </Component>
     <Component class="javax.swing.JLabel" name="SCSelectFloorLabel1">
       <Properties>
