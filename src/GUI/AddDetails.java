@@ -11,15 +11,15 @@ package GUI;
 public class AddDetails extends javax.swing.JFrame {
 
     String _data;
-    EditDescription _myDesc;
+    EditDetails _myEditDetails;
     public AddDetails() {
         initComponents();
     }
     public String getData() {
         return _data;
     }
-    public void setDescription(EditDescription desc){
-        _myDesc = desc;
+    public void setEditDetails(EditDetails data){
+        _myEditDetails = data;
     }
     
     /**
@@ -43,6 +43,11 @@ public class AddDetails extends javax.swing.JFrame {
         jLabel1.setText("Add Detail:");
 
         ADCancelButton.setText("Cancel");
+        ADCancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ADCancelButtonActionPerformed(evt);
+            }
+        });
 
         ADAddButton.setText("Add");
         ADAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,11 +91,16 @@ public class AddDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ADAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADAddButtonActionPerformed
-        _data = ADDetailText.getText();
         this.setVisible(false);
-        _myDesc.setVisible(true);
-        _myDesc.addDetail(_data);
+        _myEditDetails.setVisible(true);
+        _data = ADDetailText.getText();
+        _myEditDetails.addAmeties(_data);
     }//GEN-LAST:event_ADAddButtonActionPerformed
+
+    private void ADCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADCancelButtonActionPerformed
+        this.setVisible(false);
+        _myEditDetails.setVisible(true);
+    }//GEN-LAST:event_ADCancelButtonActionPerformed
 
     /**
      * @param args the command line arguments

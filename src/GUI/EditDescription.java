@@ -254,7 +254,9 @@ public class EditDescription extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EDDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDDetailButtonActionPerformed
-        EditDetails newEditDetail = new EditDetails(); 
+        EditDetails newEditDetail = new EditDetails();
+        newEditDetail.setDescriptionWindow(this); 
+        newEditDetail.setUpValues(newDetails);
         newEditDetail.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EDDetailButtonActionPerformed
