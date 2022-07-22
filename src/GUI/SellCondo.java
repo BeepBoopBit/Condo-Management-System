@@ -39,6 +39,7 @@ public class SellCondo extends javax.swing.JFrame {
         SCPaymentOptionCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         SCConfirmButton.setText("Confirm");
         SCConfirmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -115,12 +116,12 @@ public class SellCondo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(SCPriceLabel)
                                     .addComponent(SCEnterUnitLabel))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SCExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 25, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(SCEnterUnitText)
-                            .addComponent(SCPriceText))
+                            .addComponent(SCPriceText)
+                            .addComponent(SCExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
                         .addGap(40, 40, 40))))
         );
         layout.setVerticalGroup(
@@ -144,10 +145,11 @@ public class SellCondo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SCConfirmButton)
                     .addComponent(SCExitButton))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(521, 215));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SCExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCExitButtonActionPerformed

@@ -1,6 +1,8 @@
 package GUI;
 
 import EntrySystem.EntryClass;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JFrame {
 
@@ -29,8 +31,9 @@ public class Register extends javax.swing.JFrame {
         t_cpassword = new javax.swing.JLabel();
         cpassword = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Register Form");
+        setResizable(false);
 
         BG.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,7 +79,7 @@ public class Register extends javax.swing.JFrame {
                         .addComponent(t_cpassword, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(submitbutton)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         BGLayout.setVerticalGroup(
             BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,10 +107,10 @@ public class Register extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +120,8 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(390, 461));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
@@ -129,6 +133,9 @@ public class Register extends javax.swing.JFrame {
             _entry.register(username, pass00);
             this.setVisible(false);
             _myLogin.setVisible(true);
+        } else {
+            JFrame PopUp = new JFrame();
+            JOptionPane.showMessageDialog(PopUp, "Please make sure your password match.");
         }
     }//GEN-LAST:event_submitbuttonActionPerformed
 
