@@ -290,10 +290,10 @@ public class CMS extends javax.swing.JFrame {
                     .addComponent(CMDescriptionButton)
                     .addComponent(CMReportButton)
                     .addComponent(CMExitButton))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(676, 394));
+        setSize(new java.awt.Dimension(676, 347));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
