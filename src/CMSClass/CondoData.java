@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 /**
- * @author wcbre
+ * @author Renz Aguirre
  * - Used for STORING the data of individual units in floors
  * - ONE CondoData is equivalent to a SINGLE FLOOR
  */

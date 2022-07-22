@@ -44,9 +44,9 @@ public class Ostream {
             System.out.println("File wasn't deleted. Maybe it doesn't exists");
         }
     }
-    
     // Export individual table data to csv File (to be changed)
-    public void exportData(ArrayList<String[]> data){
+    public void exportReport(ArrayList<String[]> data){
+        // check if the file exists, if no create one, if yes, continue
         try{
             File myObj = new File(_reportPath);
             if(myObj.createNewFile()){
@@ -57,10 +57,12 @@ public class Ostream {
         }catch(IOException err){
             System.out.println("File didn't get created.");
         }
+        // append to the _reportPath
         try{
             FileWriter myWriter = new FileWriter(_reportPath, true);
+            myWriter.append("Unit Number, Status,\n");
             for(int i = 0; i < data.size(); ++i){
-                for(int j = 0; j < 4; ++j){
+                for(int j = 0; j < 2; ++j){
                     myWriter.append(data.get(i)[j] +",");
                 }
                 myWriter.append("\n");
