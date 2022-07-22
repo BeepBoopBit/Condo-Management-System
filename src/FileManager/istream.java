@@ -118,7 +118,7 @@ public class Istream {
                         ArrayList<String> tempDataValue = new ArrayList<>();
                         String[] tempArr = tempDetails.get(j).split(",");
                         Collections.addAll(tempDataValue, tempArr);
-                        _myFloor.putDetails(tempDetails);
+                        _myFloor.putDetails(tempDataValue);
                     }
                     
                     
@@ -129,7 +129,7 @@ public class Istream {
                         ArrayList<String> tempDataValue = new ArrayList<>();
                         String[] tempArr = tempDetails.get(j).split(",");
                         Collections.addAll(tempDataValue, tempArr);
-                        _myFloor.putAmenities(tempDetails);
+                        _myFloor.putAmenities(tempDataValue);
                     }
                     
                     // Status

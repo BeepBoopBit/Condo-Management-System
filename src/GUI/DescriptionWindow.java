@@ -1,5 +1,6 @@
 package GUI;
 
+import CMSClass.Condo;
 import FileManager.Istream;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -8,11 +9,19 @@ public class DescriptionWindow extends javax.swing.JFrame {
 
     CMS myCMS;
     Istream _istream = Istream.getInstance();
+    Condo _MyCondo = Condo.get_instance();
     int _tableIndex;
     int _rowPos;
+    // Will set-up the values automatically
+    public DescriptionWindow(int tableIndex, int rowPos) {
+        initComponents();
+        _tableIndex = tableIndex;
+        _rowPos = rowPos;
+        setUpValues();
+    }
+    
     public DescriptionWindow() {
         initComponents();
-        setUpValues();
     }
     
     void setTableAndRow(int table, int row){
@@ -21,7 +30,23 @@ public class DescriptionWindow extends javax.swing.JFrame {
     }
     
     private void setUpValues(){
-        // To be Implemented
+        DWCostLabel.setText(_MyCondo.getFloor(_tableIndex).getCost().get(_rowPos));
+        DWUnitNoLabel.setText(_MyCondo.getFloor(_tableIndex).getUnitNo().get(_rowPos));
+        DWMOPLabel.setText(_MyCondo.getFloor(_tableIndex).getModeOfPayment().get(_rowPos));
+        
+        DefaultTableModel detailModel = (DefaultTableModel) DetailsTable.getModel();
+        ArrayList<ArrayList<String>> tempData = _MyCondo.getFloor(_tableIndex).getDetails();
+        for(int j = 0; j < tempData.get(_rowPos).size(); ++j){
+            detailModel.addRow(new String[]{tempData.get(_rowPos).get(j)});
+        }
+        
+        
+        
+        DefaultTableModel amenitiesModel = (DefaultTableModel) AmenitiesTable.getModel();
+        tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
+        for(int j = 0; j < tempData.get(_tableIndex).size(); ++j){
+            amenitiesModel.addRow(new String[]{tempData.get(_tableIndex).get(j)});
+        }
     }
     
     public void setMyCMS(CMS myCMS) {
@@ -162,10 +187,10 @@ public class DescriptionWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DWBackButton)
                     .addComponent(DWEditButton))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(628, 347));
+        setSize(new java.awt.Dimension(628, 358));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -175,7 +200,15 @@ public class DescriptionWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_DWBackButtonActionPerformed
 
     private void DWEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DWEditButtonActionPerformed
-        // TODO add your handling code here:
+
+        // Create a new edit window
+        EditDescription _editWindow = new EditDescription(_tableIndex, _rowPos);
+        // Set the tab and selected row to the edit window (for the class to know where to get the data)
+        
+        // Make it visible
+        _editWindow.setVisible(true);
+        // Set the current window invisible
+        this.setVisible(false);
     }//GEN-LAST:event_DWEditButtonActionPerformed
 
     public static void main(String args[]) {
