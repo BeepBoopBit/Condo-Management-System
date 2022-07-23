@@ -5,6 +5,11 @@ import FileManager.Istream;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @author Everyone 
+ * - Designed the java form 
+ * - Implements the code
+ */
 public class DescriptionWindow extends javax.swing.JFrame {
 
     CMS myCMS;
@@ -12,6 +17,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
     Condo _MyCondo = Condo.get_instance();
     int _tableIndex;
     int _rowPos;
+
     // Will set-up the values automatically
     public DescriptionWindow(int tableIndex, int rowPos) {
         initComponents();
@@ -19,38 +25,38 @@ public class DescriptionWindow extends javax.swing.JFrame {
         _rowPos = rowPos;
         setUpValues();
     }
-    
+
     public DescriptionWindow() {
         initComponents();
     }
-    
-    void setTableAndRow(int table, int row){
+
+    void setTableAndRow(int table, int row) {
         _tableIndex = table;
         _rowPos = row;
     }
-    
-    private void setUpValues(){
+
+    private void setUpValues() {
         DWCostLabel.setText(_MyCondo.getFloor(_tableIndex).getCost().get(_rowPos));
         DWUnitNoLabel.setText(_MyCondo.getFloor(_tableIndex).getUnitNo().get(_rowPos));
         DWMOPLabel.setText(_MyCondo.getFloor(_tableIndex).getModeOfPayment().get(_rowPos));
-        
+
         DefaultTableModel detailModel = (DefaultTableModel) DetailsTable.getModel();
         ArrayList<ArrayList<String>> tempData = _MyCondo.getFloor(_tableIndex).getDetails();
-        for(int j = 0; j < tempData.get(_rowPos).size(); ++j){
+        for (int j = 0; j < tempData.get(_rowPos).size(); ++j) {
             detailModel.addRow(new String[]{tempData.get(_rowPos).get(j)});
         }
-        
+
         DefaultTableModel amenitiesModel = (DefaultTableModel) AmenitiesTable.getModel();
         tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
-        for(int j = 0; j < tempData.get(_tableIndex).size(); ++j){
+        for (int j = 0; j < tempData.get(_tableIndex).size(); ++j) {
             amenitiesModel.addRow(new String[]{tempData.get(_tableIndex).get(j)});
         }
     }
-    
+
     public void setMyCMS(CMS myCMS) {
         this.myCMS = myCMS;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -202,7 +208,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
         // Create a new edit window
         EditDescription _editWindow = new EditDescription(_tableIndex, _rowPos);
         _editWindow.setDescriptionWindow(this);
-        
+
         // Make it visible
         _editWindow.setVisible(true);
         // Set the current window invisible

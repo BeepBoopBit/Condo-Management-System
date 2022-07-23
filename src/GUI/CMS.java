@@ -5,6 +5,11 @@ import FileManager.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @author Everyone
+ * - Designed the java form 
+ * - Implements the code
+ */
 public class CMS extends javax.swing.JFrame {
 
     private final Istream               _Istream;

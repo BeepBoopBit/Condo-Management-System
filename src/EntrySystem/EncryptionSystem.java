@@ -1,4 +1,5 @@
 package EntrySystem;
+
 /**
  * @author Ryoji Bernardo
  * - An interface for encrypting and decrypting string data

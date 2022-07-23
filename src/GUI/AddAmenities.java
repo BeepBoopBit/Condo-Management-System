@@ -1,26 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 /**
- *
- * @author CM Jinghiro
+ * @author Paul Reonal 
+ * - Designed the java form 
+ * - Implements the code
  */
 public class AddAmenities extends javax.swing.JFrame {
 
     String _data;
     EditAmenities _myEditAmenities;
+
     public AddAmenities() {
         initComponents();
     }
+
     public String getData() {
         return _data;
     }
-    public void setEditAmenities(EditAmenities data){
+
+    public void setEditAmenities(EditAmenities data) {
         _myEditAmenities = data;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

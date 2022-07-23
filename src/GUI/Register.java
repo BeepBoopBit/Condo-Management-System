@@ -4,19 +4,24 @@ import EntrySystem.EntryClass;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Everyone
+ * - Designed the java form 
+ * - Implements the code
+ */
 public class Register extends javax.swing.JFrame {
 
     Login _myLogin;
     final EntryClass _entry = EntryClass.getInstance();
-    
+
     public Register() {
         initComponents();
     }
-    
-    void setLogin(Login login){
+
+    void setLogin(Login login) {
         _myLogin = login;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,8 +133,8 @@ public class Register extends javax.swing.JFrame {
         String pass00 = password.getText();
         String pass01 = cpassword.getText();
         String username = user.getText();
-        
-        if(pass00 == null ? pass01 == null : pass00.equals(pass01)){
+
+        if (pass00 == null ? pass01 == null : pass00.equals(pass01)) {
             _entry.register(username, pass00);
             this.setVisible(false);
             _myLogin.setVisible(true);

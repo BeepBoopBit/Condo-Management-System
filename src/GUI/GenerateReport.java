@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import CMSClass.Condo;
@@ -10,8 +6,9 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author paulm
+ * @author Everyone
+ * - Designed the java form 
+ * - Implements the code
  */
 public class GenerateReport extends javax.swing.JFrame {
 
@@ -20,16 +17,16 @@ public class GenerateReport extends javax.swing.JFrame {
     ArrayList<String[]> _ReportData;
     Ostream _MyOstream = Ostream.getInstance();
     CMS _MyCMS;
-    
+
     public GenerateReport() {
         initComponents();
         _MyModel = (DefaultTableModel) GRReportTable.getModel();
     }
-    
-    void setMyCMS(CMS data){
+
+    void setMyCMS(CMS data) {
         _MyCMS = data;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -153,16 +150,16 @@ public class GenerateReport extends javax.swing.JFrame {
         String searchValue = GRFilterCombo.getSelectedIndex() == 0 ? "Sold" : "Available";
         _ReportData = new ArrayList<>();
         // Remove all of the values
-        while(_MyModel.getRowCount()!= 0){   
+        while (_MyModel.getRowCount() != 0) {
             _MyModel.removeRow(0);
         }
         int floorSize = _MyCondo.getAllFloors().size();
         // Iterate through all the floors
-        for(int i = 0; i < floorSize; ++i){
+        for (int i = 0; i < floorSize; ++i) {
             // iterate through all the data
-            for(int j = 0; j < _MyCondo.getAllFloors().get(i).getStatus().size(); ++j){
-                if(searchValue.equals(_MyCondo.getAllFloors().get(i).getStatus().get(j))){
-                    String[] dataRow = {_MyCondo.getAllFloors().get(i).getUnitNo().get(j),_MyCondo.getAllFloors().get(i).getStatus().get(j)};
+            for (int j = 0; j < _MyCondo.getAllFloors().get(i).getStatus().size(); ++j) {
+                if (searchValue.equals(_MyCondo.getAllFloors().get(i).getStatus().get(j))) {
+                    String[] dataRow = {_MyCondo.getAllFloors().get(i).getUnitNo().get(j), _MyCondo.getAllFloors().get(i).getStatus().get(j)};
                     _MyModel.addRow(dataRow);
                     _ReportData.add(dataRow);
                 }

@@ -1,40 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author paulm
+ * @author Everyone 
+ * - Designed the java form 
+ * - Implements the code
  */
 public class EditDetails extends javax.swing.JFrame {
 
     EditDescription _MyEditDescription = null;
+
     public EditDetails() {
         initComponents();
     }
 
-    public void setDescriptionWindow(EditDescription win){
+    public void setDescriptionWindow(EditDescription win) {
         _MyEditDescription = win;
     }
-    
-    public void setUpValues(ArrayList<String> data){
+
+    public void setUpValues(ArrayList<String> data) {
         DefaultTableModel detailModel = (DefaultTableModel) EDDetailTable.getModel();
-        for(int j = 0; j < data.size(); ++j){
+        for (int j = 0; j < data.size(); ++j) {
             detailModel.addRow(new String[]{data.get(j)});
         }
     }
-    
-    public void addAmeties(String data){
+
+    public void addAmeties(String data) {
         DefaultTableModel amenitiesModel = (DefaultTableModel) EDDetailTable.getModel();
         amenitiesModel.addRow(new String[]{data});
         _MyEditDescription.pushNewDetails(data);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
