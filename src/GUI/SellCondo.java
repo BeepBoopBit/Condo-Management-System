@@ -123,10 +123,10 @@ public class SellCondo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SCConfirmButton)
                     .addComponent(SCExitButton))
-                .addContainerGap())
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(521, 215));
+        setSize(new java.awt.Dimension(521, 232));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

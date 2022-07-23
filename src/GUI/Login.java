@@ -88,7 +88,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(password)
                                 .addComponent(user)))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         BGLayout.setVerticalGroup(
             BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +127,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(515, 364));
+        setSize(new java.awt.Dimension(516, 364));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

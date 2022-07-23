@@ -118,10 +118,10 @@ public class EditAmenities extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EAOKButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(386, 291));
+        setSize(new java.awt.Dimension(386, 288));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

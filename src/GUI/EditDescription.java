@@ -236,7 +236,7 @@ public class EditDescription extends javax.swing.JFrame {
                                         .addComponent(EDConfirmButton)
                                         .addGap(18, 18, 18)
                                         .addComponent(EDBackButton)))))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,10 +267,10 @@ public class EditDescription extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EDConfirmButton)
                     .addComponent(EDBackButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(569, 434));
+        setSize(new java.awt.Dimension(578, 451));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

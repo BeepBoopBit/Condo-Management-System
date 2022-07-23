@@ -122,7 +122,7 @@ public class EditDetails extends javax.swing.JFrame {
                         .addComponent(EDRemoveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EDOkButton)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(385, 294));

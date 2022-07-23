@@ -105,7 +105,7 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(cpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(submitbutton)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,7 +125,7 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(390, 461));
+        setSize(new java.awt.Dimension(390, 430));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
