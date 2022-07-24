@@ -56,6 +56,10 @@ public class CMS extends javax.swing.JFrame {
         }
     }
     
+    private boolean checkIfSelected(int tabIndex){
+        return _Tables.get(tabIndex).getSelectedRow() >= 0;
+    }
+    
     public void updateEditedValue(int tableIndex, int rowIndex){
         _FModel.get(tableIndex).removeRow(rowIndex);
         _FModel.get(tableIndex).insertRow(rowIndex, _MyCondo.getUnitDataInFloor(tableIndex, rowIndex));
@@ -83,6 +87,7 @@ public class CMS extends javax.swing.JFrame {
         CMReportButton = new javax.swing.JButton();
         CMExitButton = new javax.swing.JButton();
         CMEditCondoButton1 = new javax.swing.JButton();
+        RefreshButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -254,12 +259,20 @@ public class CMS extends javax.swing.JFrame {
             }
         });
 
+        RefreshButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RefreshButton.setText("Refresh");
+        RefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CMDescriptionButton)
@@ -272,9 +285,11 @@ public class CMS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMSearchButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RefreshButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMEditCondoButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CMSellCondoButton))
+                        .addComponent(CMSellCondoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
@@ -286,15 +301,16 @@ public class CMS extends javax.swing.JFrame {
                     .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CMSearchButton)
                     .addComponent(CMSellCondoButton)
-                    .addComponent(CMEditCondoButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(CMEditCondoButton1)
+                    .addComponent(RefreshButton))
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CMDescriptionButton)
                     .addComponent(CMReportButton)
                     .addComponent(CMExitButton))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(676, 383));
@@ -337,6 +353,9 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMSearchButtonActionPerformed
 
     private void CMEditCondoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMEditCondoButton1ActionPerformed
+        if(!checkIfSelected(jTabbedPane1.getSelectedIndex())){
+            return;
+        }
         // get tab index and selected item row
         int tabIndex = jTabbedPane1.getSelectedIndex();
         int selectedRow = _Tables.get(tabIndex).getSelectedRow();
@@ -351,6 +370,9 @@ public class CMS extends javax.swing.JFrame {
     }//GEN-LAST:event_CMEditCondoButton1ActionPerformed
 
     private void CMDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMDescriptionButtonActionPerformed
+        if(!checkIfSelected(jTabbedPane1.getSelectedIndex())){
+            return;
+        }
         // get tab index and selected item row
         int tabIndex = jTabbedPane1.getSelectedIndex();
         int selectedRow = _Tables.get(tabIndex).getSelectedRow();        
@@ -384,6 +406,15 @@ public class CMS extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_CMExitButtonActionPerformed
 
+    private void RefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButtonActionPerformed
+        int currentTableIndex = jTabbedPane1.getSelectedIndex();
+        // Remove all of the values
+        while(_FModel.get(currentTableIndex).getRowCount() != 0){   
+             _FModel.get(currentTableIndex).removeRow(0);
+        }
+        setUpTableData();
+    }//GEN-LAST:event_RefreshButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CMDescriptionButton;
     private javax.swing.JButton CMEditCondoButton1;
@@ -397,6 +428,7 @@ public class CMS extends javax.swing.JFrame {
     private javax.swing.JTextField CMSearchBar;
     private javax.swing.JButton CMSearchButton;
     private javax.swing.JButton CMSellCondoButton;
+    private javax.swing.JButton RefreshButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
