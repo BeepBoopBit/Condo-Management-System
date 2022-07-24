@@ -1,4 +1,5 @@
 package EntrySystem;
+
 /**
  * @author Ryoji Bernardo
  * - Interface for Login System

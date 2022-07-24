@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import CMSClass.Condo;
@@ -10,8 +6,9 @@ import FileManager.Ostream;
 import java.util.ArrayList;
 
 /**
- *
- * @author paulm
+ * @author Paul Reonal 
+ * - Designed the java form 
+ * - Implements the code
  */
 public class SellCondo extends javax.swing.JFrame {
 
@@ -19,15 +16,16 @@ public class SellCondo extends javax.swing.JFrame {
     Istream _istream = Istream.getInstance();
     Ostream _ostream = Ostream.getInstance();
     Condo _MyCondo = Condo.get_instance();
+
     public SellCondo() {
         this._ostream = Ostream.getInstance();
         initComponents();
     }
 
-    public void setCMS(CMS cms){
+    public void setCMS(CMS cms) {
         _myCMS = cms;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -68,27 +66,11 @@ public class SellCondo extends javax.swing.JFrame {
         SCEnterUnitLabel.setText("Enter Condo Unit:");
 
         SCSelectFloorCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5" }));
-        SCSelectFloorCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SCSelectFloorComboActionPerformed(evt);
-            }
-        });
-
-        SCEnterUnitText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SCEnterUnitTextActionPerformed(evt);
-            }
-        });
 
         SCSelectFloorLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         SCSelectFloorLabel1.setText("Payment Option:");
 
         SCPaymentOptionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Payment", "Installment" }));
-        SCPaymentOptionCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SCPaymentOptionComboActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,10 +123,10 @@ public class SellCondo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SCConfirmButton)
                     .addComponent(SCExitButton))
-                .addContainerGap())
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(521, 215));
+        setSize(new java.awt.Dimension(521, 232));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,8 +141,8 @@ public class SellCondo extends javax.swing.JFrame {
         int floorIndex = SCSelectFloorCombo.getSelectedIndex();
         ArrayList<String> units = _MyCondo.getFloor(floorIndex).getUnitNo();
         int rowIndex = 0;
-        for(int i = 0; i < units.size(); ++i){
-            if(units.get(i) == null ? UnitNo == null : units.get(i).equals(UnitNo)){
+        for (int i = 0; i < units.size(); ++i) {
+            if (units.get(i) == null ? UnitNo == null : units.get(i).equals(UnitNo)) {
                 _MyCondo.getFloor(floorIndex).getModeOfPayment().set(i, modeOfPayment);
                 _MyCondo.getFloor(floorIndex).getStatus().set(i, "Sold");
                 rowIndex = i;
@@ -172,18 +154,6 @@ public class SellCondo extends javax.swing.JFrame {
         this.setVisible(false);
         _myCMS.setVisible(true);
     }//GEN-LAST:event_SCConfirmButtonActionPerformed
-
-    private void SCSelectFloorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCSelectFloorComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SCSelectFloorComboActionPerformed
-
-    private void SCEnterUnitTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCEnterUnitTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SCEnterUnitTextActionPerformed
-
-    private void SCPaymentOptionComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCPaymentOptionComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SCPaymentOptionComboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SCConfirmButton;

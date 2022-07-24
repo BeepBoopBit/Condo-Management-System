@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import CMSClass.Condo;
@@ -10,8 +6,13 @@ import FileManager.Ostream;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @author Paul Reonal 
+ * - Designed the java form 
+ * - Implements the code
+ */
 public class EditDescription extends javax.swing.JFrame {
-    
+
     CMS _myCMS = null;
     DescriptionWindow _MyDescription = null;
     Istream _istream = Istream.getInstance();
@@ -19,14 +20,14 @@ public class EditDescription extends javax.swing.JFrame {
     private int _tableIndex;
     private int _rowPos;
     Condo _MyCondo = Condo.get_instance();
-    
+
     ArrayList<String> newDetails = new ArrayList<>();
-    ArrayList<String> newAmenities  = new ArrayList<>();
-    
+    ArrayList<String> newAmenities = new ArrayList<>();
+
     public EditDescription() {
         initComponents();
     }
-    
+
     public EditDescription(int tableIndex, int rowPos) {
         initComponents();
         _tableIndex = tableIndex;
@@ -34,69 +35,71 @@ public class EditDescription extends javax.swing.JFrame {
         setUpValues();
     }
 
-    public void pushNewDetails(String data){
+    public void pushNewDetails(String data) {
         newDetails.add(data);
         addDetail(data);
     }
-    public void addDetail(String str){
+
+    public void addDetail(String str) {
         DefaultTableModel tempModel = (DefaultTableModel) DetailsTable.getModel();
         String[] myStr = {str};
         tempModel.addRow(myStr);
-    }   
-    public void removeDetails(int row){
+    }
+
+    public void removeDetails(int row) {
         DefaultTableModel tempModel = (DefaultTableModel) DetailsTable.getModel();
         tempModel.removeRow(row);
         newDetails.remove(row);
     }
-    
-    public void pushNewAmenities(String data){
+
+    public void pushNewAmenities(String data) {
         newDetails.add(data);
         addAmeties(data);
     }
-    public void addAmeties(String str){
+
+    public void addAmeties(String str) {
         DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
         String[] myStr = {str};
         tempModel.addRow(myStr);
     }
-    public void removeAmenities(int row){
+
+    public void removeAmenities(int row) {
         DefaultTableModel tempModel = (DefaultTableModel) AmentiesTable.getModel();
         tempModel.removeRow(row);
         newAmenities.remove(row);
     }
-    
-    private void setUpValues(){
+
+    private void setUpValues() {
         EDCostText.setText(_MyCondo.getFloor(_tableIndex).getCost().get(_rowPos));
         EDUnitNoText.setText(_MyCondo.getFloor(_tableIndex).getUnitNo().get(_rowPos));
         EDMODCombo.setSelectedItem(_MyCondo.getFloor(_tableIndex).getModeOfPayment().get(_rowPos));
         StatusDropdown.setSelectedItem(_MyCondo.getFloor(_tableIndex).getStatus().get(_rowPos));
-        
+
         DefaultTableModel detailModel = (DefaultTableModel) DetailsTable.getModel();
         ArrayList<ArrayList<String>> tempData = _MyCondo.getFloor(_tableIndex).getDetails();
-        for(int j = 0; j < tempData.get(_rowPos).size(); ++j){
+        for (int j = 0; j < tempData.get(_rowPos).size(); ++j) {
             String TempDataValue = tempData.get(_rowPos).get(j);
             detailModel.addRow(new String[]{TempDataValue});
             newDetails.add(TempDataValue);
         }
-        
+
         DefaultTableModel amenitiesModel = (DefaultTableModel) AmentiesTable.getModel();
         tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
-        for(int j = 0; j < tempData.get(_tableIndex).size(); ++j){
+        for (int j = 0; j < tempData.get(_tableIndex).size(); ++j) {
             String TempDataValue = tempData.get(_rowPos).get(j);
             amenitiesModel.addRow(new String[]{TempDataValue});
             newAmenities.add(TempDataValue);
         }
     }
-    
-    public void setMyCMS(CMS myCMS) { 
+
+    public void setMyCMS(CMS myCMS) {
         this._myCMS = myCMS;
     }
-    
-    public void setDescriptionWindow(DescriptionWindow window){
+
+    public void setDescriptionWindow(DescriptionWindow window) {
         _MyDescription = window;
     }
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -233,7 +236,7 @@ public class EditDescription extends javax.swing.JFrame {
                                         .addComponent(EDConfirmButton)
                                         .addGap(18, 18, 18)
                                         .addComponent(EDBackButton)))))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,23 +267,23 @@ public class EditDescription extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EDConfirmButton)
                     .addComponent(EDBackButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(569, 434));
+        setSize(new java.awt.Dimension(578, 451));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void EDDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDDetailButtonActionPerformed
         EditDetails newEditDetail = new EditDetails();
-        newEditDetail.setDescriptionWindow(this); 
+        newEditDetail.setDescriptionWindow(this);
         newEditDetail.setUpValues(newDetails);
         newEditDetail.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EDDetailButtonActionPerformed
 
     private void EDAmenityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDAmenityButtonActionPerformed
-        EditAmenities newEditAmenities = new EditAmenities(); 
+        EditAmenities newEditAmenities = new EditAmenities();
         newEditAmenities.setDescriptionWindow(this);
         newEditAmenities.setUpValues(newAmenities);
         newEditAmenities.setVisible(true);
@@ -298,7 +301,7 @@ public class EditDescription extends javax.swing.JFrame {
         _MyCondo.replaceDetails(_tableIndex, _rowPos, newDetails);
         _MyCondo.replaceAmenities(_tableIndex, _rowPos, newAmenities);
         _MyCondo.replaceStatus(_tableIndex, _rowPos, status);
-        
+
         _myCMS.updateEditedValue(_tableIndex, _rowPos);
         this.setVisible(false);
         _myCMS.setVisible(true);
@@ -306,9 +309,9 @@ public class EditDescription extends javax.swing.JFrame {
     }//GEN-LAST:event_EDConfirmButtonActionPerformed
 
     private void EDBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDBackButtonActionPerformed
-        if(_myCMS == null){
+        if (_myCMS == null) {
             _MyDescription.setVisible(true);
-        }else{
+        } else {
             _myCMS.setVisible(true);
         }
         this.setVisible(false);

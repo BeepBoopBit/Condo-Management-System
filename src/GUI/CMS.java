@@ -5,6 +5,11 @@ import FileManager.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @author Everyone
+ * - Designed the java form 
+ * - Implements the code
+ */
 public class CMS extends javax.swing.JFrame {
 
     private final Istream               _Istream;
@@ -289,10 +294,10 @@ public class CMS extends javax.swing.JFrame {
                     .addComponent(CMDescriptionButton)
                     .addComponent(CMReportButton)
                     .addComponent(CMExitButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(676, 367));
+        setSize(new java.awt.Dimension(676, 383));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

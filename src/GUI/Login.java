@@ -4,11 +4,17 @@ import EntrySystem.EntryClass;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Everyone
+ * - Designed the java form 
+ * - Implements the code
+ */
 public class Login extends javax.swing.JFrame {
 
     CMS _myCMS = new CMS();
     final EntryClass _entry = EntryClass.getInstance();
     Register _myRegister = new Register();
+
     public Login() {
         initComponents();
     }
@@ -82,7 +88,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(password)
                                 .addComponent(user)))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         BGLayout.setVerticalGroup(
             BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +127,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(515, 364));
+        setSize(new java.awt.Dimension(516, 364));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,7 +139,7 @@ public class Login extends javax.swing.JFrame {
     private void signinbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinbuttonActionPerformed
         String username = user.getText();
         String pass = password.getText();
-        if(_entry.login(username, pass)){
+        if (_entry.login(username, pass)) {
             this.setVisible(false);
             _myCMS.setVisible(true);
         } else {

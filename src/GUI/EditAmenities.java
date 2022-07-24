@@ -1,40 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author paulm
+ * @author Paul Reonal 
+ * - Designed the java form 
+ * - Implements the code
  */
 public class EditAmenities extends javax.swing.JFrame {
 
     EditDescription _MyEditDescription = null;
+
     public EditAmenities() {
         initComponents();
     }
 
-    public void setDescriptionWindow(EditDescription win){
+    public void setDescriptionWindow(EditDescription win) {
         _MyEditDescription = win;
     }
-    
-    public void setUpValues(ArrayList<String> data){
+
+    public void setUpValues(ArrayList<String> data) {
         DefaultTableModel amenitiesModel = (DefaultTableModel) EAAmenityTable.getModel();
-        for(int j = 0; j < data.size(); ++j){
+        for (int j = 0; j < data.size(); ++j) {
             amenitiesModel.addRow(new String[]{data.get(j)});
         }
     }
-    
-    public void addAmeties(String data){
+
+    public void addAmeties(String data) {
         DefaultTableModel amenitiesModel = (DefaultTableModel) EAAmenityTable.getModel();
         amenitiesModel.addRow(new String[]{data});
         _MyEditDescription.pushNewAmenities(data);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,6 +50,7 @@ public class EditAmenities extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,10 +118,11 @@ public class EditAmenities extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EAOKButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(386, 288));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

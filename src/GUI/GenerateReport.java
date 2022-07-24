@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import CMSClass.Condo;
 import FileManager.Ostream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author paulm
+ * @author Everyone
+ * - Designed the java form 
+ * - Implements the code
  */
 public class GenerateReport extends javax.swing.JFrame {
 
@@ -20,16 +18,16 @@ public class GenerateReport extends javax.swing.JFrame {
     ArrayList<String[]> _ReportData;
     Ostream _MyOstream = Ostream.getInstance();
     CMS _MyCMS;
-    
+
     public GenerateReport() {
         initComponents();
         _MyModel = (DefaultTableModel) GRReportTable.getModel();
     }
-    
-    void setMyCMS(CMS data){
+
+    void setMyCMS(CMS data) {
         _MyCMS = data;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,6 +43,7 @@ public class GenerateReport extends javax.swing.JFrame {
         GenerateReportButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setText("REPORT");
@@ -103,8 +102,12 @@ public class GenerateReport extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -113,14 +116,9 @@ public class GenerateReport extends javax.swing.JFrame {
                             .addComponent(SaveToFileButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(GenerateReportButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(GRExitButton)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addContainerGap(60, Short.MAX_VALUE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(GRExitButton))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,26 +139,27 @@ public class GenerateReport extends javax.swing.JFrame {
                     .addComponent(GRExitButton)
                     .addComponent(GenerateReportButton)
                     .addComponent(SaveToFileButton))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(654, 414));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GenerateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateReportButtonActionPerformed
         String searchValue = GRFilterCombo.getSelectedIndex() == 0 ? "Sold" : "Available";
         _ReportData = new ArrayList<>();
         // Remove all of the values
-        while(_MyModel.getRowCount()!= 0){   
+        while (_MyModel.getRowCount() != 0) {
             _MyModel.removeRow(0);
         }
         int floorSize = _MyCondo.getAllFloors().size();
         // Iterate through all the floors
-        for(int i = 0; i < floorSize; ++i){
+        for (int i = 0; i < floorSize; ++i) {
             // iterate through all the data
-            for(int j = 0; j < _MyCondo.getAllFloors().get(i).getStatus().size(); ++j){
-                if(searchValue.equals(_MyCondo.getAllFloors().get(i).getStatus().get(j))){
-                    String[] dataRow = {_MyCondo.getAllFloors().get(i).getUnitNo().get(j),_MyCondo.getAllFloors().get(i).getStatus().get(j)};
+            for (int j = 0; j < _MyCondo.getAllFloors().get(i).getStatus().size(); ++j) {
+                if (searchValue.equals(_MyCondo.getAllFloors().get(i).getStatus().get(j))) {
+                    String[] dataRow = {_MyCondo.getAllFloors().get(i).getUnitNo().get(j), _MyCondo.getAllFloors().get(i).getStatus().get(j)};
                     _MyModel.addRow(dataRow);
                     _ReportData.add(dataRow);
                 }
@@ -169,6 +168,7 @@ public class GenerateReport extends javax.swing.JFrame {
     }//GEN-LAST:event_GenerateReportButtonActionPerformed
 
     private void SaveToFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveToFileButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "File Saved", "Generate Report", JOptionPane.PLAIN_MESSAGE);
         _MyOstream.deleteReport();
         _MyOstream.exportReport(_ReportData);
     }//GEN-LAST:event_SaveToFileButtonActionPerformed
