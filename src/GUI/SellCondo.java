@@ -137,7 +137,7 @@ public class SellCondo extends javax.swing.JFrame {
 
     private void SCConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCConfirmButtonActionPerformed
         String UnitNo = SCEnterUnitText.getText();
-        String modeOfPayment = SCPaymentOptionCombo.getSelectedIndex() == 1 ? "Full Payment" : "Installment";
+        String modeOfPayment = SCPaymentOptionCombo.getSelectedIndex() == 0 ? "Full Payment" : "Installment";
         int floorIndex = SCSelectFloorCombo.getSelectedIndex();
         ArrayList<String> units = _MyCondo.getFloor(floorIndex).getUnitNo();
         int rowIndex = 0;
