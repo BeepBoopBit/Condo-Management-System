@@ -179,11 +179,11 @@ public class DescriptionWindow extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(DWUnitNoLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(DWMOPLabel)))
+                        .addComponent(DWMOPLabel))
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +209,7 @@ public class DescriptionWindow extends javax.swing.JFrame {
         // Create a new edit window
         EditDescription _editWindow = new EditDescription(_tableIndex, _rowPos);
         _editWindow.setDescriptionWindow(this);
-
+        _editWindow.setMyCMS(myCMS);
         // Make it visible
         _editWindow.setVisible(true);
         // Set the current window invisible

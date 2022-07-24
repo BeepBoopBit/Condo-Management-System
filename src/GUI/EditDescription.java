@@ -301,7 +301,7 @@ public class EditDescription extends javax.swing.JFrame {
         _MyCondo.replaceDetails(_tableIndex, _rowPos, newDetails);
         _MyCondo.replaceAmenities(_tableIndex, _rowPos, newAmenities);
         _MyCondo.replaceStatus(_tableIndex, _rowPos, status);
-
+        
         _myCMS.updateEditedValue(_tableIndex, _rowPos);
         this.setVisible(false);
         _myCMS.setVisible(true);
