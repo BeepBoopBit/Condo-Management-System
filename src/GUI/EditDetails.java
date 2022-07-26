@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EditDetails extends javax.swing.JFrame {
 
-    EditDescription _MyEditDescription = null;
+    private EditDescription _MyEditDescription = null;
 
     public EditDetails() {
         initComponents();

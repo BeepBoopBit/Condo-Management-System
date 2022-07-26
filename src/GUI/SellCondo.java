@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class SellCondo extends javax.swing.JFrame {
 
-    CMS _myCMS;
-    Istream _istream = Istream.getInstance();
-    Ostream _ostream = Ostream.getInstance();
-    Condo _MyCondo = Condo.get_instance();
+    private CMS _myCMS;
+    private Istream _istream = Istream.getInstance();
+    private Ostream _ostream = Ostream.getInstance();
+    private Condo _MyCondo = Condo.get_instance();
 
     public SellCondo() {
         this._ostream = Ostream.getInstance();

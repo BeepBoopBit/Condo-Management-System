@@ -3,30 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/CMS.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/CMSClass/Condo.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/Register.java</file>
             <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/AddAmenities.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/SellCondo.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/CMSClass/CondoData.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/AddDetails.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/GenerateReport.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/DescriptionWindow.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/EntrySystem/EntryClass.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/EditDescription.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/EditDetails.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/Login.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/FileManager/Istream.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/CMSClass/Buyer.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/GUI/EditAmenities.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/EntrySystem/EncryptionSystem.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/EntrySystem/LoginSystem.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/FileManager/Ostream.java</file>
-            <file>file:/C:/Users/paulm/Documents/Code/CondoManagementSystem/src/EntrySystem/RegisterSystem.java</file>
-=======
-            <file>file:/D:/01_Programming/Java/CondoManagementSystem/src/GUI/SellCondo.java</file>
->>>>>>> a55f73e33f3916671411d762c1096f16920b3c37
         </group>
     </open-files>
 </project-private>

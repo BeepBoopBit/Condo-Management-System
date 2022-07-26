@@ -17,8 +17,8 @@ public class CMS extends javax.swing.JFrame {
     private final Condo                 _MyCondo        = Condo.get_instance();
     private final int                   _TableColSize   = 3;
     private final int                   _TableDataSize  = 10;
-    ArrayList<DefaultTableModel>        _FModel;
-    ArrayList<javax.swing.JTable>       _Tables;
+    private final ArrayList<DefaultTableModel>        _FModel;
+    private final ArrayList<javax.swing.JTable>       _Tables;
     
     public CMS() {
         initComponents();

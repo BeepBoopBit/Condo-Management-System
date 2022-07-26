@@ -13,11 +13,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GenerateReport extends javax.swing.JFrame {
 
-    DefaultTableModel _MyModel;
-    Condo _MyCondo = Condo.get_instance();
-    ArrayList<String[]> _ReportData;
-    Ostream _MyOstream = Ostream.getInstance();
-    CMS _MyCMS;
+    private DefaultTableModel _MyModel;
+    private Condo _MyCondo = Condo.get_instance();
+    private ArrayList<String[]> _ReportData;
+    private Ostream _MyOstream = Ostream.getInstance();
+    private CMS _MyCMS;
 
     public GenerateReport() {
         initComponents();
