@@ -18,7 +18,7 @@ public class Ostream {
     private final String _credentialPath = "src/Data/credentials.dat";
     private final String _reportPath = "src/Data/report.csv";
     private final Condo _MyCondo = Condo.get_instance();
-    String[] _floorPaths = {"src/Data/Floor01.dat", "src/Data/Floor02.dat",
+    private String[] _floorPaths = {"src/Data/Floor01.dat", "src/Data/Floor02.dat",
                             "src/Data/Floor03.dat", "src/Data/Floor04.dat",
                             "src/Data/Floor05.dat"};
 

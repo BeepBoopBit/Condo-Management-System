@@ -12,11 +12,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DescriptionWindow extends javax.swing.JFrame {
 
-    CMS myCMS;
-    Istream _istream = Istream.getInstance();
-    Condo _MyCondo = Condo.get_instance();
-    int _tableIndex;
-    int _rowPos;
+    private CMS myCMS;
+    private Istream _istream = Istream.getInstance();
+    private Condo _MyCondo = Condo.get_instance();
+    private int _tableIndex;
+    private int _rowPos;
 
     // Will set-up the values automatically
     public DescriptionWindow(int tableIndex, int rowPos) {

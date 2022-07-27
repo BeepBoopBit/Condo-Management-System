@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Condo{
     // List of Floors All With their corresponding data
-    ArrayList<CondoData> _Floors;
+    private ArrayList<CondoData> _Floors;
     
     private static Condo _MyCondo = null;
     

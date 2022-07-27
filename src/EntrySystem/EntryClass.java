@@ -8,26 +8,26 @@ import FileManager.*;
  */
 public class EntryClass implements LoginSystem, RegisterSystem {
 
-    final Istream _istream = Istream.getInstance();
-    final Ostream _ostream = Ostream.getInstance();
+    private final Istream _istream = Istream.getInstance();
+    private final Ostream _ostream = Ostream.getInstance();
     // Singleton Variable
     private static EntryClass _myEntry = null;
 
     // Use for encryption
-    char _alphabeth[] =             {'a', 'b', 'c', 'd', 'e',
+    private char _alphabeth[] =     {'a', 'b', 'c', 'd', 'e',
                                      'f', 'g', 'h', 'i', 'j',
                                      'k', 'l', 'm', 'n', 'o',
                                      'p', 'q', 'r', 's', 't',
                                      'u', 'v', 'w', 'x', 'y', 'z', ' '};
     
-    char _encryptedAlphabeth[] =    {'b', 'c', 'd', 'e', 'f',
-                                     'g', 'h', 'i', 'j', 'k',
-                                     'l', 'm', 'n', 'o', 'p',
-                                     'q', 'r', 's', 't', 'u',
-                                     'v', 'w', 'x', 'y', 'z', 'a', ' '};
+    private char _encryptedAlphabeth[] =    {'b', 'c', 'd', 'e', 'f',
+                                             'g', 'h', 'i', 'j', 'k',
+                                             'l', 'm', 'n', 'o', 'p',
+                                             'q', 'r', 's', 't', 'u',
+                                             'v', 'w', 'x', 'y', 'z', 'a', ' '};
 
     // Stores the credentials of the user
-    String[] _credentials;
+    private String[] _credentials;
 
     private EntryClass() {
         _istream.readCredentials();

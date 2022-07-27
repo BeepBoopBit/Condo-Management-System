@@ -9,12 +9,12 @@ import java.util.ArrayList;
  * - ONE CondoData is equivalent to a SINGLE FLOOR
  */
 public class CondoData {
-    ArrayList<String>                   _UnitNo;
-    ArrayList<String>                   _Cost;
-    ArrayList<String>                   _ModeOfPayment;
-    ArrayList<ArrayList<String>>        _Details;
-    ArrayList<ArrayList<String>>        _Amenities;
-    ArrayList<String>                   _Status;
+    private ArrayList<String>                   _UnitNo;
+    private ArrayList<String>                   _Cost;
+    private ArrayList<String>                   _ModeOfPayment;
+    private ArrayList<ArrayList<String>>        _Details;
+    private ArrayList<ArrayList<String>>        _Amenities;
+    private ArrayList<String>                   _Status;
     
     public CondoData(){
         _UnitNo             = new ArrayList<>();

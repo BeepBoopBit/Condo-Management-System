@@ -20,11 +20,11 @@ import java.util.logging.Logger;
 public class Istream {
 
     // Use for Entry System
-    String[] _credential = {"USERNAME_E", "PASSWORD_E"};
-    String _credentialPath = "src/Data/credentials.dat";
+    private String[] _credential = {"USERNAME_E", "PASSWORD_E"};
+    private String _credentialPath = "src/Data/credentials.dat";
 
     // Use to read individual Floors
-    String[] _floorPaths = {"src/Data/Floor01.dat", "src/Data/Floor02.dat",
+    private String[] _floorPaths = {"src/Data/Floor01.dat", "src/Data/Floor02.dat",
         "src/Data/Floor03.dat", "src/Data/Floor04.dat",
         "src/Data/Floor05.dat"};
 
