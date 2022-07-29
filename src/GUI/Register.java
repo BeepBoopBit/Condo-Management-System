@@ -37,25 +37,36 @@ public class Register extends javax.swing.JFrame {
         cpassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Register Form");
+        setTitle("Sign Up");
         setResizable(false);
 
-        BG.setBackground(new java.awt.Color(255, 255, 255));
+        BG.setBackground(new java.awt.Color(43, 35, 39));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
         title.setText("Sign Up");
 
         t_user.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        t_user.setForeground(new java.awt.Color(255, 255, 255));
         t_user.setText("Username");
 
         t_password.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        t_password.setForeground(new java.awt.Color(255, 255, 255));
         t_password.setText("Password");
 
+        user.setBackground(new java.awt.Color(43, 35, 39));
         user.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        user.setForeground(new java.awt.Color(240, 240, 240));
+        user.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
+        password.setBackground(new java.awt.Color(43, 35, 39));
         password.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        password.setForeground(new java.awt.Color(240, 240, 240));
+        password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
+        submitbutton.setBackground(new java.awt.Color(0, 0, 0));
         submitbutton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        submitbutton.setForeground(new java.awt.Color(240, 240, 240));
         submitbutton.setText("Submit");
         submitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,9 +75,13 @@ public class Register extends javax.swing.JFrame {
         });
 
         t_cpassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        t_cpassword.setForeground(new java.awt.Color(255, 255, 255));
         t_cpassword.setText("Confirm Password");
 
+        cpassword.setBackground(new java.awt.Color(43, 35, 39));
         cpassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cpassword.setForeground(new java.awt.Color(240, 240, 240));
+        cpassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
         javax.swing.GroupLayout BGLayout = new javax.swing.GroupLayout(BG);
         BG.setLayout(BGLayout);
@@ -84,12 +99,12 @@ public class Register extends javax.swing.JFrame {
                         .addComponent(t_cpassword, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(submitbutton)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
         BGLayout.setVerticalGroup(
             BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BGLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addComponent(title)
                 .addGap(29, 29, 29)
                 .addComponent(t_user)
@@ -105,24 +120,18 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(cpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(submitbutton)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(390, 430));
@@ -141,6 +150,8 @@ public class Register extends javax.swing.JFrame {
         } else {
             JFrame PopUp = new JFrame();
             JOptionPane.showMessageDialog(PopUp, "Please make sure your password match.");
+            password.setText("");
+            cpassword.setText("");
         }
     }//GEN-LAST:event_submitbuttonActionPerformed
 
