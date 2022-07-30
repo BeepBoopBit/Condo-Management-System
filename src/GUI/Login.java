@@ -150,6 +150,7 @@ public class Login extends javax.swing.JFrame {
         if (_entry.login(username, pass)) {
             this.setVisible(false);
             _myCMS.setVisible(true);
+            _myRegister.setVisible(false);
         } else {
             JFrame PopUp = new JFrame();
             JOptionPane.showMessageDialog(PopUp, "The username or password you entered is incorrect.");
