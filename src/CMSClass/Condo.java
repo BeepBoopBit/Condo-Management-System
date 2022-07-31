@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Condo{
     // List of Floors All With their corresponding data
-    private ArrayList<CondoData> _Floors;
+    private ArrayList<Floor> _Floors;
     
     private static Condo _MyCondo = null;
     
@@ -30,15 +30,15 @@ public class Condo{
         return _Floors.size();
     }
     
-    public void addFloor(CondoData data){
+    public void addFloor(Floor data){
         _Floors.add(data);
     }
     
-    public CondoData getFloor(int index){
+    public Floor getFloor(int index){
         return _Floors.get(index);
     }
     
-    public ArrayList<CondoData> getAllFloors(){
+    public ArrayList<Floor> getAllFloors(){
         return _Floors;
     }
     
@@ -67,10 +67,4 @@ public class Condo{
         _Floors.get(floorIndex).getStatus().set(rowIndex, data);
     }
     
-    // Auxillary 
-    public void printData(){
-        for(int i = 0; i < _Floors.size(); ++i){
-            _Floors.get(i).print();
-        }
-    }
 }
