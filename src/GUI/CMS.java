@@ -12,13 +12,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CMS extends javax.swing.JFrame {
 
-    private final Istream               _Istream;
-    private final Ostream               _Ostream        = Ostream.getInstance();
-    private final Condo                 _MyCondo        = Condo.get_instance();
-    private final int                   _TableColSize   = 3;
-    private final int                   _TableDataSize  = 10;
-    private final ArrayList<DefaultTableModel>        _FModel;
-    private final ArrayList<javax.swing.JTable>       _Tables;
+    private final Istream                               _Istream;
+    private final Ostream                               _Ostream        = Ostream.getInstance();
+    private final Condo                                 _MyCondo        = Condo.get_instance();
+    private final int                                   _TableColSize   = 3;
+    private final int                                   _TableDataSize  = 10;
+    private final ArrayList<DefaultTableModel>          _FModel;
+    private final ArrayList<javax.swing.JTable>         _Tables;
     
     public CMS() {
         initComponents();
@@ -88,8 +88,11 @@ public class CMS extends javax.swing.JFrame {
         CMExitButton = new javax.swing.JButton();
         CMEditCondoButton1 = new javax.swing.JButton();
         RefreshButton = new javax.swing.JButton();
+        Logo_icon_small = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -267,53 +270,64 @@ public class CMS extends javax.swing.JFrame {
             }
         });
 
+        Logo_icon_small.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_logo [small].png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CMDescriptionButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMReportButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CMExitButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Logo_icon_small)
+                        .addGap(18, 18, 18)
+                        .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CMSearchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RefreshButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RefreshButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(CMEditCondoButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CMSellCondoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                        .addComponent(CMSellCondoButton)))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CMSearchButton)
-                    .addComponent(CMSellCondoButton)
-                    .addComponent(CMEditCondoButton1)
-                    .addComponent(RefreshButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CMSearchButton)
+                            .addComponent(Logo_icon_small)
+                            .addComponent(RefreshButton))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CMSellCondoButton)
+                            .addComponent(CMEditCondoButton1))
+                        .addGap(18, 18, 18)))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CMDescriptionButton)
                     .addComponent(CMReportButton)
                     .addComponent(CMExitButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(676, 383));
+        setSize(new java.awt.Dimension(1097, 697));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -376,7 +390,7 @@ public class CMS extends javax.swing.JFrame {
         // get tab index and selected item row
         int tabIndex = jTabbedPane1.getSelectedIndex();
         int selectedRow = _Tables.get(tabIndex).getSelectedRow();        
-        // Create a new Description Windo/w
+        // Create a new Description Window
         DescriptionWindow _descriptionWindow = new DescriptionWindow(tabIndex,selectedRow);
         // Make it visible
         _descriptionWindow.setVisible(true);
@@ -413,6 +427,7 @@ public class CMS extends javax.swing.JFrame {
              _FModel.get(currentTableIndex).removeRow(0);
         }
         setUpTableData();
+        CMSearchBar.setText("");
     }//GEN-LAST:event_RefreshButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -428,6 +443,7 @@ public class CMS extends javax.swing.JFrame {
     private javax.swing.JTextField CMSearchBar;
     private javax.swing.JButton CMSearchButton;
     private javax.swing.JButton CMSellCondoButton;
+    private javax.swing.JLabel Logo_icon_small;
     private javax.swing.JButton RefreshButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
