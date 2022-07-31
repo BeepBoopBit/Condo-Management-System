@@ -5,120 +5,44 @@ import java.util.ArrayList;
 
 /**
  * @author Renz Aguirre
- * - Used for STORING the data of individual units in floors
- * - ONE CondoData is equivalent to a SINGLE FLOOR
  */
 public class CondoData {
-    private ArrayList<String>                   _UnitNo;
-    private ArrayList<String>                   _Cost;
-    private ArrayList<String>                   _ModeOfPayment;
-    private ArrayList<ArrayList<String>>        _Details;
-    private ArrayList<ArrayList<String>>        _Amenities;
-    private ArrayList<String>                   _Status;
+    protected ArrayList<String> _data;
     
-    public CondoData(){
-        _UnitNo             = new ArrayList<>();
-        _Cost               = new ArrayList<>();
-        _ModeOfPayment      = new ArrayList<>();
-        _Details            = new ArrayList<>();
-        _Amenities          = new ArrayList<>();
-        _Status             = new ArrayList<>();
+    CondoData(){
+        _data = new ArrayList<>();
     }
     
-    // Putters (Put individual Data not as a whole)
-    /////////////////////////////////////////////////////////////////////
-    public void putUnitNo(String data){
-        _UnitNo.add(data);
+    public void add(String value){
+        _data.add(value);
     }
-    public void putCost(String data){
-        _Cost.add(data);
-    }
-    public void putModeOfPayment(String data){
-        _ModeOfPayment.add(data);
-    }
-    public void putDetails(ArrayList<String> data){
-        _Details.add(data);
-    }
-    public void putAmenities(ArrayList<String> data){
-        _Amenities.add(data);
-    }
-    public void putStatus(String data){
-        _Status.add(data);
-    }
-    /////////////////////////////////////////////////////////////////////
     
-    // Get the Data
-    /////////////////////////////////////////////////////////////////////
-    public ArrayList<String> getUnitNo() {
-        return _UnitNo;
+    public ArrayList<String> getData(){
+        return _data;
     }
-    public ArrayList<String> getCost() {
-        return _Cost;
+    
+    public void setData(ArrayList<String> data){
+        _data = data;
     }
-    public ArrayList<String> getModeOfPayment() {
-        return _ModeOfPayment;
+    
+    public void putData(String data){
+        _data.add(data);
     }
-    public ArrayList<ArrayList<String>> getDetails() {
-        return _Details;
+    
+    public void removeValue(int index){
+        _data.remove(index);
     }
-    public ArrayList<ArrayList<String>> getAmenities() {
-        return _Amenities;
+    
+    public void removeValue(String value){
+        _data.remove(value);
     }
-    public ArrayList<String> getStatus() {
-        return _Status;
+    
+    public void replaceValue(int index, String value){
+        _data.set(index, value);
     }
-
-    // Set Data (as a whole)
-    /////////////////////////////////////////////////////////////////////
-    public void setUnitNo(ArrayList<String> _UnitNo) {
-        this._UnitNo = _UnitNo;
+    
+    public boolean contains(String value){
+        return _data.contains(value);
     }
-    public void setCost(ArrayList<String> _Cost) {
-        this._Cost = _Cost;
-    }
-    public void setModeOfPayment(ArrayList<String> _ModeOfPayment) {
-        this._ModeOfPayment = _ModeOfPayment;
-    }
-    public void setDetails(ArrayList<ArrayList<String>> _Details) {
-        this._Details = _Details;
-    }
-    public void setAmenities(ArrayList<ArrayList<String>> _Amenities) {
-        this._Amenities = _Amenities;
-    }
-    public void setStatus(ArrayList<String> _Status) {
-        this._Status = _Status;
-    }
-    /////////////////////////////////////////////////////////////////////
-
-    // Debugging
-    /////////////////////////////////////////////////////////////////////
-    public void print(){
-        for(int i = 0; i <_UnitNo.size(); ++i){
-            System.out.print(_UnitNo.get(i) + ' ');
-        }
-        System.out.println("");
-        for(int i = 0; i <_Cost.size(); ++i){
-            System.out.print(_Cost.get(i) + ' ');
-        }
-        System.out.println("");
-        for(int i = 0; i <_ModeOfPayment.size(); ++i){
-            System.out.print(_ModeOfPayment.get(i) + ' ');
-        }
-        System.out.println("");
-        for(int i = 0; i <_Details.size(); ++i){
-            for(int j = 0; j < _Details.get(i).size(); ++j){
-                System.out.print(_Details.get(i).get(j) + ' ');
-            }
-        }
-        System.out.println("");
-        for(int i = 0; i <_Amenities.size(); ++i){
-            for(int j = 0; j < _Amenities.get(i).size(); ++j){
-                System.out.print(_Amenities.get(i).get(j) + ' ');
-            }
-        }
-        System.out.println("");
-    }
-    /////////////////////////////////////////////////////////////////////
-
-
+    
 }

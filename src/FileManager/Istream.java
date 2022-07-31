@@ -2,6 +2,7 @@ package FileManager;
 
 import CMSClass.Condo;
 import CMSClass.CondoData;
+import CMSClass.Floor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -86,7 +87,7 @@ public class Istream {
                 File myFile = new File(_floorPaths[i]);
                 Scanner myReader = new Scanner(myFile);
                 // Condo Data
-                CondoData _myFloor = new CondoData();
+                Floor _myFloor = new Floor();
                 while (myReader.hasNextLine()) {
                     // Unit
                     ArrayList<String> tempDetails = new ArrayList<>();
