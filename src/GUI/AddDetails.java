@@ -96,7 +96,7 @@ public class AddDetails extends javax.swing.JFrame {
         this.setVisible(false);
         _myEditDetails.setVisible(true);
         _data = ADDetailText.getText();
-        _myEditDetails.addAmeties(_data);
+        _myEditDetails.addDetails(_data);
     }//GEN-LAST:event_ADAddButtonActionPerformed
 
     private void ADCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADCancelButtonActionPerformed

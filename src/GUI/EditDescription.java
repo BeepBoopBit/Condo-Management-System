@@ -85,7 +85,7 @@ public class EditDescription extends javax.swing.JFrame {
 
         DefaultTableModel amenitiesModel = (DefaultTableModel) AmentiesTable.getModel();
         tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
-        for (int j = 0; j < tempData.get(_tableIndex).size(); ++j) {
+        for (int j = 0; j < tempData.get(_rowPos).size(); ++j) {
             String TempDataValue = tempData.get(_rowPos).get(j);
             amenitiesModel.addRow(new String[]{TempDataValue});
             newAmenities.add(TempDataValue);
@@ -295,6 +295,7 @@ public class EditDescription extends javax.swing.JFrame {
         String costText = EDCostText.getText();
         String modeOfPayment = EDMODCombo.getSelectedIndex() == 0 ? "N/A" : EDMODCombo.getSelectedIndex() == 1 ? "Full Payment" : "Installment";
         String status = StatusDropdown.getSelectedIndex() == 0 ? "Available" : "Sold";
+        
         _MyCondo.replaceUnitNo(_tableIndex, _rowPos, unitText);
         _MyCondo.replaceCost(_tableIndex, _rowPos, costText);
         _MyCondo.replaceModeOfPayment(_tableIndex, _rowPos, modeOfPayment);

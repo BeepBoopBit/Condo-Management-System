@@ -27,7 +27,7 @@ public class EditDetails extends javax.swing.JFrame {
         }
     }
 
-    public void addAmeties(String data) {
+    public void addDetails(String data) {
         DefaultTableModel amenitiesModel = (DefaultTableModel) EDDetailTable.getModel();
         amenitiesModel.addRow(new String[]{data});
         _MyEditDescription.pushNewDetails(data);
