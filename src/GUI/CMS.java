@@ -306,18 +306,18 @@ public class CMS extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CMSearchButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Logo_icon_small)
-                            .addComponent(RefreshButton))
-                        .addGap(18, 18, 18))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(CMSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CMSearchButton)
+                                .addComponent(RefreshButton))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CMSellCondoButton)
-                            .addComponent(CMEditCondoButton1))
-                        .addGap(18, 18, 18)))
+                            .addComponent(CMEditCondoButton1))))
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -423,11 +423,13 @@ public class CMS extends javax.swing.JFrame {
     private void RefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButtonActionPerformed
         int currentTableIndex = jTabbedPane1.getSelectedIndex();
         // Remove all of the values
-        while(_FModel.get(currentTableIndex).getRowCount() != 0){   
-             _FModel.get(currentTableIndex).removeRow(0);
+        for(int i = 0; i < _FModel.size(); ++i){
+            while(_FModel.get(i).getRowCount() != 0){   
+                _FModel.get(i).removeRow(0);
+            }
+            CMSearchBar.setText("");
         }
         setUpTableData();
-        CMSearchBar.setText("");
     }//GEN-LAST:event_RefreshButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
