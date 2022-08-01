@@ -48,8 +48,8 @@ public class DescriptionWindow extends javax.swing.JFrame {
 
         DefaultTableModel amenitiesModel = (DefaultTableModel) AmenitiesTable.getModel();
         tempData = _MyCondo.getFloor(_tableIndex).getAmenities();
-        for (int j = 0; j < tempData.get(_tableIndex).size(); ++j) {
-            amenitiesModel.addRow(new String[]{tempData.get(_tableIndex).get(j)});
+        for (int j = 0; j < tempData.get(_rowPos).size(); ++j) {
+            amenitiesModel.addRow(new String[]{tempData.get(_rowPos).get(j)});
         }
     }
 
