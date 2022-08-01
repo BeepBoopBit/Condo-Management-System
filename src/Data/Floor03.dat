@@ -1,6 +1,6 @@
-201,202,203,204,205,206,207,208,209,210,
-1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,
-water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;
-water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;water,melon;
-Available,Available,Available,Available,Available,Available,Available,Available,Available,Available,
+301,302,303,304,305,306,307,308,309,310,
+4000,2000,8000,13000,2000,33000,6000,2000,1000,5000,
+Full Payment,Installment,Full Payment,Full Payment,Installment,Installment,Installment,Installment,N/A,N/A,
+2 bedrooms,1 kitchen,Fire Alarm;1 bathroom,2 kitchen,Wifi;Wifi,1 bedroom;2 kitchen,Fire Alarm, Wifi;1 kitchen,3 bedrooms;1 bathroom,1 bedroom;2 kitchen,Fire Alarm;1 bedroom,1 bathroom;2 bedrooms,1 bathroom;3 bedrooms,2 kitchen;
+Gym,Swimming pool;Playground;Gym,Swimming pool;Cafeteria,Gym;Cafeteria,Swimming pool;Playground;Gym;Swimming pool;Cafeteria,Gym;Playground,Gym;
+Sold,Sold,Sold,Sold,Sold,Sold,Sold,Sold,Available,Available,
