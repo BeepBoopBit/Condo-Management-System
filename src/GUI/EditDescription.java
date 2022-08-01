@@ -53,7 +53,7 @@ public class EditDescription extends javax.swing.JFrame {
     }
 
     public void pushNewAmenities(String data) {
-        newDetails.add(data);
+        newAmenities.add(data);
         addAmeties(data);
     }
 
